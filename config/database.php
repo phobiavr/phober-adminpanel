@@ -91,6 +91,15 @@ return [
       'prefix_indexes' => true,
     ],
 
+    'db_device' => [
+      'driver' => env('DB_DEVICE_CONNECTION', 'mysql'),
+      'host' => env('DB_DEVICE_HOST', '127.0.0.1'),
+      'port' => env('DB_DEVICE_PORT', '3306'),
+      'database' => env('DB_DEVICE_DATABASE', 'forge'),
+      'username' => env('DB_DEVICE_USERNAME', 'forge'),
+      'password' => env('DB_DEVICE_PASSWORD', ''),
+    ],
+
   ],
 
   /*

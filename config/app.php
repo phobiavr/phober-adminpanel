@@ -166,6 +166,8 @@ return [
      * Package Service Providers...
      */
 
+    App\Providers\NovaServiceProvider::class,
+
     /*
      * Application Service Providers...
      */

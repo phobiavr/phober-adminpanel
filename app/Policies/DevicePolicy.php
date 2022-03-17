@@ -17,7 +17,7 @@ class DevicePolicy {
    * @return Response|bool
    */
   public function viewAny(User $user) {
-    //
+    return true;
   }
 
   /**
@@ -28,7 +28,7 @@ class DevicePolicy {
    * @return Response|bool
    */
   public function view(User $user, Device $device) {
-    //
+    return true;
   }
 
   /**
@@ -38,7 +38,7 @@ class DevicePolicy {
    * @return Response|bool
    */
   public function create(User $user) {
-    //
+    return true;
   }
 
   /**
@@ -49,7 +49,7 @@ class DevicePolicy {
    * @return Response|bool
    */
   public function update(User $user, Device $device) {
-    //
+    return true;
   }
 
   /**
@@ -60,7 +60,7 @@ class DevicePolicy {
    * @return Response|bool
    */
   public function delete(User $user, Device $device) {
-    //
+    return true;
   }
 
   /**
@@ -71,7 +71,7 @@ class DevicePolicy {
    * @return Response|bool
    */
   public function restore(User $user, Device $device) {
-    //
+    return true;
   }
 
   /**
@@ -82,6 +82,6 @@ class DevicePolicy {
    * @return Response|bool
    */
   public function forceDelete(User $user, Device $device) {
-    //
+    return true;
   }
 }

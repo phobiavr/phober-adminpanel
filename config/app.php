@@ -167,6 +167,7 @@ return [
      */
 
     App\Providers\NovaServiceProvider::class,
+    KirschbaumDevelopment\NovaComments\NovaCommentsServiceProvider::class,
 
     /*
      * Application Service Providers...

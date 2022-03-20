@@ -5,6 +5,7 @@ namespace App\Nova;
 use Ebess\AdvancedNovaMediaLibrary\Fields\Media;
 use Illuminate\Http\Request;
 use KirschbaumDevelopment\NovaComments\Commenter;
+use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
@@ -25,13 +26,13 @@ class Game extends Resource{
 
       Text::make("Name")->sortable(),
 
-      //Text::make("Slug")->sortable(),
+      Text::make("Slug")->sortable()->hideWhenCreating()->hideWhenUpdating(),
 
       Boolean::make("Multiplayer"),
 
       //BelongsToMany::make("Devices"),
 
-      //BelongsToMany::make("Genres"),
+      BelongsToMany::make("Genres"),
 
       HasMany::make('Comments', 'comments')->hideFromDetail()->hideFromIndex(),
       new Commenter(),

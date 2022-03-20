@@ -16,6 +16,8 @@ class DatabaseSeeder extends Seeder {
       GameSeeder::class,
       GenreSeeder::class,
 
+      GameGenreSeeder::class,
+
       MediaSeeder::class
     ]);
   }

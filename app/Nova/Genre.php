@@ -3,6 +3,7 @@
 namespace App\Nova;
 
 use Illuminate\Http\Request;
+use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
 
@@ -40,7 +41,7 @@ class Genre extends Resource {
 
       Text::make("Name"),
 
-      //BelongsToMany::make("Games")
+      BelongsToMany::make("Games")
     ];
   }
 }

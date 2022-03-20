@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Support\Str;
 use KirschbaumDevelopment\NovaComments\Models\Comment;
@@ -37,5 +38,10 @@ class Game extends Model implements HasMedia {
     $this
       ->addMediaCollection('preview')
       ->useDisk('media');
+  }
+
+  public function genres(): BelongsToMany {
+    return $this
+      ->belongsToMany(Genre::class, 'game_genre');
   }
 }

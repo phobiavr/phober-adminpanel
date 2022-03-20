@@ -1,0 +1,41 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
+use Illuminate\Support\Str;
+use KirschbaumDevelopment\NovaComments\Models\Comment;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
+
+class Game extends Model implements HasMedia {
+  use HasFactory, InteractsWithMedia;
+
+  protected $connection = 'db_device';
+  protected $casts = ["multiplayer" => "boolean"];
+
+  public function setNameAttribute($value): void {
+    $this->attributes['name'] = $value;
+    $this->attributes['slug'] = Str::slug($value);
+  }
+
+  public function comments(): MorphMany {
+    return $this
+      ->setConnection(config('database.default'))
+      ->morphMany(Comment::class, 'commentable');
+  }
+
+  public function media(): MorphMany {
+    return $this
+      ->setConnection(config('database.default'))
+      ->morphMany(config('media-library.media_model'), 'model');
+  }
+
+  public function registerMediaCollections(): void {
+    $this
+      ->addMediaCollection('preview')
+      ->useDisk('s3');
+  }
+}

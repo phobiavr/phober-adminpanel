@@ -95,9 +95,18 @@ return [
       'driver' => env('DB_DEVICE_CONNECTION', 'mysql'),
       'host' => env('DB_DEVICE_HOST', '127.0.0.1'),
       'port' => env('DB_DEVICE_PORT', '3306'),
-      'database' => env('DB_DEVICE_DATABASE', 'forge'),
+      'database' => env('DB_DEVICE_DATABASE', 'phober_device'),
       'username' => env('DB_DEVICE_USERNAME', 'forge'),
       'password' => env('DB_DEVICE_PASSWORD', ''),
+    ],
+
+    'db_media' => [
+      'driver' => env('DB_MEDIA_CONNECTION', 'mysql'),
+      'host' => env('DB_MEDIA_HOST', '127.0.0.1'),
+      'port' => env('DB_MEDIA_PORT', '3306'),
+      'database' => env('DB_MEDIA_DATABASE', 'phober_device'),
+      'username' => env('DB_MEDIA_USERNAME', 'forge'),
+      'password' => env('DB_MEDIA_PASSWORD', ''),
     ],
 
   ],

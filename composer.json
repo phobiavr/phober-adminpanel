@@ -12,6 +12,7 @@
     ],
     "require": {
         "php": "^7.3|^8.0",
+        "ebess/advanced-nova-media-library": "^3.7",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
         "kirschbaum-development/nova-comments": "^1.0",

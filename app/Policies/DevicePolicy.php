@@ -84,4 +84,8 @@ class DevicePolicy {
   public function forceDelete(User $user, Device $device) {
     return true;
   }
+
+  public function addGenre(User $user, Device $device): bool {
+    return false;
+  }
 }

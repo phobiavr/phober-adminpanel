@@ -9,9 +9,11 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Support\Str;
 use KirschbaumDevelopment\NovaComments\Models\Comment;
+use Staudenmeir\EloquentHasManyDeep\HasManyDeep;
+use Staudenmeir\EloquentHasManyDeep\HasRelationships;
 
 class Device extends Model {
-  use HasFactory;
+  use HasFactory, HasRelationships;
 
   protected $connection = 'db_device';
 
@@ -34,5 +36,11 @@ class Device extends Model {
   public function instances(): HasMany {
     return $this
       ->hasMany(DeviceInstance::class);
+  }
+
+  public function genres(): HasManyDeep {
+    return $this
+      ->hasManyDeep(Genre::class, ["game_device", Game::class, "game_genre"])
+      ->distinct();
   }
 }

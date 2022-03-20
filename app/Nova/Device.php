@@ -26,6 +26,8 @@ class Device extends Resource {
 
       HasMany::make('Games'),
 
+      HasMany::make('Genres'),
+
       HasMany::make('Comments', 'comments')->hideFromDetail()->hideFromIndex(),
       new Commenter(),
     ];

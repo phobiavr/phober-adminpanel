@@ -53,6 +53,7 @@ class Game extends Model implements HasMedia {
   }
 
   public function deviceInstances(): HasManyDeep {
-    return $this->hasManyDeep(DeviceInstance::class, ['game_device', Device::class]);
+    return $this
+      ->hasManyDeep(DeviceInstance::class, ['game_device', Device::class]);
   }
 }

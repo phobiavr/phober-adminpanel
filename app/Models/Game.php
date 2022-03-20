@@ -36,6 +36,6 @@ class Game extends Model implements HasMedia {
   public function registerMediaCollections(): void {
     $this
       ->addMediaCollection('preview')
-      ->useDisk('s3');
+      ->useDisk('media');
   }
 }

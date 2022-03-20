@@ -4,18 +4,18 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateGameGenreTable extends Migration {
+class CreateGameDeviceTable extends Migration {
   /**
    * Run the migrations.
    *
    * @return void
    */
   public function up() {
-    Schema::connection('db_device')->create('game_genre', function (Blueprint $table) {
+    Schema::connection('db_device')->create('game_device', function (Blueprint $table) {
       $table->bigInteger("game_id")->unsigned();
       $table->foreign("game_id")->references("id")->on("games")->onDelete("CASCADE");
-      $table->bigInteger("genre_id")->unsigned();
-      $table->foreign("genre_id")->references("id")->on("genres")->onDelete("CASCADE");
+      $table->bigInteger("device_id")->unsigned();
+      $table->foreign("device_id")->references("id")->on("devices")->onDelete("CASCADE");
     });
   }
 
@@ -25,6 +25,6 @@ class CreateGameGenreTable extends Migration {
    * @return void
    */
   public function down() {
-    Schema::connection('db_device')->dropIfExists('game_genre');
+    Schema::connection('db_device')->dropIfExists('game_device');
   }
 }

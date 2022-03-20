@@ -21,6 +21,8 @@ class Device extends Resource {
 
       Text::make("Name")->sortable(),
 
+      Text::make("Slug")->sortable()->hideWhenCreating()->hideWhenUpdating(),
+
       HasMany::make('Comments', 'comments')->hideFromDetail()->hideFromIndex(),
       new Commenter(),
     ];

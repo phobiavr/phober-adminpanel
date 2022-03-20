@@ -15,8 +15,10 @@ class DatabaseSeeder extends Seeder {
       UserSeeder::class,
       GameSeeder::class,
       GenreSeeder::class,
+      DeviceSeeder::class,
 
       GameGenreSeeder::class,
+      GameDeviceSeeder::class,
 
       MediaSeeder::class
     ]);

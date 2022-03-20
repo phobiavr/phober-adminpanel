@@ -11,14 +11,14 @@ use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
 
-class Game extends Resource{
+class Game extends Resource {
   public static $model = \App\Models\Game::class;
   public static $title = 'name';
   public static $search = [
     'id', 'name', 'slug', 'description'
   ];
 
-  public function fields(Request $request){
+  public function fields(Request $request) {
     return [
       ID::make()->sortable(),
 
@@ -30,7 +30,7 @@ class Game extends Resource{
 
       Boolean::make("Multiplayer"),
 
-      //BelongsToMany::make("Devices"),
+      BelongsToMany::make("Devices"),
 
       BelongsToMany::make("Genres"),
 

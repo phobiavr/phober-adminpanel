@@ -32,7 +32,7 @@ class Game extends Model implements HasMedia {
 
   public function media(): MorphMany {
     return $this
-      ->setConnection(config('database.default'))
+      ->setConnection('db_device')
       ->morphMany(config('media-library.media_model'), 'model');
   }
 
@@ -52,7 +52,7 @@ class Game extends Model implements HasMedia {
       ->belongsToMany(Device::class, 'game_device');
   }
 
-  public function instances(): HasManyDeep {
+  public function deviceInstances(): HasManyDeep {
     return $this->hasManyDeep(DeviceInstance::class, ['game_device', Device::class]);
   }
 }

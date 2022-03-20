@@ -14,9 +14,8 @@ use Laravel\Nova\Fields\Text;
 class Game extends Resource {
   public static $model = \App\Models\Game::class;
   public static $title = 'name';
-  public static $search = [
-    'id', 'name', 'slug', 'description'
-  ];
+  public static $search = ['id', 'name', 'slug', 'description'];
+  public static $group = "Device";
 
   public function fields(Request $request) {
     return [
@@ -28,13 +27,13 @@ class Game extends Resource {
 
       Text::make("Slug")->sortable()->hideWhenCreating()->hideWhenUpdating(),
 
+      BelongsToMany::make("Genres"),
+
       Boolean::make("Multiplayer"),
 
       BelongsToMany::make("Devices"),
 
-      BelongsToMany::make("Genres"),
-
-      HasMany::make('Device Instances', 'instances'),
+      HasMany::make('Device Instances', 'deviceInstances'),
 
       HasMany::make('Comments', 'comments')->hideFromDetail()->hideFromIndex(),
       new Commenter(),

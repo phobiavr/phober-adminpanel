@@ -10,33 +10,11 @@ use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
 
 class Genre extends Resource {
-  /**
-   * The model the resource corresponds to.
-   *
-   * @var string
-   */
   public static $model = \App\Models\Genre::class;
-  /**
-   * The single value that should be used to represent the resource when being displayed.
-   *
-   * @var string
-   */
-  public static $title = 'id';
-  /**
-   * The columns that should be searched.
-   *
-   * @var array
-   */
-  public static $search = [
-    'id',
-  ];
+  public static $title = 'name';
+  public static $search = ['id', 'name', 'slug'];
+  public static $group = "Device";
 
-  /**
-   * Get the fields displayed by the resource.
-   *
-   * @param Request $request
-   * @return array
-   */
   public function fields(Request $request): array {
     return [
       ID::make()->sortable(),

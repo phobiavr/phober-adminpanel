@@ -13,9 +13,8 @@ use Laravel\Nova\Fields\ID;
 class DeviceInstance extends Resource {
   public static $model = \App\Models\DeviceInstance::class;
   public static $title = 'name';
-  public static $search = [
-    'id', 'device'
-  ];
+  public static $search = ['id', 'device'];
+  public static $group = "Device";
 
   public function fields(Request $request): array {
     return [

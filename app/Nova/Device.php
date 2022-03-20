@@ -23,6 +23,10 @@ class Device extends Resource {
 
       Text::make("Slug")->sortable()->hideWhenCreating()->hideWhenUpdating(),
 
+      HasMany::make('Device Instances', 'instances'),
+
+      HasMany::make('Games'),
+
       HasMany::make('Comments', 'comments')->hideFromDetail()->hideFromIndex(),
       new Commenter(),
     ];

@@ -10,9 +10,11 @@ use Illuminate\Support\Str;
 use KirschbaumDevelopment\NovaComments\Models\Comment;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
+use Staudenmeir\EloquentHasManyDeep\HasManyDeep;
+use Staudenmeir\EloquentHasManyDeep\HasRelationships;
 
 class Game extends Model implements HasMedia {
-  use HasFactory, InteractsWithMedia;
+  use HasFactory, InteractsWithMedia, HasRelationships;
 
   protected $connection = 'db_device';
   protected $casts = ["multiplayer" => "boolean"];
@@ -48,5 +50,9 @@ class Game extends Model implements HasMedia {
   public function devices(): BelongsToMany {
     return $this
       ->belongsToMany(Device::class, 'game_device');
+  }
+
+  public function instances(): HasManyDeep {
+    return $this->hasManyDeep(DeviceInstance::class, ['game_device', Device::class]);
   }
 }

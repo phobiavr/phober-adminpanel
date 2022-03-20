@@ -34,6 +34,8 @@ class Game extends Resource {
 
       BelongsToMany::make("Genres"),
 
+      HasMany::make('Device Instances', 'instances'),
+
       HasMany::make('Comments', 'comments')->hideFromDetail()->hideFromIndex(),
       new Commenter(),
     ];

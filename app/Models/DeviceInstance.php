@@ -33,7 +33,7 @@ class DeviceInstance extends Model {
     return $this->belongsTo(Device::class);
   }
 
-  public function getCurrentlyAvailableAttribute(): bool {
+  public function getCurrentlyActiveAttribute(): bool {
     $now = (new DateTime())->format('Y-m-d h:m:s');
 
     if (!$this->active) {

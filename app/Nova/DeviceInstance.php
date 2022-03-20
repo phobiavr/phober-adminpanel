@@ -25,7 +25,7 @@ class DeviceInstance extends Resource {
 
       Boolean::make("Active"),
 
-      Boolean::make("Currently Available", 'currently_available')->hideWhenUpdating()->hideWhenCreating(),
+      Boolean::make("Currently Active", 'currently_active')->hideWhenUpdating()->hideWhenCreating(),
 
       DateTime::make("Deactivation start", "deactivation_start")
         ->nullable(),

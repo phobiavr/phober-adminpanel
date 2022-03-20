@@ -109,6 +109,15 @@ return [
       'password' => env('DB_MEDIA_PASSWORD', ''),
     ],
 
+    'db_crm' => [
+      'driver' => env('DB_CRM_CONNECTION', 'mysql'),
+      'host' => env('DB_CRM_HOST', '127.0.0.1'),
+      'port' => env('DB_CRM_PORT', '3306'),
+      'database' => env('DB_CRM_DATABASE', 'phober_crm'),
+      'username' => env('DB_CRM_USERNAME', 'forge'),
+      'password' => env('DB_CRM_PASSWORD', ''),
+    ],
+
   ],
 
   /*

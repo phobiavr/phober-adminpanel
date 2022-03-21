@@ -11,18 +11,15 @@ trait Authorable {
     return $this->setConnection(config('database.default'))->morphOne(Author::class, 'authorable');
   }
 
-  protected static function boot() {
-    parent::boot();
-
-
+  protected static function bootAuthorable() {
     static::created(function ($model) {
       /** @var Authorable $model */
-      if (Auth::check()) $model->author()->updateOrCreate([], ["created_by" => Auth::id(), "updated_by" => Auth::id()]);
+      if (Auth::check()) $model->author()->updateOrCreate([], ["created_by" => Auth::id(), "last_updated_by" => Auth::id()]);
     });
 
     static::updated(function ($model) {
       /** @var Authorable $model */
-      if (Auth::check()) $model->author()->updateOrCreate([], ["updated_by" => Auth::id()]);
+      if (Auth::check()) $model->author()->updateOrCreate([], ["last_updated_by" => Auth::id()]);
     });
   }
 }

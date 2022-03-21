@@ -2,15 +2,16 @@
 
 namespace App\Models;
 
-use App\Traits\Authorable;
+use App\Interfaces\HasRevision;
+use App\Traits\Revisionable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use KirschbaumDevelopment\NovaComments\Commentable;
 use Laravel\Sanctum\HasApiTokens;
 
-class User extends Authenticatable {
-  use HasApiTokens, HasFactory, Notifiable, Commentable, Authorable;
+class User extends Authenticatable implements HasRevision {
+  use HasApiTokens, HasFactory, Notifiable, Commentable, Revisionable;
 
   /**
    * The attributes that are mass assignable.

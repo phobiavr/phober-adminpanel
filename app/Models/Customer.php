@@ -2,15 +2,16 @@
 
 namespace App\Models;
 
-use App\Traits\Authorable;
+use App\Interfaces\HasRevision;
+use App\Traits\Revisionable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use KirschbaumDevelopment\NovaComments\Models\Comment;
 
-class Customer extends Model {
-  use HasFactory, Authorable;
+class Customer extends Model implements HasRevision {
+  use HasFactory, Revisionable;
 
   protected $connection = "db_crm";
   protected $casts = [

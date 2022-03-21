@@ -16,10 +16,10 @@ class CreateAuthorsTable extends Migration {
       $table->morphs('authorable');
 
       $table->bigInteger('created_by')->unsigned();
-      $table->bigInteger('updated_by')->unsigned();
+      $table->bigInteger('last_updated_by')->unsigned();
 
       $table->foreign('created_by')->on('users')->references('id');
-      $table->foreign('updated_by')->on('users')->references('id');
+      $table->foreign('last_updated_by')->on('users')->references('id');
 
       $table->timestamps();
     });

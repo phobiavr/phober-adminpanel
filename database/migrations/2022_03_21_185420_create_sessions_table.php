@@ -28,10 +28,10 @@ class CreateSessionsTable extends Migration {
       // MORNING, EVENING, EXTRA
       $table->string('tariff');
 
-      $table->boolean('tariff_changed');
+      $table->boolean('tariff_changed')->default(0);
 
       // 'QUEUE', 'ACTIVE', 'CANCELED', 'FINISHED'
-      $table->string('status')->default('queue');
+      $table->string('status')->default('QUEUE');
 
       $table->text('note')->nullable();
 

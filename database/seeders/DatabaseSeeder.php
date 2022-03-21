@@ -23,7 +23,12 @@ class DatabaseSeeder extends Seeder {
 
       CustomerSeeder::class,
 
-      MediaSeeder::class
+      MediaSeeder::class,
+
+      EmployeeSeeder::class,
+      SnackSeeder::class,
+
+      InvoiceSeeder::class
     ]);
   }
 }

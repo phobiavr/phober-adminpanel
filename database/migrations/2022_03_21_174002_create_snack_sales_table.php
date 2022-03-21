@@ -16,7 +16,7 @@ class CreateSnackSalesTable extends Migration {
       $table->bigInteger('snack_id')->unsigned();
       $table->foreign('snack_id')->on('snacks')->references('id');
 
-      $table->integer('quantity');
+      $table->integer('quantity')->unsigned();
 
       $table->bigInteger('sold_by')->unsigned();
       $table->foreign('sold_by')->on('employees')->references('id');

@@ -16,7 +16,7 @@ class Customer extends Resource {
   public static $group = "CRM";
 
   public function title(): string {
-    return $this->first_name.' '.$this->last_name;
+    return $this->first_name . ' ' . $this->last_name;
   }
 
   public function fields(Request $request): array {

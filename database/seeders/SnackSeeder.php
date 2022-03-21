@@ -12,6 +12,8 @@ class SnackSeeder extends Seeder {
    * @return void
    */
   public function run() {
+    //TODO:: switch to factory
+
     Snack::create(['name' => 'Red Bull', 'stock' => rand(0, 15), 'price' => 2.5]);
     Snack::create(['name' => 'Coca-Cola', 'stock' => rand(0, 15), 'price' => 2]);
     Snack::create(['name' => 'Fanta', 'stock' => rand(0, 15), 'price' => 2]);

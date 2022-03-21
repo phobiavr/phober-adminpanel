@@ -2,8 +2,7 @@
 
 namespace Database\Seeders;
 
-use DateTime;
-use DB;
+use App\Models\DeviceInstance;
 use Illuminate\Database\Seeder;
 
 class DeviceInstanceSeeder extends Seeder {
@@ -13,25 +12,10 @@ class DeviceInstanceSeeder extends Seeder {
    * @return void
    */
   public function run() {
-    $now = new DateTime();
-
-    $instances = [
-      ['device_id' => 1, 'updated_at' => $now, 'created_at' => $now],
-      ['device_id' => 1, 'updated_at' => $now, 'created_at' => $now],
-      ['device_id' => 1, 'updated_at' => $now, 'created_at' => $now],
-      ['device_id' => 1, 'updated_at' => $now, 'created_at' => $now],
-      ['device_id' => 2, 'updated_at' => $now, 'created_at' => $now],
-      ['device_id' => 2, 'updated_at' => $now, 'created_at' => $now],
-      ['device_id' => 4, 'updated_at' => $now, 'created_at' => $now],
-      ['device_id' => 4, 'updated_at' => $now, 'created_at' => $now],
-      ['device_id' => 4, 'updated_at' => $now, 'created_at' => $now],
-      ['device_id' => 4, 'updated_at' => $now, 'created_at' => $now],
-      ['device_id' => 5, 'updated_at' => $now, 'created_at' => $now],
-      ['device_id' => 5, 'updated_at' => $now, 'created_at' => $now],
-      ['device_id' => 5, 'updated_at' => $now, 'created_at' => $now],
-      ['device_id' => 5, 'updated_at' => $now, 'created_at' => $now],
-    ];
-
-    DB::connection('db_device')->table("device_instances")->insert($instances);
+    DeviceInstance::factory(4)->create(['device_id' => 1]);
+    DeviceInstance::factory(2)->create(['device_id' => 2]);
+    DeviceInstance::factory(2)->create(['device_id' => 3]);
+    DeviceInstance::factory(4)->create(['device_id' => 4]);
+    DeviceInstance::factory(4)->create(['device_id' => 5]);
   }
 }

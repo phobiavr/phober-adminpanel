@@ -12,6 +12,8 @@ class UserSeeder extends Seeder {
    * @return void
    */
   public function run() {
+    //TODO:: switch to factory
+
     User::create([
       "username" => "admin",
       "first_name" => "Hikmat",

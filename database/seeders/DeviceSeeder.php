@@ -13,6 +13,8 @@ class DeviceSeeder extends Seeder {
    * @return void
    */
   public function run() {
+    //TODO:: switch to factory
+
     $now = new DateTime();
     $devices = array(
       array(

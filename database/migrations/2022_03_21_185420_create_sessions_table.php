@@ -16,8 +16,8 @@ class CreateSessionsTable extends Migration {
 
       $table->bigInteger('instance_id')->unsigned()->nullable();
 
-      $table->bigInteger('staff_id')->unsigned()->nullable();
-      $table->foreign('staff_id')->on('employees')->references('id');
+      $table->bigInteger('serviced_by')->unsigned()->nullable();
+      $table->foreign('serviced_by')->on('employees')->references('id');
 
       $table->integer('initial_time')->default(0);
       $table->integer('updated_time')->default(0);

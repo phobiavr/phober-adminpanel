@@ -18,7 +18,7 @@ class SessionFactory extends Factory {
       "instance_id" => DeviceInstance::all()->pluck('id')->random(),
       "tariff" => Session::tariffEnum()->random(),
       "tariff_changed" => rand(0, 5) === 3,
-      "staff_id" => Employee::all()->pluck('id')->random(),
+      "serviced_by" => Employee::all()->pluck('id')->random(),
       "status" => Session::statusEnum()->random(),
 
       "initial_time" => 15,

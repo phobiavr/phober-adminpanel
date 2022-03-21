@@ -13,6 +13,7 @@ class CreateDeviceInstancesTable extends Migration {
   public function up() {
     Schema::connection('db_device')->create('device_instances', function (Blueprint $table) {
       $table->id();
+      $table->string('mac_address')->nullable();
       $table->bigInteger("device_id")->unsigned()->nullable();
       $table->foreign("device_id")->references("id")->on("devices")->onDelete("SET NULL");
       $table->boolean("active")->default(true);

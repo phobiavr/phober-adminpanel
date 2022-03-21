@@ -12,6 +12,8 @@ class GenreSeeder extends Seeder {
    * @return void
    */
   public function run() {
+    //TODO:: switch to factory
+
     Genre::create(["name" => "Action"]);
     Genre::create(["name" => "Child-Game"]);
     Genre::create(["name" => "Cyberpunk"]);

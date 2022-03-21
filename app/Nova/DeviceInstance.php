@@ -9,16 +9,19 @@ use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
+use Laravel\Nova\Fields\Text;
 
 class DeviceInstance extends Resource {
   public static $model = \App\Models\DeviceInstance::class;
-  public static $title = 'name';
+  public static $title = 'device.name';
   public static $search = ['id', 'device'];
   public static $group = "Device";
 
   public function fields(Request $request): array {
     return [
       ID::make()->sortable(),
+
+      Text::make('Mac Address', 'mac_address'),
 
       BelongsTo::make("Device"),
 

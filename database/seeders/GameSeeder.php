@@ -13,6 +13,8 @@ class GameSeeder extends Seeder {
    * @return void
    */
   public function run() {
+    //TODO:: switch to factory
+
     $now = new DateTime();
 
     $games = array(

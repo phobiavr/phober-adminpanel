@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Traits\Authorable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -14,7 +15,7 @@ use Staudenmeir\EloquentHasManyDeep\HasManyDeep;
 use Staudenmeir\EloquentHasManyDeep\HasRelationships;
 
 class Game extends Model implements HasMedia {
-  use HasFactory, InteractsWithMedia, HasRelationships;
+  use HasFactory, InteractsWithMedia, HasRelationships, Authorable;
 
   protected $connection = 'db_device';
   protected $casts = ["multiplayer" => "boolean"];

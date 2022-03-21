@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Traits\Authorable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasOne;
@@ -9,14 +10,12 @@ use Illuminate\Database\Eloquent\Relations\MorphMany;
 use KirschbaumDevelopment\NovaComments\Models\Comment;
 
 class Customer extends Model {
-  use HasFactory;
+  use HasFactory, Authorable;
 
   protected $connection = "db_crm";
   protected $casts = [
     "birthday" => "date",
   ];
-
-  //public function
 
   public function comments(): MorphMany {
     return $this

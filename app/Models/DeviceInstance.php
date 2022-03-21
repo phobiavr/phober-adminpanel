@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Traits\Authorable;
 use DateTime;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -9,18 +10,17 @@ use Illuminate\Database\Eloquent\Relations\MorphMany;
 use KirschbaumDevelopment\NovaComments\Models\Comment;
 
 class DeviceInstance extends Model {
+  use Authorable;
+
   protected $connection = "db_device";
   public const ACTIVE = true;
   public const INACTIVE = false;
-
   protected $casts = [
     'active' => 'boolean',
     'deactivation_start' => 'datetime',
     'deactivation_end' => 'datetime',
   ];
   protected $fillable = ["device_id"];
-
-
   protected $appends = ['currently_available'];
 
   public function comments(): MorphMany {

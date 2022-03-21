@@ -118,6 +118,15 @@ return [
       'password' => env('DB_CRM_PASSWORD', ''),
     ],
 
+    'db_staff' => [
+      'driver' => env('DB_STAFF_CONNECTION', 'mysql'),
+      'host' => env('DB_STAFF_HOST', '127.0.0.1'),
+      'port' => env('DB_STAFF_PORT', '3306'),
+      'database' => env('DB_STAFF_DATABASE', 'phober_staff'),
+      'username' => env('DB_STAFF_USERNAME', 'forge'),
+      'password' => env('DB_STAFF_PASSWORD', ''),
+    ],
+
   ],
 
   /*

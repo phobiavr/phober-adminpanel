@@ -39,7 +39,7 @@ trait Revisionable {
 
       /** @var Revisionable $model */
       $model->revisions()->create([
-        "value" => null,
+        "value" => $model->makeHidden(['created_at', 'updated_at'])->withoutRelations()->toJson(),
         "revised_by" => $revisedBy,
         "type" => "DELETE"
       ]);

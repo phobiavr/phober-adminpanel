@@ -2,6 +2,7 @@
 
 namespace App\Nova;
 
+use App\Nova\Actions\Revision\RollBack;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\Code;
@@ -25,9 +26,21 @@ class Revision extends Resource {
 
       Text::make('Type')->exceptOnForms(),
 
-      Code::make('value')->language('xml'),
+      Code::make('Value'),
 
       DateTime::make('Created at')->format('YYYY-MM-DD HH:mm:ss'),
+    ];
+  }
+
+  /**
+   * Get the actions available for the resource.
+   *
+   * @param Request $request
+   * @return array
+   */
+  public function actions(Request $request) {
+    return [
+      RollBack::make(),
     ];
   }
 }

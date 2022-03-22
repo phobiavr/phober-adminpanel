@@ -17,7 +17,7 @@ class Customer extends Model {
   protected $casts = [
     "birthday" => "date",
   ];
-  protected $fillable = ['first_name', 'second_name', 'birthday', 'id'];
+  protected $fillable = ['first_name', 'last_name', 'birthday', 'id', "birthday", "gender", "discount", "balance", "note"];
 
   public function comments(): MorphMany {
     return $this

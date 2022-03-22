@@ -49,6 +49,11 @@ class RevisionPolicy {
    * @return Response|bool
    */
   public function update(User $user, Revision $revision) {
+    // This condition because Nova authorize update policy method when run the action
+    if (request()->has('action')) {
+      return true;
+    }
+
     return false;
   }
 

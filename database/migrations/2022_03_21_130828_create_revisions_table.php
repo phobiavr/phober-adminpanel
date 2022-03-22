@@ -15,15 +15,15 @@ class CreateRevisionsTable extends Migration {
       $table->id();
       $table->morphs('revisionable');
 
-      $table->bigInteger('author_id')->unsigned()->nullable();
-      $table->foreign('author_id')->on('authors')->references('id');
-
       $table->bigInteger('revised_by')->unsigned()->nullable();
       $table->foreign('revised_by')->on('users')->references('id');
 
-      $table->text('value');
+      // 'CREATE', 'UPDATE', 'DELETE'
+      $table->string('type');
 
-      $table->timestamps();
+      $table->text('value')->nullable();
+
+      $table->timestamp('created_at');
     });
   }
 

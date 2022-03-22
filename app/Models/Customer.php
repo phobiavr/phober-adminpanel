@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Interfaces\HasRevision;
+use App\Traits\Authorable;
 use App\Traits\Revisionable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -10,13 +10,14 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use KirschbaumDevelopment\NovaComments\Models\Comment;
 
-class Customer extends Model implements HasRevision {
-  use HasFactory, Revisionable;
+class Customer extends Model {
+  use HasFactory, Revisionable, Authorable;
 
   protected $connection = "db_crm";
   protected $casts = [
     "birthday" => "date",
   ];
+  protected $fillable = ['first_name', 'second_name', 'birthday', 'id'];
 
   public function comments(): MorphMany {
     return $this

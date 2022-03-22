@@ -8,6 +8,8 @@ use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\HasOne;
 use Laravel\Nova\Fields\ID;
+use Laravel\Nova\Fields\MorphMany;
+use Laravel\Nova\Fields\MorphOne;
 use Laravel\Nova\Fields\Text;
 
 class Customer extends Resource {
@@ -36,6 +38,11 @@ class Customer extends Resource {
       HasOne::make('LoyaltyCard', 'loyaltyCard'),
 
       HasMany::make('Comments', 'comments')->hideFromDetail()->hideFromIndex(),
+
+      MorphOne::make('Author'),
+
+      MorphMany::make('Revisions'),
+
       new Commenter(),
     ];
   }

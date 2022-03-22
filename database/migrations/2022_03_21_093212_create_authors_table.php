@@ -15,8 +15,8 @@ class CreateAuthorsTable extends Migration {
       $table->id();
       $table->morphs('authorable');
 
-      $table->bigInteger('created_by')->unsigned();
-      $table->bigInteger('last_updated_by')->unsigned();
+      $table->bigInteger('created_by')->unsigned()->nullable();
+      $table->bigInteger('last_updated_by')->unsigned()->nullable();
 
       $table->foreign('created_by')->on('users')->references('id');
       $table->foreign('last_updated_by')->on('users')->references('id');

@@ -11,7 +11,7 @@ class CreateUsersTable extends Migration {
    * @return void
    */
   public function up() {
-    Schema::create('users', function (Blueprint $table) {
+    Schema::connection('db_auth')->create('users', function (Blueprint $table) {
       $table->id();
       $table->string('username')->unique();
       $table->string('first_name')->nullable();
@@ -30,6 +30,6 @@ class CreateUsersTable extends Migration {
    * @return void
    */
   public function down() {
-    Schema::dropIfExists('users');
+    Schema::connection('db_auth')->dropIfExists('users');
   }
 }

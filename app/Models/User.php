@@ -13,6 +13,8 @@ use Laravel\Sanctum\HasApiTokens;
 class User extends Authenticatable {
   use HasApiTokens, HasFactory, Notifiable, Commentable, Revisionable, Authorable;
 
+  protected $connection = "db_auth";
+
   /**
    * The attributes that are mass assignable.
    *

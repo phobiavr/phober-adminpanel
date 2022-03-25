@@ -35,6 +35,7 @@ class WipeAll extends Command {
    */
   public function handle() {
     Artisan::call("db:wipe");
+    Artisan::call("db:wipe --database=db_auth");
     Artisan::call("db:wipe --database=db_device");
     Artisan::call("db:wipe --database=db_media");
     Artisan::call("db:wipe --database=db_crm");

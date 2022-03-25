@@ -91,6 +91,15 @@ return [
       'prefix_indexes' => true,
     ],
 
+    'db_auth' => [
+      'driver' => env('DB_AUTH_CONNECTION', 'mysql'),
+      'host' => env('DB_AUTH_HOST', '127.0.0.1'),
+      'port' => env('DB_AUTH_PORT', '3306'),
+      'database' => env('DB_AUTH_DATABASE', 'phober_auth'),
+      'username' => env('DB_AUTH_USERNAME', 'forge'),
+      'password' => env('DB_AUTH_PASSWORD', ''),
+    ],
+
     'db_device' => [
       'driver' => env('DB_DEVICE_CONNECTION', 'mysql'),
       'host' => env('DB_DEVICE_HOST', '127.0.0.1'),

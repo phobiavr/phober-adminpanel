@@ -16,7 +16,6 @@ class CreateRevisionsTable extends Migration {
       $table->morphs('revisionable');
 
       $table->bigInteger('revised_by')->unsigned()->nullable();
-      $table->foreign('revised_by')->on('users')->references('id');
 
       // 'CREATE', 'UPDATE', 'DELETE'
       $table->string('type');

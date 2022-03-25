@@ -18,9 +18,6 @@ class CreateAuthorsTable extends Migration {
       $table->bigInteger('created_by')->unsigned()->nullable();
       $table->bigInteger('last_updated_by')->unsigned()->nullable();
 
-      $table->foreign('created_by')->on('users')->references('id');
-      $table->foreign('last_updated_by')->on('users')->references('id');
-
       $table->timestamps();
     });
   }

@@ -15,7 +15,7 @@ return [
 
   'name' => env('APP_NAME', 'Laravel'),
 
-  'auth_server' => env('AUTH_SERVER', 'http://phober-auth-server/'),
+  'auth_server' => env('AUTH_SERVER', 'http://localhost:8500/'),
 
   /*
   |--------------------------------------------------------------------------

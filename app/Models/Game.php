@@ -4,21 +4,19 @@ namespace App\Models;
 
 use App\Traits\Authorable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Support\Str;
 use KirschbaumDevelopment\NovaComments\Models\Comment;
-use Spatie\MediaLibrary\HasMedia;
-use Spatie\MediaLibrary\InteractsWithMedia;
 use Staudenmeir\EloquentHasManyDeep\HasManyDeep;
 use Staudenmeir\EloquentHasManyDeep\HasRelationships;
 
-class Game extends Model implements HasMedia {
-  use HasFactory, InteractsWithMedia, HasRelationships, Authorable;
+class Game extends ModelInteractsWithMedia {
+  use HasFactory, HasRelationships, Authorable;
 
   protected $connection = 'db_device';
   protected $casts = ["multiplayer" => "boolean"];
+  protected string $app = "device-service";
 
   public function setNameAttribute($value): void {
     $this->attributes['name'] = $value;
@@ -29,12 +27,6 @@ class Game extends Model implements HasMedia {
     return $this
       ->setConnection(config('database.default'))
       ->morphMany(Comment::class, 'commentable');
-  }
-
-  public function media(): MorphMany {
-    return $this
-      ->setConnection('db_device')
-      ->morphMany(config('media-library.media_model'), 'model');
   }
 
   public function registerMediaCollections(): void {

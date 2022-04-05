@@ -34,11 +34,11 @@ class WipeAll extends Command {
    * @return void
    */
   public function handle() {
-    Artisan::call("db:wipe");
-    Artisan::call("db:wipe --database=db_auth");
-    Artisan::call("db:wipe --database=db_device");
-    Artisan::call("db:wipe --database=db_media");
-    Artisan::call("db:wipe --database=db_crm");
-    Artisan::call("db:wipe --database=db_staff");
+    Artisan::call("db:wipe --drop-views --force");
+    Artisan::call("db:wipe --database=db_auth --drop-views --force");
+    Artisan::call("db:wipe --database=db_device --drop-views --force");
+    Artisan::call("db:wipe --database=db_media --drop-views --force");
+    Artisan::call("db:wipe --database=db_crm --drop-views --force");
+    Artisan::call("db:wipe --database=db_staff --drop-views --force");
   }
 }

@@ -136,6 +136,15 @@ return [
       'password' => env('DB_STAFF_PASSWORD', ''),
     ],
 
+    'db_config' => [
+      'driver' => env('DB_CONFIG_CONNECTION', 'mysql'),
+      'host' => env('DB_CONFIG_HOST', '127.0.0.1'),
+      'port' => env('DB_CONFIG_PORT', '3306'),
+      'database' => env('DB_CONFIG_DATABASE', 'phober_config'),
+      'username' => env('DB_CONFIG_USERNAME', 'forge'),
+      'password' => env('DB_CONFIG_PASSWORD', ''),
+    ],
+
   ],
 
   /*

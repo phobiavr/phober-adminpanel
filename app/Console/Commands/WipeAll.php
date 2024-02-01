@@ -11,7 +11,7 @@ class WipeAll extends Command {
    *
    * @var string
    */
-  protected $signature = 'db:clear';
+  protected $signature = 'db:clear {--seed}';
   /**
    * The console command description.
    *
@@ -33,12 +33,36 @@ class WipeAll extends Command {
    *
    * @return void
    */
-  public function handle() {
-    Artisan::call("db:wipe --drop-views --force");
-    Artisan::call("db:wipe --database=db_auth --drop-views --force");
-    Artisan::call("db:wipe --database=db_device --drop-views --force");
-    Artisan::call("db:wipe --database=db_media --drop-views --force");
-    Artisan::call("db:wipe --database=db_crm --drop-views --force");
-    Artisan::call("db:wipe --database=db_staff --drop-views --force");
+  public function handle() {;
+    $this->callDbWipe();
+    $this->callDbWipe('db_auth');
+    $this->callDbWipe('db_device');
+    $this->callDbWipe('db_media');
+    $this->callDbWipe('db_crm');
+    $this->callDbWipe('db_staff');
+    $this->callDbWipe('db_config');
+
+    if ($this->option('seed')) {
+      $this->callMigrateFreshSeed();
+    }
+  }
+
+  protected function callDbWipe($database = null)
+  {
+    if (!$database) {
+      $this->info("Wiping Default database");
+      Artisan::call("db:wipe --drop-views --force");
+    } else {
+      $this->info("Wiping database: $database");
+      Artisan::call("db:wipe --database=$database --drop-views --force");
+    }
+    //$this->output->write(Artisan::output());
+  }
+
+  protected function callMigrateFreshSeed()
+  {
+    $this->info("Running migrate:fresh --seed");
+    Artisan::call("migrate:fresh --seed");
+    //$this->output->write(Artisan::output());
   }
 }

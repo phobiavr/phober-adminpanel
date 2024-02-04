@@ -136,6 +136,15 @@ return [
       'password' => env('DB_STAFF_PASSWORD', ''),
     ],
 
+    'db_notification' => [
+      'driver' => env('DB_NOTIFICATION_CONNECTION', 'mysql'),
+      'host' => env('DB_NOTIFICATION_HOST', '127.0.0.1'),
+      'port' => env('DB_NOTIFICATION_PORT', '3306'),
+      'database' => env('DB_NOTIFICATION_DATABASE', 'phober_notification'),
+      'username' => env('DB_NOTIFICATION_USERNAME', 'forge'),
+      'password' => env('DB_NOTIFICATION_PASSWORD', ''),
+    ],
+
     'db_config' => [
       'driver' => env('DB_CONFIG_CONNECTION', 'mysql'),
       'host' => env('DB_CONFIG_HOST', '127.0.0.1'),

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "87151577c3210054e8a14fe6015363c6",
+    "content-hash": "4875e42299a2ca6dc85947543ccab077",
     "packages": [
         {
             "name": "aws/aws-crt-php",
@@ -2092,28 +2092,31 @@
         },
         {
             "name": "laravel/telescope",
-            "version": "v4.8.1",
+            "version": "v4.17.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/telescope.git",
-                "reference": "2c61ad4a1d1366f2829cbe3d50d004cef7dfc691"
+                "reference": "2c5295261d1459e4f9b157c407a663a6685f3ddf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/telescope/zipball/2c61ad4a1d1366f2829cbe3d50d004cef7dfc691",
-                "reference": "2c61ad4a1d1366f2829cbe3d50d004cef7dfc691",
+                "url": "https://api.github.com/repos/laravel/telescope/zipball/2c5295261d1459e4f9b157c407a663a6685f3ddf",
+                "reference": "2c5295261d1459e4f9b157c407a663a6685f3ddf",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
-                "laravel/framework": "^8.37|^9.0",
-                "php": "^7.3|^8.0",
+                "laravel/framework": "^8.37|^9.0|^10.0",
+                "php": "^8.0",
                 "symfony/var-dumper": "^5.0|^6.0"
             },
             "require-dev": {
                 "ext-gd": "*",
                 "guzzlehttp/guzzle": "^6.0|^7.0",
-                "orchestra/testbench": "^6.0|^7.0"
+                "laravel/octane": "^1.4",
+                "orchestra/testbench": "^6.0|^7.0|^8.0",
+                "phpstan/phpstan": "^1.10",
+                "phpunit/phpunit": "^9.0"
             },
             "type": "library",
             "extra": {
@@ -2154,9 +2157,9 @@
             ],
             "support": {
                 "issues": "https://github.com/laravel/telescope/issues",
-                "source": "https://github.com/laravel/telescope/tree/v4.8.1"
+                "source": "https://github.com/laravel/telescope/tree/v4.17.5"
             },
-            "time": "2022-03-26T16:04:21+00:00"
+            "time": "2024-01-30T15:41:45+00:00"
         },
         {
             "name": "laravel/tinker",
@@ -9607,5 +9610,5 @@
         "php": "^8.0.2"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.2.0"
+    "plugin-api-version": "2.6.0"
 }

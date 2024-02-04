@@ -18,7 +18,7 @@
         "laravel/framework": "^9.2",
         "laravel/nova": "*",
         "laravel/sanctum": "^2.14.1",
-        "laravel/telescope": "^4.8",
+        "laravel/telescope": "^4.17",
         "laravel/tinker": "^2.7",
         "league/flysystem-aws-s3-v3": "^3.0",
         "spatie/laravel-medialibrary": "^10.3",

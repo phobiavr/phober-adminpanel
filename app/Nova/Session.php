@@ -12,7 +12,7 @@ use Laravel\Nova\Fields\Select;
 class Session extends Resource {
   public static $model = \App\Models\Session::class;
   public static $title = 'id';
-  public static $search = ['id'];
+  public static $globallySearchable = false;
   public static $group = "Staff";
 
   public function fields(Request $request) {

@@ -12,7 +12,7 @@ use Laravel\Nova\Fields\Text;
 class Genre extends Resource {
   public static $model = \App\Models\Genre::class;
   public static $title = 'name';
-  public static $search = ['id', 'name', 'slug'];
+  public static $search = ['name', 'slug'];
   public static $group = "Device";
 
   public function fields(Request $request): array {

@@ -15,7 +15,7 @@ use Laravel\Nova\Fields\Text;
 class User extends Resource {
   public static $model = \App\Models\User::class;
   public static $title = 'username';
-  public static $search = ['id', 'name', 'email',];
+  public static $search = ['first_name', 'last_name', 'username', 'email'];
   public static $group = "AdminPanel";
 
 

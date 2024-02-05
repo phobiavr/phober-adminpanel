@@ -13,7 +13,7 @@ use Laravel\Nova\Fields\Text;
 class Revision extends Resource {
   public static $model = \App\Models\Revision::class;
   public static $title = 'id';
-  public static $search = ['id'];
+  public static $globallySearchable = false;
   public static $group = "AdminPanel";
 
   public function fields(Request $request) {

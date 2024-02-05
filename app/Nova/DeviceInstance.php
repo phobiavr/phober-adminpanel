@@ -14,7 +14,7 @@ use Laravel\Nova\Fields\Text;
 class DeviceInstance extends Resource {
   public static $model = \App\Models\DeviceInstance::class;
   public static $title = 'device.name';
-  public static $search = ['id', 'device'];
+  public static $search = ['mac_address'];
   public static $group = "Device";
 
   public function fields(Request $request): array {

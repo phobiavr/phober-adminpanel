@@ -10,7 +10,7 @@ use Laravel\Nova\Fields\Text;
 class LoyaltyCard extends Resource {
   public static $model = \App\Models\LoyaltyCard::class;
   public static $title = 'code';
-  public static $search = ['id', 'code'];
+  public static $search = ['code'];
   public static $group = "CRM";
 
   public function fields(Request $request): array {

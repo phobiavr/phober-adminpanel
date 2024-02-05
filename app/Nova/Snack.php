@@ -11,7 +11,7 @@ use Laravel\Nova\Fields\Text;
 class Snack extends Resource {
   public static $model = \App\Models\Snack::class;
   public static $title = 'name';
-  public static $search = ['id'];
+  public static $search = ['name'];
   public static $group = "Staff";
 
   public function fields(Request $request) {

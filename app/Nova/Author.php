@@ -9,7 +9,8 @@ use Laravel\Nova\Fields\DateTime;
 class Author extends Resource {
   public static $model = \App\Models\Author::class;
   public static $title = 'id';
-  public static $search = ['id'];
+  public static $globallySearchable = false;
+
   public static $displayInNavigation = false;
 
   public function fields(Request $request) {

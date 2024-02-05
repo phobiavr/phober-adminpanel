@@ -8,7 +8,7 @@ use Laravel\Nova\Fields\Text;
 
 class Employee extends Resource {
   public static $model = \App\Models\Employee::class;
-  public static $search = ['id'];
+  public static $search = ['first_name', 'last_name'];
   public static $group = "Staff";
 
   public function title(): string {

@@ -14,7 +14,7 @@ use Laravel\Nova\Fields\Text;
 class Game extends Resource {
   public static $model = \App\Models\Game::class;
   public static $title = 'name';
-  public static $search = ['id', 'name', 'slug', 'description'];
+  public static $search = ['name', 'slug', 'description'];
   public static $group = "Device";
 
   public function fields(Request $request) {

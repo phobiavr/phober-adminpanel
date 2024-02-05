@@ -42,6 +42,7 @@ class WipeAll extends Command {
     $this->callDbWipe('db_staff');
     $this->callDbWipe('db_config');
     $this->callDbWipe('db_log');
+    $this->callDbWipe('db_notification');
 
     if ($this->option('seed')) {
       $this->callMigrateFreshSeed();

@@ -21,6 +21,7 @@
         "laravel/telescope": "^4.17",
         "laravel/tinker": "^2.7",
         "league/flysystem-aws-s3-v3": "^3.0",
+        "mrmonat/nova-translatable": "^2.2",
         "spatie/laravel-medialibrary": "^10.3",
         "staudenmeir/eloquent-has-many-deep": "^1.15"
     },

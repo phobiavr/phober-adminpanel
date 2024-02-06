@@ -10,6 +10,7 @@ use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
+use MrMonat\Translatable\Translatable;
 
 class Game extends Resource {
   public static $model = \App\Models\Game::class;
@@ -26,6 +27,10 @@ class Game extends Resource {
       Text::make("Name")->sortable(),
 
       Text::make("Slug")->sortable()->hideWhenCreating()->hideWhenUpdating(),
+
+      Text::make("Description", 'description')->hideFromIndex(),
+
+      Translatable::make('Description', 'description')->hideFromIndex(),
 
       BelongsToMany::make("Genres"),
 

@@ -8,15 +8,17 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Support\Str;
 use KirschbaumDevelopment\NovaComments\Models\Comment;
+use Spatie\Translatable\HasTranslations;
 use Staudenmeir\EloquentHasManyDeep\HasManyDeep;
 use Staudenmeir\EloquentHasManyDeep\HasRelationships;
 
 class Game extends ModelInteractsWithMedia {
-  use HasFactory, HasRelationships, Authorable;
+  use HasFactory, HasRelationships, Authorable, HasTranslations;
 
   protected $connection = 'db_device';
   protected $casts = ["multiplayer" => "boolean"];
   protected string $app = "device-service";
+  public array $translatable = ['description'];
 
   public function setNameAttribute($value): void {
     $this->attributes['name'] = $value;

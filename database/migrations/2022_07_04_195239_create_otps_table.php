@@ -29,6 +29,6 @@ return new class extends Migration {
      */
     public function down()
     {
-        Schema::dropIfExists('otps');
+        Schema::connection('db_notification')->dropIfExists('otps');
     }
 };

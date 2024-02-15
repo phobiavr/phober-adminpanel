@@ -18,4 +18,8 @@ class SnackSale extends Model {
   public function soldBy(): BelongsTo {
     return $this->belongsTo(Employee::class, 'sold_by');
   }
+
+  public function invoice(): BelongsTo {
+    return $this->belongsTo(Invoice::class, 'invoice_id');
+  }
 }

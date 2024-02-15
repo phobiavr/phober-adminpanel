@@ -23,6 +23,7 @@ class SnackSale extends Resource {
 
       BelongsTo::make('Sold by', 'soldBy', Employee::class),
 
+      BelongsTo::make('Invoice', 'invoice', Invoice::class),
     ];
   }
 }

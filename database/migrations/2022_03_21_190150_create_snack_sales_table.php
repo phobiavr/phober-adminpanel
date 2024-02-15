@@ -21,6 +21,9 @@ class CreateSnackSalesTable extends Migration {
       $table->bigInteger('sold_by')->unsigned();
       $table->foreign('sold_by')->on('employees')->references('id');
 
+      $table->bigInteger('invoice_id')->unsigned()->nullable();
+      $table->foreign('invoice_id')->references('id')->on('invoices')->onDelete('SET NULL');
+
       $table->timestamps();
     });
   }

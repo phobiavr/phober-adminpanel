@@ -1,31 +1,29 @@
-https://nova.laravel.com/docs/3.0/installation.html
+## Adminpanel
 
-composer update
+The `adminpanel` service within the <b>Phober</b> project is crucial for managing administrative tasks, user interfaces, and updating various databases and configurations. It interacts with the following databases:
 
-php artisan nova:install
+- **`phober_adminpanel`**: Stores administrative data related to the admin panel interface.
+- **`phober_auth`**: Manages authentication and authorization data.
+- **`phober_device`**: Stores data related to device/game management.
+- **`phober_media`**: Handles media files and storage for the application.
+- **`phober_crm`**: Manages CRM customer data.
+- **`phober_staff`**: Stores game/session/invoice data related to staff or user accounts.
+- **`phober_notification`**: Manages notification data for the application.
+- **`phober_config`**: Stores configuration data, managed by `config-server`
+- **`phober_log`**: Stores logs and diagnostic information for the application.
 
-php artisan nova:publish
+### Responsibilities:
+- Manages administrative tasks, user interfaces, and updates databases and configurations.
+- Updates configurations within `config-server`.
+- Manages credentials required by `notification-server`.
 
-php artisan:migrate
+### Dependencies:
+- Relies on the `db` service for database operations.
 
-
-https://www.itsolutionstuff.com/post/laravel-amazon-s3-file-upload-tutorialexample.html
-
-S3 policy:
-
-```json
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Sid": "PublicRead",
-      "Effect": "Allow",
-      "Principal": "*",
-      "Action": "s3:GetObject",
-      "Resource": "arn:aws:s3:::phober-media-bucket/*"
-    }
-  ]
-}
-```
+### Framework and Initialization / Additional Requirements:
+- Built using the Laravel framework.
+- Requires PHP dependencies installed via Composer.
+- Requires seeding the database with initial data.
+- Utilizes an `auth.json` file for downloading dependencies such as `laravel/nova`.
 
 

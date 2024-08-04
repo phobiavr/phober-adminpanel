@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "fdb4fe068ecee6dead04b027c4fda368",
+    "content-hash": "79ad1970e854f3595bf8191891f2ebce",
     "packages": [
         {
             "name": "aws/aws-crt-php",
@@ -402,6 +402,53 @@
                 }
             ],
             "time": "2023-12-11T17:09:12+00:00"
+        },
+        {
+            "name": "datomatic/nova-enum-field",
+            "version": "v1.9.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/datomatic/nova-enum-field.git",
+                "reference": "f78e309b9ed2228c9f28cc8417c4538c8e06b2ca"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/datomatic/nova-enum-field/zipball/f78e309b9ed2228c9f28cc8417c4538c8e06b2ca",
+                "reference": "f78e309b9ed2228c9f28cc8417c4538c8e06b2ca",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/database": "^9.0|^10.0|^11.0",
+                "illuminate/http": "^9.0|^10.0|^11.0",
+                "illuminate/support": "^9.0|^10.0|^11.0",
+                "laravel/nova": "^3.0|^4.0",
+                "php": ">=8.1"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": []
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Datomatic\\Nova\\Fields\\Enum\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "A Laravel Nova PHP 8.1 enum field with filters",
+            "keywords": [
+                "enum",
+                "laravel",
+                "nova"
+            ],
+            "support": {
+                "source": "https://github.com/datomatic/nova-enum-field/tree/v1.9.0"
+            },
+            "time": "2024-04-03T12:59:34+00:00"
         },
         {
             "name": "dflydev/dot-access-data",
@@ -10170,7 +10217,7 @@
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": "^8.0.2"
+        "php": "^8.1"
     },
     "platform-dev": [],
     "plugin-api-version": "2.6.0"

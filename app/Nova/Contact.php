@@ -2,9 +2,11 @@
 
 namespace App\Nova;
 
+use App\Enums\ContactTypeEnum;
+use Datomatic\Nova\Fields\Enum\Enum;
+use Datomatic\Nova\Fields\Enum\EnumFilter;
 use Illuminate\Http\Request;
 use KirschbaumDevelopment\NovaComments\Commenter;
-use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\HasOne;
 use Laravel\Nova\Fields\ID;
@@ -12,32 +14,25 @@ use Laravel\Nova\Fields\MorphMany;
 use Laravel\Nova\Fields\MorphOne;
 use Laravel\Nova\Fields\Text;
 
-class Customer extends Resource {
-  public static $model = \App\Models\Customer::class;
-  public static $search = ['first_name', 'last_name'];
+class Contact extends Resource {
+  public static $model = \App\Models\Contact::class;
+  public static $search = ['type', 'value', 'customer_id'];
   public static $group = "CRM";
 
   public function title(): string {
-    return $this->first_name . ' ' . $this->last_name;
+    return $this->type . ' - ' . $this->value;
   }
 
   public function fields(Request $request): array {
     return [
       ID::make(__('ID'), 'id')->sortable(),
 
-      Text::make('First name')
-        ->sortable()
-        ->rules('required', 'max:255'),
+      Enum::make('Type','type')->attach(ContactTypeEnum::class),
 
-      Text::make('Last name')
-        ->sortable()
-        ->rules('max:255'),
+      Text::make('Value')
+        ->sortable(),
 
-      Date::make("Birthday"),
-
-      HasMany::make('Contacts', 'contacts'),
-
-      HasOne::make('LoyaltyCard', 'loyaltyCard'),
+      HasOne::make('Customer', 'customer'),
 
       HasMany::make('Comments', 'comments')->hideFromDetail()->hideFromIndex(),
 
@@ -46,6 +41,13 @@ class Customer extends Resource {
       MorphMany::make('Revisions'),
 
       new Commenter(),
+    ];
+  }
+
+  public function filters(Request $request)
+  {
+    return [
+      EnumFilter::make('type', ContactTypeEnum::class),
     ];
   }
 }

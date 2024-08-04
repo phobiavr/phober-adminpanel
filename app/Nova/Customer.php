@@ -30,18 +30,23 @@ class Customer extends Resource {
     return [
       ID::make(__('ID'), 'id')->sortable(),
 
+      Text::make('Full name', 'first_name')
+        ->displayUsing(fn($value) => $this->first_name . ' ' . $this->last_name)
+        ->onlyOnIndex()
+        ->sortable(),
+
       Text::make('First name')
-        ->sortable()
+        ->hideFromIndex()
         ->rules('required', 'max:255'),
 
       Text::make('Last name')
-        ->sortable()
+        ->hideFromIndex()
         ->rules('max:255'),
 
-      Enum::make('Gender','gender')->attach(GenderEnum::class),
-      Enum::make('Status','status')->attach(CustomerStatusEnum::class),
+      Enum::make('Gender','gender')->attach(GenderEnum::class)->sortable(),
+      Enum::make('Status','status')->attach(CustomerStatusEnum::class)->sortable(),
 
-      Date::make("Birthday"),
+      Date::make("Birthday")->sortable(),
 
       Textarea::make('Note')->hideFromIndex(),
 

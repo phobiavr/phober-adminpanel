@@ -2,6 +2,10 @@
 
 namespace App\Nova;
 
+use App\Enums\CustomerStatusEnum;
+use App\Enums\GenderEnum;
+use Datomatic\Nova\Fields\Enum\Enum;
+use Datomatic\Nova\Fields\Enum\EnumFilter;
 use Illuminate\Http\Request;
 use KirschbaumDevelopment\NovaComments\Commenter;
 use Laravel\Nova\Fields\Date;
@@ -11,6 +15,7 @@ use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\MorphMany;
 use Laravel\Nova\Fields\MorphOne;
 use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\Textarea;
 
 class Customer extends Resource {
   public static $model = \App\Models\Customer::class;
@@ -33,11 +38,16 @@ class Customer extends Resource {
         ->sortable()
         ->rules('max:255'),
 
+      Enum::make('Gender','gender')->attach(GenderEnum::class),
+      Enum::make('Status','status')->attach(CustomerStatusEnum::class),
+
       Date::make("Birthday"),
+
+      Textarea::make('Note')->hideFromIndex(),
 
       HasMany::make('Contacts', 'contacts'),
 
-      HasOne::make('LoyaltyCard', 'loyaltyCard'),
+      HasOne::make('Loyalty Card', 'loyaltyCard'),
 
       HasMany::make('Comments', 'comments')->hideFromDetail()->hideFromIndex(),
 
@@ -46,6 +56,14 @@ class Customer extends Resource {
       MorphMany::make('Revisions'),
 
       new Commenter(),
+    ];
+  }
+
+  public function filters(Request $request)
+  {
+    return [
+      EnumFilter::make('status', CustomerStatusEnum::class),
+      EnumFilter::make('gender', GenderEnum::class),
     ];
   }
 }

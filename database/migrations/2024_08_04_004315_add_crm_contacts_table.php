@@ -13,12 +13,10 @@ return new class extends Migration {
   public function up(): void {
     Schema::connection('db_crm')->create('contacts', function (Blueprint $table) {
       $table->id();
-      $table->foreignId('customer_id');
+      $table->foreignId('customer_id')->nullable()->constrained('customers')->onDelete('set null');
       $table->string('value');
       $table->string('type')->index();
       $table->timestamps();
-
-      $table->foreign('customer_id')->on('customers')->references('id');
     });
   }
 

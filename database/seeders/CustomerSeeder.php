@@ -13,11 +13,11 @@ class CustomerSeeder extends Seeder {
    * @return void
    */
   public function run(): void {
-    Customer::factory(30)->create();
+    $customers = Customer::factory(30)->create();
 
-    for ($i = 1; $i <= 30; $i++) {
-      for ($j = 1; $j <= rand(1,3); $j++){
-        Contact::factory()->create(['customer_id' => $i]);
+    foreach ($customers as $customer) {
+      for ($j = 0; $j < rand(1, 3); $j++) {
+        Contact::factory()->create(['customer_id' => $customer->id]);
       }
     }
   }

@@ -41,7 +41,7 @@ class WipeAll extends Command {
     $this->callDbWipe('db_crm');
     $this->callDbWipe('db_staff');
     $this->callDbWipe('db_config');
-    $this->callDbWipe('db_log');
+    $this->callDbWipe('db_shared');
     $this->callDbWipe('db_notification');
 
     if ($this->option('seed')) {

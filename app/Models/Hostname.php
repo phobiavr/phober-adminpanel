@@ -10,5 +10,5 @@ class Hostname extends Model {
 
   protected $casts = ["created_at" => "datetime", "updated_at" => "datetime"];
 
-  protected $connection = 'db_log';
+  protected $connection = 'db_shared';
 }

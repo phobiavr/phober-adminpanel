@@ -11,7 +11,7 @@ return new class extends Migration {
    * @return void
    */
   public function up() {
-    Schema::connection('db_log')->create('hostnames', function (Blueprint $table) {
+    Schema::connection('db_shared')->create('hostnames', function (Blueprint $table) {
       $table->id();
       $table->string('hostname', 12);
       $table->string('container');
@@ -25,6 +25,6 @@ return new class extends Migration {
    * @return void
    */
   public function down() {
-    Schema::connection('db_log')->dropIfExists('hostnames');
+    Schema::connection('db_shared')->dropIfExists('hostnames');
   }
 };

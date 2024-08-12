@@ -37,7 +37,6 @@ class WipeAll extends Command {
     $this->callDbWipe();
     $this->callDbWipe('db_auth');
     $this->callDbWipe('db_device');
-    $this->callDbWipe('db_media');
     $this->callDbWipe('db_crm');
     $this->callDbWipe('db_staff');
     $this->callDbWipe('db_config');

@@ -109,15 +109,6 @@ return [
       'password' => env('DB_DEVICE_PASSWORD', ''),
     ],
 
-    'db_media' => [
-      'driver' => env('DB_MEDIA_CONNECTION', 'mysql'),
-      'host' => env('DB_MEDIA_HOST', '127.0.0.1'),
-      'port' => env('DB_MEDIA_PORT', '3306'),
-      'database' => env('DB_MEDIA_DATABASE', 'phober_media'),
-      'username' => env('DB_MEDIA_USERNAME', 'forge'),
-      'password' => env('DB_MEDIA_PASSWORD', ''),
-    ],
-
     'db_crm' => [
       'driver' => env('DB_CRM_CONNECTION', 'mysql'),
       'host' => env('DB_CRM_HOST', '127.0.0.1'),

@@ -1431,6 +1431,6 @@ class MediaSeeder extends Seeder {
       )
     );
 
-    DB::connection('db_media')->table("media")->insert($media);
+    DB::connection('db_shared')->table("media")->insert($media);
   }
 }

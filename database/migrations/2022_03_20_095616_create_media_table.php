@@ -6,8 +6,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 class CreateMediaTable extends Migration {
-  public function up() {
-    Schema::connection('db_media')->create('media', function (Blueprint $table) {
+  public function up(): void {
+    Schema::connection('db_shared')->create('media', function (Blueprint $table) {
       $table->bigIncrements('id');
       $table->string('app');
       $table->morphs('model');
@@ -28,8 +28,7 @@ class CreateMediaTable extends Migration {
       $table->nullableTimestamps();
     });
 
-    DB::connection('db_media')->statement("CREATE VIEW device_service_view AS SELECT * FROM media WHERE app = 'device-service'");
-    DB::connection('db_media')->statement("CREATE VIEW customer_service_view AS SELECT * FROM media WHERE app = 'customer-service'");
+    DB::connection('db_shared')->statement("CREATE VIEW media_device_service_view AS SELECT * FROM media WHERE app = 'device-service'");
   }
 
   /**
@@ -37,10 +36,9 @@ class CreateMediaTable extends Migration {
    *
    * @return void
    */
-  public function down() {
-    DB::connection('db_media')->statement("DROP VIEW device_service_view");
-    DB::connection('db_media')->statement("DROP VIEW customer_service_view");
+  public function down(): void {
+    DB::connection('db_shared')->statement("DROP VIEW media_device_service_view");
 
-    Schema::connection('db_media')->dropIfExists('media');
+    Schema::connection('db_shared')->dropIfExists('media');
   }
 }

@@ -10,7 +10,7 @@ The `adminpanel` service within the <b>Phober</b> project is crucial for managin
 - **`phober_staff`**: Stores game/session/invoice data related to staff or user accounts.
 - **`phober_notification`**: Manages notification data for the application.
 - **`phober_config`**: Stores configuration data, managed by `config-server`
-- **`phober_log`**: Stores logs and diagnostic information for the application.
+- **`phober_shared`**: Stores logs and diagnostic information for the application.
 
 ### Responsibilities:
 - Manages administrative tasks, user interfaces, and updates databases and configurations.

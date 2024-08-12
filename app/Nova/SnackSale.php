@@ -8,22 +8,22 @@ use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Number;
 
 class SnackSale extends Resource {
-  public static $model = \App\Models\SnackSale::class;
-  public static $title = 'id';
-  public static $globallySearchable = false;
-  public static $group = "Staff";
+    public static $model = \App\Models\SnackSale::class;
+    public static $title = 'id';
+    public static $globallySearchable = false;
+    public static $group = "Staff";
 
-  public function fields(Request $request) {
-    return [
-      ID::make(__('ID'), 'id')->sortable(),
+    public function fields(Request $request) {
+        return [
+            ID::make(__('ID'), 'id')->sortable(),
 
-      BelongsTo::make('Snack'),
+            BelongsTo::make('Snack'),
 
-      Number::make('Quantity'),
+            Number::make('Quantity'),
 
-      BelongsTo::make('Sold by', 'soldBy', Employee::class),
+            BelongsTo::make('Sold by', 'soldBy', Employee::class),
 
-      BelongsTo::make('Invoice', 'invoice', Invoice::class),
-    ];
-  }
+            BelongsTo::make('Invoice', 'invoice', Invoice::class),
+        ];
+    }
 }

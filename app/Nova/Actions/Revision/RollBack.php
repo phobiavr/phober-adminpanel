@@ -9,34 +9,34 @@ use Laravel\Nova\Actions\Action;
 use Laravel\Nova\Fields\ActionFields;
 
 class RollBack extends Action {
-  use InteractsWithQueue, Queueable;
+    use InteractsWithQueue, Queueable;
 
-  public $showOnTableRow = true;
+    public $showOnTableRow = true;
 
-  /**
-   * Perform the action on the given models.
-   *
-   * @param ActionFields $fields
-   * @param Collection $models
-   * @return void
-   */
-  public function handle(ActionFields $fields, Collection $models): void {
-    foreach ($models as $model) {
-      if ($model->revisionable) {
-        $model->revisionable->update(json_decode($model->value, true));
-      } else {
-        $model_name = $model->revisionable_type;
-        $model_name::create(json_decode($model->value, true));
-      }
+    /**
+     * Perform the action on the given models.
+     *
+     * @param ActionFields $fields
+     * @param Collection $models
+     * @return void
+     */
+    public function handle(ActionFields $fields, Collection $models): void {
+        foreach ($models as $model) {
+            if ($model->revisionable) {
+                $model->revisionable->update(json_decode($model->value, true));
+            } else {
+                $model_name = $model->revisionable_type;
+                $model_name::create(json_decode($model->value, true));
+            }
+        }
     }
-  }
 
-  /**
-   * Get the fields available on the action.
-   *
-   * @return array
-   */
-  public function fields() {
-    return [];
-  }
+    /**
+     * Get the fields available on the action.
+     *
+     * @return array
+     */
+    public function fields() {
+        return [];
+    }
 }

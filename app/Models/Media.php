@@ -3,13 +3,13 @@
 namespace App\Models;
 
 class Media extends \Spatie\MediaLibrary\MediaCollections\Models\Media {
-  protected $connection = "db_shared";
+    protected $connection = "db_shared";
 
-  public static function boot() {
-    parent::boot();
+    public static function boot() {
+        parent::boot();
 
-    static::creating(static function ($media) {
-      $media->app = $media->model->getApp();
-    });
-  }
+        static::creating(static function ($media) {
+            $media->app = $media->model->getApp();
+        });
+    }
 }

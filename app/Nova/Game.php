@@ -13,35 +13,35 @@ use Laravel\Nova\Fields\Text;
 use MrMonat\Translatable\Translatable;
 
 class Game extends Resource {
-  public static $model = \App\Models\Game::class;
-  public static $title = 'name';
-  public static $search = ['name', 'slug', 'description'];
-  public static $group = "Device";
+    public static $model = \App\Models\Game::class;
+    public static $title = 'name';
+    public static $search = ['name', 'slug', 'description'];
+    public static $group = "Device";
 
-  public function fields(Request $request) {
-    return [
-      ID::make()->sortable(),
+    public function fields(Request $request) {
+        return [
+            ID::make()->sortable(),
 
-      Media::make('Preview', 'preview'),
+            Media::make('Preview', 'preview'),
 
-      Text::make("Name")->sortable(),
+            Text::make("Name")->sortable(),
 
-      Text::make("Slug")->sortable()->hideWhenCreating()->hideWhenUpdating(),
+            Text::make("Slug")->sortable()->hideWhenCreating()->hideWhenUpdating(),
 
-      Text::make("Description", 'description')->hideFromIndex(),
+            Text::make("Description", 'description')->hideFromIndex(),
 
-      Translatable::make('Description', 'description')->hideFromIndex(),
+            Translatable::make('Description', 'description')->hideFromIndex(),
 
-      BelongsToMany::make("Genres"),
+            BelongsToMany::make("Genres"),
 
-      Boolean::make("Multiplayer"),
+            Boolean::make("Multiplayer"),
 
-      BelongsToMany::make("Devices"),
+            BelongsToMany::make("Devices"),
 
-      HasMany::make('Device Instances', 'deviceInstances'),
+            HasMany::make('Device Instances', 'deviceInstances'),
 
-      HasMany::make('Comments', 'comments')->hideFromDetail()->hideFromIndex(),
-      new Commenter(),
-    ];
-  }
+            HasMany::make('Comments', 'comments')->hideFromDetail()->hideFromIndex(),
+            new Commenter(),
+        ];
+    }
 }

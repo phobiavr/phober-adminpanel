@@ -10,27 +10,27 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Collection;
 
 class Invoice extends Model {
-  use HasFactory;
+    use HasFactory;
 
-  protected $connection = "db_staff";
+    protected $connection = "db_staff";
 
-  public static function statusEnum(): Collection {
-    return collect(['QUEUE', 'PAYED', 'CANCELED']);
-  }
+    public static function statusEnum(): Collection {
+        return collect(['QUEUE', 'PAYED', 'CANCELED']);
+    }
 
-  public static function paymentMethodEnum(): Collection {
-    return collect(['CASH', 'CARD', 'BONUS']);
-  }
+    public static function paymentMethodEnum(): Collection {
+        return collect(['CASH', 'CARD', 'BONUS']);
+    }
 
-  public function sessions(): BelongsToMany {
-    return $this->belongsToMany(Session::class, 'invoice_session');
-  }
+    public function sessions(): BelongsToMany {
+        return $this->belongsToMany(Session::class, 'invoice_session');
+    }
 
-  public function snackSales(): HasMany {
-    return $this->hasMany(SnackSale::class);
-  }
+    public function snackSales(): HasMany {
+        return $this->hasMany(SnackSale::class);
+    }
 
-  public function customer(): BelongsTo {
-    return $this->belongsTo(Customer::class);
-  }
+    public function customer(): BelongsTo {
+        return $this->belongsTo(Customer::class);
+    }
 }

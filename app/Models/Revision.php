@@ -7,26 +7,26 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 class Revision extends Model {
-  protected $fillable = ["value", "author_id", "revised_by", "type"];
-  protected $casts = ["created_at" => "datetime"];
+    protected $fillable = ["value", "author_id", "revised_by", "type"];
+    protected $casts = ["created_at" => "datetime"];
 
-  public function revisionable(): MorphTo {
-    return $this->morphTo();
-  }
+    public function revisionable(): MorphTo {
+        return $this->morphTo();
+    }
 
-  public function getModelAttribute() {
-    //https://stackoverflow.com/a/1361752
-    $model = $this->revisionable_type;
+    public function getModelAttribute() {
+        //https://stackoverflow.com/a/1361752
+        $model = $this->revisionable_type;
 
-    return substr($model, strrpos($model, '\\') + 1);
-  }
+        return substr($model, strrpos($model, '\\') + 1);
+    }
 
-  public function revisedBy(): BelongsTo {
-    return $this->belongsTo(User::class, 'revised_by');
-  }
+    public function revisedBy(): BelongsTo {
+        return $this->belongsTo(User::class, 'revised_by');
+    }
 
-  // https://stackoverflow.com/a/25784734
-  public function setUpdatedAtAttribute($value) {
-    //
-  }
+    // https://stackoverflow.com/a/25784734
+    public function setUpdatedAtAttribute($value) {
+        //
+    }
 }

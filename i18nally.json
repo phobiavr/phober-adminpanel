@@ -1,48 +1,104 @@
 {
-  "version" : "1.0",
-  "profiles" : [ {
-    "id" : "5a63e317-98f0-4261-90f0-e3668d9b03eb",
-    "name" : "Laravel (PHP, BLADE)",
-    "keyNamingPattern" : "SNAKE_CASE_PATTERN",
-    "sink" : {
-      "id" : "ef6f5bcd-20dc-4e51-adbe-a94b285288f4",
-      "type" : "symfony",
-      "translationsDirectory" : "$PROJECT_DIR$/resources/lang",
-      "fileType" : "php",
-      "defaultLocale" : "en",
-      "namespaces" : [ "auth", "pagination", "passwords", "validation" ],
-      "outputFilenameTemplate" : "%locale%/%namespace%.php",
-      "nestingType" : "DOT",
-      "placeholderFormatterName" : "LARAVEL"
+    "version": "1.0",
+    "profiles": [
+        {
+            "id": "5a63e317-98f0-4261-90f0-e3668d9b03eb",
+            "name": "Laravel (PHP, BLADE)",
+            "keyNamingPattern": "SNAKE_CASE_PATTERN",
+            "sink": {
+                "id": "ef6f5bcd-20dc-4e51-adbe-a94b285288f4",
+                "type": "symfony",
+                "translationsDirectory": "$PROJECT_DIR$/resources/lang",
+                "fileType": "php",
+                "defaultLocale": "en",
+                "namespaces": [
+                    "auth",
+                    "pagination",
+                    "passwords",
+                    "validation"
+                ],
+                "outputFilenameTemplate": "%locale%/%namespace%.php",
+                "nestingType": "DOT",
+                "placeholderFormatterName": "LARAVEL"
+            },
+            "sources": [
+                {
+                    "id": "28c01006-ea89-4878-8ef3-989eefb72b03",
+                    "type": "php",
+                    "scopeName": "i18n Ally: Laravel/PHP source",
+                    "scopePattern": "file[phober-adminpanel]:app//*&&!file[phober-adminpanel]:app/Broadcasting//*&&!file[phober-adminpanel]:app/Console//*&&!file[phober-adminpanel]:app/Events//*&&!file[phober-adminpanel]:app/Exceptions//*&&!file[phober-adminpanel]:app/Models//*&&!file[phober-adminpanel]:app/Providers//*",
+                    "functionName": "trans",
+                    "argumentsTemplate": "'%namespace%.%key%', %map%",
+                    "skipDefaultNamespace": false,
+                    "sprintfMode": false
+                },
+                {
+                    "id": "76b39aa0-3d08-4ebd-ad6f-ae9c2f5ac229",
+                    "type": "blade",
+                    "scopeName": "i18n Ally: Laravel/Blade templates",
+                    "scopePattern": "file[phober-adminpanel]:resources/views//*",
+                    "functionName": "trans",
+                    "argumentsTemplate": "'%namespace%.%key%', %map%",
+                    "inlineTagNames": [
+                        "a",
+                        "abbr",
+                        "acronym",
+                        "b",
+                        "bdi",
+                        "bdo",
+                        "big",
+                        "br",
+                        "cite",
+                        "code",
+                        "data",
+                        "del",
+                        "dfn",
+                        "em",
+                        "i",
+                        "img",
+                        "input",
+                        "ins",
+                        "kbd",
+                        "label",
+                        "mark",
+                        "meter",
+                        "output",
+                        "progress",
+                        "q",
+                        "ruby",
+                        "s",
+                        "samp",
+                        "slot",
+                        "small",
+                        "span",
+                        "strong",
+                        "sub",
+                        "sup",
+                        "time",
+                        "u",
+                        "tt",
+                        "var",
+                        "wbr"
+                    ],
+                    "translatableAttributeNames": [
+                        "title",
+                        "alt",
+                        "placeholder",
+                        "label",
+                        "aria-label"
+                    ],
+                    "skipDefaultNamespace": false
+                }
+            ]
+        }
+    ],
+    "ignores": {
+        "valuesInProject": [],
+        "valuesInFile": {},
+        "filesInProject": [],
+        "unignoredFunctionNames": [],
+        "unignoredFunctionArguments": {},
+        "ignoredArrayKeys": []
     },
-    "sources" : [ {
-      "id" : "28c01006-ea89-4878-8ef3-989eefb72b03",
-      "type" : "php",
-      "scopeName" : "i18n Ally: Laravel/PHP source",
-      "scopePattern" : "file[phober-adminpanel]:app//*&&!file[phober-adminpanel]:app/Broadcasting//*&&!file[phober-adminpanel]:app/Console//*&&!file[phober-adminpanel]:app/Events//*&&!file[phober-adminpanel]:app/Exceptions//*&&!file[phober-adminpanel]:app/Models//*&&!file[phober-adminpanel]:app/Providers//*",
-      "functionName" : "trans",
-      "argumentsTemplate" : "'%namespace%.%key%', %map%",
-      "skipDefaultNamespace" : false,
-      "sprintfMode" : false
-    }, {
-      "id" : "76b39aa0-3d08-4ebd-ad6f-ae9c2f5ac229",
-      "type" : "blade",
-      "scopeName" : "i18n Ally: Laravel/Blade templates",
-      "scopePattern" : "file[phober-adminpanel]:resources/views//*",
-      "functionName" : "trans",
-      "argumentsTemplate" : "'%namespace%.%key%', %map%",
-      "inlineTagNames" : [ "a", "abbr", "acronym", "b", "bdi", "bdo", "big", "br", "cite", "code", "data", "del", "dfn", "em", "i", "img", "input", "ins", "kbd", "label", "mark", "meter", "output", "progress", "q", "ruby", "s", "samp", "slot", "small", "span", "strong", "sub", "sup", "time", "u", "tt", "var", "wbr" ],
-      "translatableAttributeNames" : [ "title", "alt", "placeholder", "label", "aria-label" ],
-      "skipDefaultNamespace" : false
-    } ]
-  } ],
-  "ignores" : {
-    "valuesInProject" : [ ],
-    "valuesInFile" : { },
-    "filesInProject" : [ ],
-    "unignoredFunctionNames" : [ ],
-    "unignoredFunctionArguments" : { },
-    "ignoredArrayKeys" : [ ]
-  },
-  "skipFrameWorkDetection" : false
+    "skipFrameWorkDetection": false
 }

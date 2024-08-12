@@ -11,23 +11,23 @@ use Illuminate\Support\Str;
 use KirschbaumDevelopment\NovaComments\Models\Comment;
 
 class Genre extends Model {
-  use HasFactory, Authorable;
+    use HasFactory, Authorable;
 
-  protected $connection = 'db_device';
+    protected $connection = 'db_device';
 
-  public function setNameAttribute($value): void {
-    $this->attributes['name'] = $value;
-    $this->attributes['slug'] = Str::slug($value);
-  }
+    public function setNameAttribute($value): void {
+        $this->attributes['name'] = $value;
+        $this->attributes['slug'] = Str::slug($value);
+    }
 
-  public function comments(): MorphMany {
-    return $this
-      ->setConnection(config('database.default'))
-      ->morphMany(Comment::class, 'commentable');
-  }
+    public function comments(): MorphMany {
+        return $this
+            ->setConnection(config('database.default'))
+            ->morphMany(Comment::class, 'commentable');
+    }
 
-  public function games(): BelongsToMany {
-    return $this
-      ->belongsToMany(Game::class, "game_genre");
-  }
+    public function games(): BelongsToMany {
+        return $this
+            ->belongsToMany(Game::class, "game_genre");
+    }
 }

@@ -1,6 +1,7 @@
 ## Adminpanel
 
-The `adminpanel` service within the <b>Phober</b> project is crucial for managing administrative tasks, user interfaces, and updating various databases and configurations. It interacts with the following databases:
+The `adminpanel` service within the <b>Phober</b> project is crucial for managing administrative tasks, user interfaces,
+and updating various databases and configurations. It interacts with the following databases:
 
 - **`phober_adminpanel`**: Stores administrative data related to the admin panel interface.
 - **`phober_auth`**: Manages authentication and authorization data.
@@ -12,14 +13,17 @@ The `adminpanel` service within the <b>Phober</b> project is crucial for managin
 - **`phober_shared`**: Stores logs and diagnostic information and handles media files for the application.
 
 ### Responsibilities:
+
 - Manages administrative tasks, user interfaces, and updates databases and configurations.
 - Updates configurations within `config-server`.
 - Manages credentials required by `notification-server`.
 
 ### Dependencies:
+
 - Relies on the `db` service for database operations.
 
 ### Framework and Initialization / Additional Requirements:
+
 - Built using the Laravel framework.
 - Requires PHP dependencies installed via Composer.
 - Requires seeding the database with initial data.

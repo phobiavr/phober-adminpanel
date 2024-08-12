@@ -12,31 +12,31 @@ use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
 
 class DeviceInstance extends Resource {
-  public static $model = \App\Models\DeviceInstance::class;
-  public static $title = 'device.name';
-  public static $search = ['mac_address'];
-  public static $group = "Device";
+    public static $model = \App\Models\DeviceInstance::class;
+    public static $title = 'device.name';
+    public static $search = ['mac_address'];
+    public static $group = "Device";
 
-  public function fields(Request $request): array {
-    return [
-      ID::make()->sortable(),
+    public function fields(Request $request): array {
+        return [
+            ID::make()->sortable(),
 
-      Text::make('Mac Address', 'mac_address'),
+            Text::make('Mac Address', 'mac_address'),
 
-      BelongsTo::make("Device"),
+            BelongsTo::make("Device"),
 
-      Boolean::make("Active"),
+            Boolean::make("Active"),
 
-      Boolean::make("Currently Active", 'currently_active')->hideWhenUpdating()->hideWhenCreating(),
+            Boolean::make("Currently Active", 'currently_active')->hideWhenUpdating()->hideWhenCreating(),
 
-      DateTime::make("Deactivation start", "deactivation_start")
-        ->nullable(),
+            DateTime::make("Deactivation start", "deactivation_start")
+                ->nullable(),
 
-      DateTime::make("Deactivation end", "deactivation_end")
-        ->nullable(),
+            DateTime::make("Deactivation end", "deactivation_end")
+                ->nullable(),
 
-      HasMany::make('Comments', 'comments')->hideFromDetail()->hideFromIndex(),
-      new Commenter(),
-    ];
-  }
+            HasMany::make('Comments', 'comments')->hideFromDetail()->hideFromIndex(),
+            new Commenter(),
+        ];
+    }
 }

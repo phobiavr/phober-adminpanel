@@ -10,21 +10,21 @@ use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Spatie\MediaLibrary\InteractsWithMedia;
 
 abstract class ModelInteractsWithMedia extends Model implements HasMedia {
-  use InteractsWithMedia;
+    use InteractsWithMedia;
 
-  protected string $app;
+    protected string $app;
 
-  public function getApp(): string {
-    return $this->app;
-  }
+    public function getApp(): string {
+        return $this->app;
+    }
 
-  public function setApp(string $app): void {
-    $this->app = $app;
-  }
+    public function setApp(string $app): void {
+        $this->app = $app;
+    }
 
-  public function media(): MorphMany {
-    return $this
-      ->setConnection($this->connection)
-      ->morphMany(config('media-library.media_model'), 'model');
-  }
+    public function media(): MorphMany {
+        return $this
+            ->setConnection($this->connection)
+            ->morphMany(config('media-library.media_model'), 'model');
+    }
 }

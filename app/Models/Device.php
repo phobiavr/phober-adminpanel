@@ -14,35 +14,35 @@ use Staudenmeir\EloquentHasManyDeep\HasManyDeep;
 use Staudenmeir\EloquentHasManyDeep\HasRelationships;
 
 class Device extends Model {
-  use HasFactory, HasRelationships, Authorable;
+    use HasFactory, HasRelationships, Authorable;
 
-  protected $connection = 'db_device';
+    protected $connection = 'db_device';
 
-  public function setNameAttribute($value): void {
-    $this->attributes['name'] = $value;
-    $this->attributes['slug'] = Str::slug($value);
-  }
+    public function setNameAttribute($value): void {
+        $this->attributes['name'] = $value;
+        $this->attributes['slug'] = Str::slug($value);
+    }
 
-  public function comments(): MorphMany {
-    return $this
-      ->setConnection(config('database.default'))
-      ->morphMany(Comment::class, 'commentable');
-  }
+    public function comments(): MorphMany {
+        return $this
+            ->setConnection(config('database.default'))
+            ->morphMany(Comment::class, 'commentable');
+    }
 
-  public function games(): BelongsToMany {
-    return $this
-      ->belongsToMany(Game::class, "game_device");
-  }
+    public function games(): BelongsToMany {
+        return $this
+            ->belongsToMany(Game::class, "game_device");
+    }
 
-  public function instances(): HasMany {
-    return $this
-      ->hasMany(DeviceInstance::class);
-  }
+    public function instances(): HasMany {
+        return $this
+            ->hasMany(DeviceInstance::class);
+    }
 
-  // https://github.com/staudenmeir/eloquent-has-many-deep
-  public function genres(): HasManyDeep {
-    return $this
-      ->hasManyDeep(Genre::class, ["game_device", Game::class, "game_genre"])
-      ->distinct();
-  }
+    // https://github.com/staudenmeir/eloquent-has-many-deep
+    public function genres(): HasManyDeep {
+        return $this
+            ->hasManyDeep(Genre::class, ["game_device", Game::class, "game_genre"])
+            ->distinct();
+    }
 }

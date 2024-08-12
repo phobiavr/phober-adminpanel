@@ -5,26 +5,26 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
 class CreateGenresTable extends Migration {
-  /**
-   * Run the migrations.
-   *
-   * @return void
-   */
-  public function up() {
-    Schema::connection('db_device')->create('genres', function (Blueprint $table) {
-      $table->id();
-      $table->string("name");
-      $table->string("slug")->nullable();
-      $table->timestamps();
-    });
-  }
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up() {
+        Schema::connection('db_device')->create('genres', function (Blueprint $table) {
+            $table->id();
+            $table->string("name");
+            $table->string("slug")->nullable();
+            $table->timestamps();
+        });
+    }
 
-  /**
-   * Reverse the migrations.
-   *
-   * @return void
-   */
-  public function down() {
-    Schema::connection('db_device')->dropIfExists('genres');
-  }
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down() {
+        Schema::connection('db_device')->dropIfExists('genres');
+    }
 }

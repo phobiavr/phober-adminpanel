@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Hostname extends Model {
-  use HasFactory;
+    use HasFactory;
 
-  protected $casts = ["created_at" => "datetime", "updated_at" => "datetime"];
+    protected $casts = ["created_at" => "datetime", "updated_at" => "datetime"];
 
-  protected $connection = 'db_shared';
+    protected $connection = 'db_shared';
 }

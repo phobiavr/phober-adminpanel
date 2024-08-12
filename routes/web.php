@@ -14,6 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth.server')->get('/', function (){
-  return Auth::guard('server')->user();
+Route::middleware('auth.server')->get('/', function () {
+    return Auth::guard('server')->user();
 });

@@ -13,42 +13,42 @@ use Staudenmeir\EloquentHasManyDeep\HasManyDeep;
 use Staudenmeir\EloquentHasManyDeep\HasRelationships;
 
 class Game extends ModelInteractsWithMedia {
-  use HasFactory, HasRelationships, Authorable, HasTranslations;
+    use HasFactory, HasRelationships, Authorable, HasTranslations;
 
-  protected $connection = 'db_device';
-  protected $casts = ["multiplayer" => "boolean"];
-  protected string $app = "device-service";
-  public array $translatable = ['description'];
+    public array $translatable = ['description'];
+    protected $connection = 'db_device';
+    protected $casts = ["multiplayer" => "boolean"];
+    protected string $app = "device-service";
 
-  public function setNameAttribute($value): void {
-    $this->attributes['name'] = $value;
-    $this->attributes['slug'] = Str::slug($value);
-  }
+    public function setNameAttribute($value): void {
+        $this->attributes['name'] = $value;
+        $this->attributes['slug'] = Str::slug($value);
+    }
 
-  public function comments(): MorphMany {
-    return $this
-      ->setConnection(config('database.default'))
-      ->morphMany(Comment::class, 'commentable');
-  }
+    public function comments(): MorphMany {
+        return $this
+            ->setConnection(config('database.default'))
+            ->morphMany(Comment::class, 'commentable');
+    }
 
-  public function registerMediaCollections(): void {
-    $this
-      ->addMediaCollection('preview')
-      ->useDisk('media');
-  }
+    public function registerMediaCollections(): void {
+        $this
+            ->addMediaCollection('preview')
+            ->useDisk('media');
+    }
 
-  public function genres(): BelongsToMany {
-    return $this
-      ->belongsToMany(Genre::class, 'game_genre');
-  }
+    public function genres(): BelongsToMany {
+        return $this
+            ->belongsToMany(Genre::class, 'game_genre');
+    }
 
-  public function devices(): BelongsToMany {
-    return $this
-      ->belongsToMany(Device::class, 'game_device');
-  }
+    public function devices(): BelongsToMany {
+        return $this
+            ->belongsToMany(Device::class, 'game_device');
+    }
 
-  public function deviceInstances(): HasManyDeep {
-    return $this
-      ->hasManyDeep(DeviceInstance::class, ['game_device', Device::class]);
-  }
+    public function deviceInstances(): HasManyDeep {
+        return $this
+            ->hasManyDeep(DeviceInstance::class, ['game_device', Device::class]);
+    }
 }

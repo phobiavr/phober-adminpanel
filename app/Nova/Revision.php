@@ -11,36 +11,36 @@ use Laravel\Nova\Fields\MorphTo;
 use Laravel\Nova\Fields\Text;
 
 class Revision extends Resource {
-  public static $model = \App\Models\Revision::class;
-  public static $title = 'id';
-  public static $globallySearchable = false;
-  public static $group = "AdminPanel";
+    public static $model = \App\Models\Revision::class;
+    public static $title = 'id';
+    public static $globallySearchable = false;
+    public static $group = "AdminPanel";
 
-  public function fields(Request $request) {
-    return [
-      Text::make('Model', 'model')->exceptOnForms(),
+    public function fields(Request $request) {
+        return [
+            Text::make('Model', 'model')->exceptOnForms(),
 
-      MorphTo::make('Revisionable')->exceptOnForms(),
+            MorphTo::make('Revisionable')->exceptOnForms(),
 
-      BelongsTo::make('Revised by', 'revisedBy', User::class),
+            BelongsTo::make('Revised by', 'revisedBy', User::class),
 
-      Text::make('Type')->exceptOnForms(),
+            Text::make('Type')->exceptOnForms(),
 
-      Code::make('Value'),
+            Code::make('Value'),
 
-      DateTime::make('Created at')->format('YYYY-MM-DD HH:mm:ss'),
-    ];
-  }
+            DateTime::make('Created at')->format('YYYY-MM-DD HH:mm:ss'),
+        ];
+    }
 
-  /**
-   * Get the actions available for the resource.
-   *
-   * @param Request $request
-   * @return array
-   */
-  public function actions(Request $request) {
-    return [
-      RollBack::make(),
-    ];
-  }
+    /**
+     * Get the actions available for the resource.
+     *
+     * @param Request $request
+     * @return array
+     */
+    public function actions(Request $request) {
+        return [
+            RollBack::make(),
+        ];
+    }
 }

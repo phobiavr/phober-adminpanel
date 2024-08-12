@@ -6,12 +6,12 @@ use App\Models\Employee;
 use Illuminate\Database\Seeder;
 
 class EmployeeSeeder extends Seeder {
-  /**
-   * Run the database seeds.
-   *
-   * @return void
-   */
-  public function run() {
-    Employee::factory(5)->create();
-  }
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run() {
+        Employee::factory(5)->create();
+    }
 }

@@ -15,39 +15,38 @@ use Laravel\Nova\Fields\MorphOne;
 use Laravel\Nova\Fields\Text;
 
 class Contact extends Resource {
-  public static $model = \App\Models\Contact::class;
-  public static $search = ['type', 'value', 'customer_id'];
-  public static $group = "CRM";
+    public static $model = \App\Models\Contact::class;
+    public static $search = ['type', 'value', 'customer_id'];
+    public static $group = "CRM";
 
-  public function title(): string {
-    return $this->type . ' - ' . $this->value;
-  }
+    public function title(): string {
+        return $this->type . ' - ' . $this->value;
+    }
 
-  public function fields(Request $request): array {
-    return [
-      ID::make(__('ID'), 'id')->sortable(),
+    public function fields(Request $request): array {
+        return [
+            ID::make(__('ID'), 'id')->sortable(),
 
-      Enum::make('Type','type')->attach(ContactTypeEnum::class),
+            Enum::make('Type', 'type')->attach(ContactTypeEnum::class),
 
-      Text::make('Value')
-        ->sortable(),
+            Text::make('Value')
+                ->sortable(),
 
-      HasOne::make('Customer', 'customer'),
+            HasOne::make('Customer', 'customer'),
 
-      HasMany::make('Comments', 'comments')->hideFromDetail()->hideFromIndex(),
+            HasMany::make('Comments', 'comments')->hideFromDetail()->hideFromIndex(),
 
-      MorphOne::make('Author'),
+            MorphOne::make('Author'),
 
-      MorphMany::make('Revisions'),
+            MorphMany::make('Revisions'),
 
-      new Commenter(),
-    ];
-  }
+            new Commenter(),
+        ];
+    }
 
-  public function filters(Request $request)
-  {
-    return [
-      EnumFilter::make('type', ContactTypeEnum::class),
-    ];
-  }
+    public function filters(Request $request) {
+        return [
+            EnumFilter::make('type', ContactTypeEnum::class),
+        ];
+    }
 }

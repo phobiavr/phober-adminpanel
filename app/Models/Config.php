@@ -10,15 +10,15 @@ use Illuminate\Database\Eloquent\Relations\MorphMany;
 use KirschbaumDevelopment\NovaComments\Models\Comment;
 
 class Config extends Model {
-  use HasFactory, Revisionable, Authorable;
+    use HasFactory, Revisionable, Authorable;
 
-  protected $connection = 'db_config';
+    protected $connection = 'db_config';
 
-  protected $fillable = ['key', 'value'];
+    protected $fillable = ['key', 'value'];
 
-  public function comments(): MorphMany {
-    return $this
-      ->setConnection(config('database.default'))
-      ->morphMany(Comment::class, 'commentable');
-  }
+    public function comments(): MorphMany {
+        return $this
+            ->setConnection(config('database.default'))
+            ->morphMany(Comment::class, 'commentable');
+    }
 }

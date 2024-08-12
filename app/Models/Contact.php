@@ -11,18 +11,18 @@ use Illuminate\Database\Eloquent\Relations\MorphMany;
 use KirschbaumDevelopment\NovaComments\Models\Comment;
 
 class Contact extends Model {
-  use HasFactory, Revisionable, Authorable;
+    use HasFactory, Revisionable, Authorable;
 
-  protected $connection = "db_crm";
-  protected $fillable = ['value', 'type'];
+    protected $connection = "db_crm";
+    protected $fillable = ['value', 'type'];
 
-  public function customer(): HasOne {
-    return $this->hasOne(Customer::class, 'id', 'customer_id');
-  }
+    public function customer(): HasOne {
+        return $this->hasOne(Customer::class, 'id', 'customer_id');
+    }
 
-  public function comments(): MorphMany {
-    return $this
-      ->setConnection(config('database.default'))
-      ->morphMany(Comment::class, 'commentable');
-  }
+    public function comments(): MorphMany {
+        return $this
+            ->setConnection(config('database.default'))
+            ->morphMany(Comment::class, 'commentable');
+    }
 }

@@ -10,8 +10,7 @@ return new class extends Migration {
      *
      * @return void
      */
-    public function up()
-    {
+    public function up() {
         Schema::connection('db_notification')->create('otps', function (Blueprint $table) {
             $table->increments('id')->index();
             $table->string('identifier');
@@ -29,8 +28,7 @@ return new class extends Migration {
      *
      * @return void
      */
-    public function down()
-    {
+    public function down() {
         Schema::connection('db_notification')->dropIfExists('otps');
     }
 };

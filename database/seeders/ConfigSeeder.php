@@ -21,6 +21,10 @@ class ConfigSeeder extends Seeder {
             'APP_DEBUG'    => 'true',
             'APP_TIMEZONE' => 'UTC',
 
+            'AUTH_SERVER'         => 'http://auth-server',
+            'CONFIG_SERVER'       => 'http://config-server',
+            'NOTIFICATION_SERVER' => 'http://notification-server',
+
             'LOG_CHANNEL'              => 'stack',
             'LOG_DEPRECATIONS_CHANNEL' => null,
             'LOG_LEVEL'                => 'debug',

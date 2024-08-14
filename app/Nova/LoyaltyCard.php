@@ -2,6 +2,9 @@
 
 namespace App\Nova;
 
+use App\Enums\LoyaltyCardStatusEnum;
+use Datomatic\Nova\Fields\Enum\Enum;
+use Datomatic\Nova\Fields\Enum\EnumFilter;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\Select;
@@ -27,6 +30,8 @@ class LoyaltyCard extends Resource {
                 ->hideFromIndex()
                 ->hideFromDetail(),
 
+            Enum::make('Status', 'status')->attach(LoyaltyCardStatusEnum::class)->sortable(),
+
             BelongsTo::make('Customer')->hideWhenUpdating()->hideWhenCreating(),
         ];
     }
@@ -38,5 +43,11 @@ class LoyaltyCard extends Resource {
             ->mapWithKeys(function ($item) {
                 return [$item['id'] => $item['first_name'] . ' ' . $item['last_name']];
             });
+    }
+
+    public function filters(Request $request): array {
+        return [
+            EnumFilter::make('status', LoyaltyCardStatusEnum::class),
+        ];
     }
 }

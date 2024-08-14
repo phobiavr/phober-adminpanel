@@ -16,7 +16,7 @@ class CreateCustomerLoyaltyCardsTable extends Migration {
             $table->foreign('id')->on('customers')->references('id');
 
             $table->string('code')->nullable();
-            // 'BASIC', 'SILVER', 'GOLD', 'PLATINUM'
+            /** @see \App\Enums\LoyaltyCardStatusEnum */
             $table->string('status')->nullable()->default('BASIC');
 
             $table->timestamps();

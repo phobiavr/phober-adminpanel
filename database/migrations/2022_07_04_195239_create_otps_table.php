@@ -11,7 +11,7 @@ return new class extends Migration {
      * @return void
      */
     public function up() {
-        Schema::connection('db_notification')->create('otps', function (Blueprint $table) {
+        Schema::connection('db_auth')->create('otps', function (Blueprint $table) {
             $table->increments('id')->index();
             $table->string('identifier');
             $table->string('token');
@@ -29,6 +29,6 @@ return new class extends Migration {
      * @return void
      */
     public function down() {
-        Schema::connection('db_notification')->dropIfExists('otps');
+        Schema::connection('db_auth')->dropIfExists('otps');
     }
 };

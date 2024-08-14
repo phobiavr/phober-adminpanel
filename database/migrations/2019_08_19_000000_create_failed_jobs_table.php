@@ -11,7 +11,7 @@ class CreateFailedJobsTable extends Migration {
      * @return void
      */
     public function up() {
-        Schema::create('failed_jobs', function (Blueprint $table) {
+        Schema::connection('db_notification')->create('failed_jobs', function (Blueprint $table) {
             $table->id();
             $table->string('uuid')->unique();
             $table->text('connection');
@@ -28,6 +28,6 @@ class CreateFailedJobsTable extends Migration {
      * @return void
      */
     public function down() {
-        Schema::dropIfExists('failed_jobs');
+        Schema::connection('db_notification')->dropIfExists('failed_jobs');
     }
 }

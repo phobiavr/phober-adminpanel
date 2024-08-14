@@ -25,12 +25,12 @@ class CreateSessionsTable extends Migration {
             $table->double('initial_price')->default(0);
             $table->double('updated_price')->default(0);
 
-            // MORNING, EVENING, EXTRA
+            /** @see \App\Enums\SessionTariffEnum */
             $table->string('tariff');
 
             $table->boolean('tariff_changed')->default(0);
 
-            // 'QUEUE', 'ACTIVE', 'CANCELED', 'FINISHED'
+            /** @see \App\Enums\SessionStatusEnum */
             $table->string('status')->default('QUEUE');
 
             $table->text('note')->nullable();

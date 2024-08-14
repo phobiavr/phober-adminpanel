@@ -2,6 +2,10 @@
 
 namespace App\Nova;
 
+use App\Enums\SessionStatusEnum;
+use App\Enums\SessionTariffEnum;
+use Datomatic\Nova\Fields\Enum\Enum;
+use Datomatic\Nova\Fields\Enum\EnumFilter;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\DateTime;
@@ -29,18 +33,20 @@ class Session extends Resource {
             Number::make('Initial price'),
             Number::make('Updated price')->hideWhenCreating()->hideFromIndex(),
 
-            Select::make('Tariff')->options(\App\Models\Session::tariffEnum()->mapWithKeys(function ($item) {
-                return [$item => $item];
-            })),
-
-            Select::make('Status')->options(\App\Models\Session::statusEnum()->mapWithKeys(function ($item) {
-                return [$item => $item];
-            })),
+            Enum::make('Tariff', 'tariff')->attach(SessionTariffEnum::class)->sortable(),
+            Enum::make('Status', 'status')->attach(SessionStatusEnum::class)->sortable(),
 
             DateTime::make('Start time')->format('YYYY-MM-DD HH:mm:ss'),
             DateTime::make('End time')->format('YYYY-MM-DD HH:mm:ss'),
 
             BelongsTo::make('Written by', 'writtenBy', Employee::class),
+        ];
+    }
+
+    public function filters(Request $request): array {
+        return [
+            EnumFilter::make('tariff', SessionTariffEnum::class),
+            EnumFilter::make('status', SessionStatusEnum::class),
         ];
     }
 }

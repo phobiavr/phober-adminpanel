@@ -17,15 +17,7 @@ class Session extends Model {
         "end_time"   => "datetime",
     ];
 
-    public static function tariffEnum(): Collection {
-        return collect(['MORNING', 'EVENING', 'EXTRA']);
-    }
-
-    public static function statusEnum(): Collection {
-        return collect(['QUEUE', 'ACTIVE', 'CANCELED', 'FINISHED']);
-    }
-
-    protected static function boot() {
+    protected static function boot(): void {
         parent::boot();
 
         static::creating(function ($model) {

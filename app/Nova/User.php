@@ -18,7 +18,6 @@ class User extends Resource {
     public static $search = ['first_name', 'last_name', 'username', 'email'];
     public static $group = "Auth";
 
-
     public function fields(Request $request) {
         return [
             ID::make()->sortable(),
@@ -27,7 +26,9 @@ class User extends Resource {
 
             Text::make('Username')
                 ->sortable()
-                ->rules('required', 'max:255'),
+                ->rules('required', 'max:255')
+                ->creationRules("unique:{$this->getTable()},username")
+                ->updateRules("unique:{$this->getTable()},username,{{resourceId}}"),
 
             Text::make('First name')
                 ->sortable()
@@ -40,8 +41,8 @@ class User extends Resource {
             Text::make('Email')
                 ->sortable()
                 ->rules('required', 'email', 'max:254')
-                ->creationRules('unique:users,email')
-                ->updateRules('unique:users,email,{{resourceId}}'),
+                ->creationRules("unique:{$this->getTable()},email")
+                ->updateRules("unique:{$this->getTable()},email,{{resourceId}}"),
 
             Password::make('Password')
                 ->onlyOnForms()
@@ -59,45 +60,5 @@ class User extends Resource {
 
             HasMany::make('Comments', 'comments')->hideFromDetail()->hideFromIndex(),
         ];
-    }
-
-    /**
-     * Get the cards available for the request.
-     *
-     * @param Request $request
-     * @return array
-     */
-    public function cards(Request $request) {
-        return [];
-    }
-
-    /**
-     * Get the filters available for the resource.
-     *
-     * @param Request $request
-     * @return array
-     */
-    public function filters(Request $request) {
-        return [];
-    }
-
-    /**
-     * Get the lenses available for the resource.
-     *
-     * @param Request $request
-     * @return array
-     */
-    public function lenses(Request $request) {
-        return [];
-    }
-
-    /**
-     * Get the actions available for the resource.
-     *
-     * @param Request $request
-     * @return array
-     */
-    public function actions(Request $request) {
-        return [];
     }
 }

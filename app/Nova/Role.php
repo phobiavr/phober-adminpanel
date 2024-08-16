@@ -18,7 +18,9 @@ class Role extends Resource {
             ID::make()->sortable(),
 
             Text::make('Name', 'name')
-                ->rules(['required', 'string', 'max:255']),
+                ->rules(['required', 'string', 'max:255'])
+                ->creationRules("unique:{$this->getTable()},name")
+                ->updateRules("unique:{$this->getTable()},name,{{resourceId}}"),
 
             PermissionBooleanGroup::make('Permissions', 'permissions'),
 

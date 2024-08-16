@@ -8,6 +8,14 @@ use Laravel\Nova\Resource as NovaResource;
 
 abstract class Resource extends NovaResource {
     /**
+     * Get the full table name
+     *
+     * @return string
+     */
+    protected function getTable(): string {
+        return "{$this->model()->getConnectionName()}.{$this->model()->getTable()}";
+    }
+    /**
      * Build an "index" query for the given resource.
      *
      * @param NovaRequest $request

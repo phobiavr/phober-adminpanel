@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Models\Traits\SyncPermissions;
+use App\Models\Traits\SyncRoles;
 use App\Traits\Authorable;
 use App\Traits\Revisionable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -14,7 +16,7 @@ use KirschbaumDevelopment\NovaComments\Models\Comment;
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable {
-    use HasApiTokens, HasFactory, Notifiable, Commentable, Revisionable, Authorable;
+    use HasApiTokens, HasFactory, Notifiable, Commentable, Revisionable, Authorable, SyncRoles, SyncPermissions;
 
     protected $connection = "db_auth";
 

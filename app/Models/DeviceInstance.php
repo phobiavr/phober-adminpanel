@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use App\Traits\Authorable;
-use DateTime;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -11,6 +10,13 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use KirschbaumDevelopment\NovaComments\Models\Comment;
 
+/**
+ * @property int $id
+ * @property int $device_id
+ * @property-read  bool $active
+ * @property-read string $label
+ * @property-read Device $device
+ */
 class DeviceInstance extends Model {
     use Authorable, HasFactory;
 
@@ -23,7 +29,6 @@ class DeviceInstance extends Model {
         'deactivation_end'   => 'datetime',
     ];
     protected $fillable = ["device_id"];
-    protected $appends = ['currently_available'];
 
     public function comments(): MorphMany {
         return $this
@@ -35,33 +40,25 @@ class DeviceInstance extends Model {
         return $this->hasMany(DeviceInstanceSchedule::class, 'instance_id');
     }
 
+    public function activeSchedules(): HasMany {
+        return $this->schedules()->active();
+    }
+
+    public function getActiveAttribute() {
+        return !$this->activeSchedules()->exists();
+    }
+
     public function device(): BelongsTo {
         return $this->belongsTo(Device::class);
     }
 
-    public function getCurrentlyActiveAttribute(): bool {
-        $now = (new DateTime())->format('Y-m-d h:m:s');
+    public function getLabelAttribute(): string {
+        $deviceName = $this->device->name;
 
-        if (!$this->active) {
-            if (!$this->deactivation_start && !$this->deactivation_end) {
-                return false;
-            } elseif ($this->deactivation_start && $this->deactivation_end) {
-                if ($now > $this->deactivation_start && $now < $this->deactivation_end) {
-                    return false;
-                }
-            } elseif (!$this->deactivation_start && $this->deactivation_end) {
-                if ($now < $this->deactivation_end) {
-                    return false;
-                }
-            } elseif ($this->deactivation_start && !$this->deactivation_end) {
-                if ($now > $this->deactivation_start) {
-                    return false;
-                }
-            } else {
-                return true;
-            }
-        }
+        $position = DeviceInstance::where('device_id', $this->device_id)
+            ->where('id', '<=', $this->id)
+            ->count();
 
-        return true;
+        return "{$deviceName} - {$position}";
     }
 }

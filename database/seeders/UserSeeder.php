@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Permission;
+use App\Models\Role;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -12,8 +14,6 @@ class UserSeeder extends Seeder {
      * @return void
      */
     public function run() {
-        //TODO:: switch to factory
-
         User::create([
             "username"   => "admin",
             "first_name" => "Hikmat",
@@ -39,5 +39,14 @@ class UserSeeder extends Seeder {
             "email"    => "member@site.com",
             "password" => '$2y$10$nVHcO/uSIBkb.EMiQCcs7OPikyKtjLmLWzWn1FESF7hFDjpM60F8y'
         ]);
+
+//        Permission::create(['name' => 'access_to_adminpanel']);
+//        Permission::create(['name' => 'manage_sessions']);
+//        Permission::create(['name' => 'manage_sessions']);
+//
+//        Role::create(['name' => 'Admin'])->syncPermissions(['access_to_adminpanel', 'manage_sessions']);
+//        Role::create(['name' => 'Manager'])->syncPermissions(['access_to_adminpanel', 'manage_sessions']);
+//        Role::create(['name' => 'Cashier'])->syncPermissions(['manage_sessions']);
+//        Role::create(['name' => 'Staff']);
     }
 }

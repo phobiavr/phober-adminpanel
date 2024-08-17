@@ -27,7 +27,8 @@
         "league/flysystem-aws-s3-v3": "^3.0",
         "mrmonat/nova-translatable": "^2.2",
         "spatie/laravel-medialibrary": "^10.3",
-        "staudenmeir/eloquent-has-many-deep": "^1.15"
+        "staudenmeir/eloquent-has-many-deep": "^1.15",
+        "tanmuhittin/nova-collapsible-groups": "^0.3.0"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",

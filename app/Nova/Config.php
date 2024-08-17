@@ -15,6 +15,8 @@ class Config extends Resource {
     public static $group = "AdminPanel";
     public static $title = 'key';
 
+    public static $tableStyle = 'tight';
+
     public function fields(Request $request): array {
         return [
             Text::make('Key')->sortable(),

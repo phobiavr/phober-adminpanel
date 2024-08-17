@@ -13,6 +13,10 @@ use KirschbaumDevelopment\NovaComments\Models\Comment;
 use Staudenmeir\EloquentHasManyDeep\HasManyDeep;
 use Staudenmeir\EloquentHasManyDeep\HasRelationships;
 
+/**
+ * @property int $id
+ * @property-read string $name
+ */
 class Device extends Model {
     use HasFactory, HasRelationships, Authorable;
 

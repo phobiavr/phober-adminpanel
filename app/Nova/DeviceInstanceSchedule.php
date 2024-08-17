@@ -8,6 +8,7 @@ use Datomatic\Nova\Fields\Enum\EnumFilter;
 use Illuminate\Http\Request;
 use KirschbaumDevelopment\NovaComments\Commenter;
 use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\HasMany;
 
@@ -27,9 +28,11 @@ class DeviceInstanceSchedule extends Resource {
 
             BelongsTo::make("Instance", 'instance', DeviceInstance::class),
 
-            DateTime::make("Start")->required(),
+            DateTime::make("Start")->nullable(),
 
             DateTime::make("End")->nullable(),
+
+            Boolean::make("Active", 'isActive')->hideWhenUpdating()->hideWhenCreating(),
 
             HasMany::make('Comments', 'comments')->hideFromDetail()->hideFromIndex(),
 

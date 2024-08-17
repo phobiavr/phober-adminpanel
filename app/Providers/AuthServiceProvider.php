@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\Policies\CommentPolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+use KirschbaumDevelopment\NovaComments\Models\Comment;
 
 class AuthServiceProvider extends ServiceProvider {
     /**
@@ -11,7 +13,7 @@ class AuthServiceProvider extends ServiceProvider {
      * @var array<class-string, class-string>
      */
     protected $policies = [
-        // 'App\Models\Model' => 'App\Policies\ModelPolicy',
+        Comment::class => CommentPolicy::class
     ];
 
     /**

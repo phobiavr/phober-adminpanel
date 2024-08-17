@@ -13,7 +13,7 @@ use Laravel\Nova\Fields\Text;
 
 class DeviceInstance extends Resource {
     public static $model = \App\Models\DeviceInstance::class;
-    public static $title = 'device.name';
+    public static $title = 'label';
     public static $search = ['mac_address'];
     public static $group = "Device";
 
@@ -29,7 +29,7 @@ class DeviceInstance extends Resource {
 
             BelongsTo::make("Device"),
 
-            Boolean::make("Active", 'currently_active')->hideWhenUpdating()->hideWhenCreating(),
+            Boolean::make("Active", 'active')->hideWhenUpdating()->hideWhenCreating(),
 
             HasMany::make('Comments', 'comments')->hideFromDetail()->hideFromIndex(),
 

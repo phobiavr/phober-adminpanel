@@ -6,9 +6,7 @@ use Illuminate\Http\Request;
 use KirschbaumDevelopment\NovaComments\Commenter;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\Boolean;
-use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\HasMany;
-use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
 
 class DeviceInstance extends Resource {
@@ -23,11 +21,11 @@ class DeviceInstance extends Resource {
 
     public function fields(Request $request): array {
         return [
-            ID::make()->sortable(),
+            Text::make('label')->hideWhenUpdating()->hideWhenCreating(),
 
             Text::make('Mac Address', 'mac_address'),
 
-            BelongsTo::make("Device"),
+            BelongsTo::make("Device")->sortable(),
 
             Boolean::make("Active", 'active')->hideWhenUpdating()->hideWhenCreating(),
 
@@ -36,6 +34,12 @@ class DeviceInstance extends Resource {
             HasMany::make('Schedules', 'schedules', DeviceInstanceSchedule::class),
 
             new Commenter(),
+        ];
+    }
+
+    public function filters(Request $request): array {
+        return [
+            self::filterByBelongsTo('Device', 'device_id', \App\Models\Device::class),
         ];
     }
 }

@@ -7,6 +7,7 @@ use DateTime;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use KirschbaumDevelopment\NovaComments\Models\Comment;
 
@@ -15,8 +16,6 @@ class DeviceInstance extends Model {
 
     //TODO:: add serial number
 
-    public const ACTIVE = true;
-    public const INACTIVE = false;
     protected $connection = "db_device";
     protected $casts = [
         'active'             => 'boolean',
@@ -30,6 +29,10 @@ class DeviceInstance extends Model {
         return $this
             ->setConnection(config('database.default'))
             ->morphMany(Comment::class, 'commentable');
+    }
+
+    public function schedules(): HasMany {
+        return $this->hasMany(DeviceInstanceSchedule::class, 'instance_id');
     }
 
     public function device(): BelongsTo {

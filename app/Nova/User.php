@@ -13,12 +13,12 @@ use Laravel\Nova\Fields\Password;
 use Laravel\Nova\Fields\Text;
 
 class User extends Resource {
-    public static $model = \App\Models\User::class;
+    public static string $model = \App\Models\User::class;
     public static $title = 'username';
     public static $search = ['first_name', 'last_name', 'username', 'email'];
     public static $group = "Auth";
 
-    public function fields(Request $request) {
+    public function fields(Request $request): array {
         return [
             ID::make()->sortable(),
 

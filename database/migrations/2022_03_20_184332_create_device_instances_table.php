@@ -17,8 +17,6 @@ class CreateDeviceInstancesTable extends Migration {
             $table->bigInteger("device_id")->unsigned()->nullable();
             $table->foreign("device_id")->references("id")->on("devices")->onDelete("SET NULL");
             $table->boolean("active")->default(true);
-            $table->dateTime("deactivation_start")->nullable();
-            $table->dateTime("deactivation_end")->nullable();
             $table->timestamps();
         });
     }

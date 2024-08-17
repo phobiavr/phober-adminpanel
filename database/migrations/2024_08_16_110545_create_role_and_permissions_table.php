@@ -45,10 +45,10 @@ return new class extends Migration {
      * @return void
      */
     public function down() {
-        Schema::connection('db_auth')->dropIfExists('roles');
-        Schema::connection('db_auth')->dropIfExists('permissions');
         Schema::connection('db_auth')->dropIfExists('role_permissions');
         Schema::connection('db_auth')->dropIfExists('user_roles');
         Schema::connection('db_auth')->dropIfExists('user_permissions');
+        Schema::connection('db_auth')->dropIfExists('permissions');
+        Schema::connection('db_auth')->dropIfExists('roles');
     }
 };

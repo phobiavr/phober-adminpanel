@@ -17,6 +17,10 @@ class DeviceInstance extends Resource {
     public static $search = ['mac_address'];
     public static $group = "Device";
 
+    public static function label(): string {
+        return 'Instances';
+    }
+
     public function fields(Request $request): array {
         return [
             ID::make()->sortable(),
@@ -25,17 +29,12 @@ class DeviceInstance extends Resource {
 
             BelongsTo::make("Device"),
 
-            Boolean::make("Active"),
-
-            Boolean::make("Currently Active", 'currently_active')->hideWhenUpdating()->hideWhenCreating(),
-
-            DateTime::make("Deactivation start", "deactivation_start")
-                ->nullable(),
-
-            DateTime::make("Deactivation end", "deactivation_end")
-                ->nullable(),
+            Boolean::make("Active", 'currently_active')->hideWhenUpdating()->hideWhenCreating(),
 
             HasMany::make('Comments', 'comments')->hideFromDetail()->hideFromIndex(),
+
+            HasMany::make('Schedules', 'schedules', DeviceInstanceSchedule::class),
+
             new Commenter(),
         ];
     }

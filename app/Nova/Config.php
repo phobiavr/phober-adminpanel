@@ -2,6 +2,7 @@
 
 namespace App\Nova;
 
+use App\Nova\Actions\SyncConfigsButtonAction;
 use Illuminate\Http\Request;
 use KirschbaumDevelopment\NovaComments\Commenter;
 use Laravel\Nova\Fields\HasMany;
@@ -31,6 +32,13 @@ class Config extends Resource {
             MorphMany::make('Revisions'),
 
             new Commenter(),
+        ];
+    }
+
+    public function actions(Request $request)
+    {
+        return [
+            SyncConfigsButtonAction::make()->standalone(),
         ];
     }
 }

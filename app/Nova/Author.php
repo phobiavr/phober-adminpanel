@@ -18,10 +18,6 @@ class Author extends Resource {
             BelongsTo::make('Created by', 'createdBy', User::class),
 
             BelongsTo::make('Updated by', 'updatedBy', User::class),
-
-            DateTime::make('Created at')->format('YYYY-MM-DD HH:mm:ss'),
-
-            DateTime::make('Updated at')->format('YYYY-MM-DD HH:mm:ss'),
         ];
     }
 }

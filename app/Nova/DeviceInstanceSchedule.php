@@ -11,6 +11,8 @@ use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\HasMany;
+use Laravel\Nova\Fields\MorphOne;
+use Laravel\Nova\Filters\Filter;
 
 class DeviceInstanceSchedule extends Resource {
     public static $model = \App\Models\DeviceInstanceSchedule::class;
@@ -24,15 +26,21 @@ class DeviceInstanceSchedule extends Resource {
 
     public function fields(Request $request): array {
         return [
-            Enum::make('Type', 'type')->attach(DeviceInstanceScheduleEnum::class),
+            Enum::make('Type', 'type')->attach(DeviceInstanceScheduleEnum::class)->sortable(),
 
-            BelongsTo::make("Instance", 'instance', DeviceInstance::class),
+            BelongsTo::make("Instance", 'instance', DeviceInstance::class)->sortable(),
 
-            DateTime::make("Start")->nullable(),
+            DateTime::make("Start")->nullable()->sortable(),
 
-            DateTime::make("End")->nullable(),
+            DateTime::make("End")->nullable()->sortable(),
 
             Boolean::make("Active", 'isActive')->hideWhenUpdating()->hideWhenCreating(),
+
+            DateTime::make('Created at')->format('YYYY-MM-DD HH:mm:ss')->sortable()->exceptOnForms(),
+
+            DateTime::make('Updated at')->format('YYYY-MM-DD HH:mm:ss')->sortable()->exceptOnForms(),
+
+            MorphOne::make('Author'),
 
             HasMany::make('Comments', 'comments')->hideFromDetail()->hideFromIndex(),
 
@@ -43,6 +51,28 @@ class DeviceInstanceSchedule extends Resource {
     public function filters(Request $request) {
         return [
             EnumFilter::make('type', DeviceInstanceScheduleEnum::class),
+            new class extends Filter
+            {
+                public $name = 'Active';
+
+                public $component = 'select-filter';
+
+                public function apply(Request $request, $query, $value)
+                {
+                    if ($value === 'active') {
+                        return $query->active();
+                    } else {
+                        $activeIds = \App\Models\DeviceInstanceSchedule::query()->active()->pluck('id');
+
+                        return $query->whereNotIn('id', $activeIds);
+                    }
+                }
+
+                public function options(Request $request)
+                {
+                    return ['Active' => 'active', 'Inactive' => 'inactive'];
+                }
+            }
         ];
     }
 }

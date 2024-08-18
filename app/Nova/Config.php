@@ -8,6 +8,7 @@ use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\MorphMany;
 use Laravel\Nova\Fields\MorphOne;
 use Laravel\Nova\Fields\Text;
+use Marshmallow\LiveUpdate\TextLiveUpdate;
 
 class Config extends Resource {
     public static $model = \App\Models\Config::class;
@@ -15,13 +16,13 @@ class Config extends Resource {
     public static $group = "AdminPanel";
     public static $title = 'key';
 
-    public static $tableStyle = 'tight';
+    public static $perPageOptions = [100, 150, 250];
 
     public function fields(Request $request): array {
         return [
             Text::make('Key')->sortable(),
 
-            Text::make('Value')->sortable(),
+            TextLiveUpdate::make('Value')->sortable(),
 
             HasMany::make('Comments', 'comments')->hideFromDetail()->hideFromIndex(),
 

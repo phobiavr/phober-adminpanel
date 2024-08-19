@@ -12,7 +12,7 @@ return new class extends Migration {
      */
     public function up() {
         Schema::connection('db_crm')->table('customers', function (Blueprint $table) {
-            $table->string('status')->after('balance');
+            $table->string('status')->default('pending')->after('balance');
         });
     }
 

@@ -17,7 +17,7 @@ class ContactFactory extends Factory {
         return [
             'value' => match ($type) {
                 ContactTypeEnum::EMAIL => $this->faker->email(),
-                ContactTypeEnum::PHONE => $this->faker->phoneNumber(),
+                ContactTypeEnum::PHONE => $this->faker->e164PhoneNumber(),
                 ContactTypeEnum::TELEGRAM => $this->faker->userName(),
             },
             'type'  => $type->value,

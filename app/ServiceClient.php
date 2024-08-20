@@ -19,7 +19,7 @@ class ServiceClient {
         ])
             ->get($this->url . '/config-client/update', [
                 'overwrite' => 'true',
-                'dry-run'   => 'true',
+                'dry-run'   => 'false',
             ]);
     }
 }

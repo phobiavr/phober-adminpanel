@@ -38,7 +38,7 @@ class Config extends Resource {
     public function actions(Request $request)
     {
         return [
-            SyncConfigsButtonAction::make()->standalone(),
+            SyncConfigsButtonAction::make()->standalone()->withoutConfirmation(),
         ];
     }
 }

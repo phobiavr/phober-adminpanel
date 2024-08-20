@@ -26,14 +26,12 @@ class SyncConfigsButtonAction extends Action {
      * @return mixed
      */
     public function handle(ActionFields $fields, Collection $models) {
-        $dryRun = !!$fields['dry-run']['value'];
-
         $result = [
-            ServiceEnum::CRM->name          => (new ServiceClient(ServiceEnum::CRM))->synConfigs($dryRun)->json(),
-            ServiceEnum::AUTH->name         => (new ServiceClient(ServiceEnum::AUTH))->synConfigs($dryRun)->json(),
-            ServiceEnum::STAFF->name        => (new ServiceClient(ServiceEnum::STAFF))->synConfigs($dryRun)->json(),
-            ServiceEnum::HARDWARE->name     => (new ServiceClient(ServiceEnum::HARDWARE))->synConfigs($dryRun)->json(),
-            ServiceEnum::NOTIFICATION->name => (new ServiceClient(ServiceEnum::NOTIFICATION))->synConfigs($dryRun)->json(),
+            ServiceEnum::CRM->name          => (new ServiceClient(ServiceEnum::CRM))->synConfigs()->json(),
+            ServiceEnum::AUTH->name         => (new ServiceClient(ServiceEnum::AUTH))->synConfigs()->json(),
+            ServiceEnum::STAFF->name        => (new ServiceClient(ServiceEnum::STAFF))->synConfigs()->json(),
+            ServiceEnum::HARDWARE->name     => (new ServiceClient(ServiceEnum::HARDWARE))->synConfigs()->json(),
+            ServiceEnum::NOTIFICATION->name => (new ServiceClient(ServiceEnum::NOTIFICATION))->synConfigs()->json(),
         ];
 
         return $this->parseResult($result);
@@ -59,16 +57,5 @@ class SyncConfigsButtonAction extends Action {
         }
 
         return $error ? Action::danger($message) : Action::message($message);
-    }
-
-    /**
-     * Get the fields available on the action.
-     *
-     * @return array
-     */
-    public function fields(): array {
-        return [
-            BooleanGroup::make('Dry Run', 'dry-run')->options(['value' => '']),
-        ];
     }
 }

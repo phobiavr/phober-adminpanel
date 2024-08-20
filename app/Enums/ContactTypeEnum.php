@@ -3,7 +3,7 @@
 namespace App\Enums;
 
 enum ContactTypeEnum: string {
-    case PHONE = 'phone';
-    case EMAIL = 'email';
-    case TELEGRAM = 'telegram';
+    case PHONE = 'PHONE';
+    case EMAIL = 'EMAIL';
+    case TELEGRAM = 'TELEGRAM';
 }

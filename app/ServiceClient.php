@@ -13,13 +13,11 @@ class ServiceClient {
         $this->url = "http://{$this->service->value}";
     }
 
-    public function getUrl(): string {
-        return $this->url;
-    }
-
     public function synConfigs(bool $dryRun): PromiseInterface|Response {
-        return Http::accept('application/json')
-            ->get($this->getUrl() . '/config-client/update', [
+        return Http::accept('application/json')->withHeaders([
+            'X-SERVICE-KEY' => env('SERVICE_KEY'),
+        ])
+            ->get($this->url . '/config-client/update', [
                 'overwrite' => 'true',
                 'dry-run'   => $dryRun ? 'true' : 'false',
             ]);

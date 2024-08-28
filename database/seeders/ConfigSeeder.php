@@ -18,7 +18,6 @@ class ConfigSeeder extends Seeder {
             'APP_NAME'     => 'Phober',
             'APP_ENV'      => 'local',
             'APP_DEBUG'    => 'true',
-            'APP_TIMEZONE' => 'UTC',
 
             'TELESCOPE_ENABLED' => 'true',
 

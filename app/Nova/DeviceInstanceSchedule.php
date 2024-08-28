@@ -2,7 +2,6 @@
 
 namespace App\Nova;
 
-use App\Enums\DeviceInstanceScheduleEnum;
 use Datomatic\Nova\Fields\Enum\Enum;
 use Datomatic\Nova\Fields\Enum\EnumFilter;
 use Illuminate\Http\Request;
@@ -13,6 +12,7 @@ use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\MorphOne;
 use Laravel\Nova\Filters\Filter;
+use Shared\Device\ScheduleEnum;
 
 class DeviceInstanceSchedule extends Resource {
     public static $model = \App\Models\DeviceInstanceSchedule::class;
@@ -26,7 +26,7 @@ class DeviceInstanceSchedule extends Resource {
 
     public function fields(Request $request): array {
         return [
-            Enum::make('Type', 'type')->attach(DeviceInstanceScheduleEnum::class)->sortable(),
+            Enum::make('Type', 'type')->attach(ScheduleEnum::class)->sortable(),
 
             BelongsTo::make("Instance", 'instance', DeviceInstance::class)->sortable(),
 
@@ -50,7 +50,7 @@ class DeviceInstanceSchedule extends Resource {
 
     public function filters(Request $request) {
         return [
-            EnumFilter::make('type', DeviceInstanceScheduleEnum::class),
+            EnumFilter::make('type', ScheduleEnum::class),
             new class extends Filter
             {
                 public $name = 'Active';

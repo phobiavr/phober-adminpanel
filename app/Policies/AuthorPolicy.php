@@ -2,10 +2,10 @@
 
 namespace App\Policies;
 
-use App\Models\Author;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 use Illuminate\Auth\Access\Response;
+use Shared\Author;
 
 class AuthorPolicy {
     use HandlesAuthorization;

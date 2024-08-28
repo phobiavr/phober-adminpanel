@@ -2,10 +2,10 @@
 
 namespace App\Models;
 
-use App\Traits\Authorable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Shared\Traits\Authorable;
 
 class LoyaltyCard extends Model {
     use HasFactory, Authorable;

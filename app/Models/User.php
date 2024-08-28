@@ -4,7 +4,6 @@ namespace App\Models;
 
 use App\Models\Traits\SyncPermissions;
 use App\Models\Traits\SyncRoles;
-use App\Traits\Authorable;
 use App\Traits\Revisionable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -14,6 +13,7 @@ use Illuminate\Notifications\Notifiable;
 use KirschbaumDevelopment\NovaComments\Commentable;
 use KirschbaumDevelopment\NovaComments\Models\Comment;
 use Laravel\Sanctum\HasApiTokens;
+use Shared\Traits\Authorable;
 
 class User extends Authenticatable {
     use HasApiTokens, HasFactory, Notifiable, Commentable, Revisionable, Authorable, SyncRoles, SyncPermissions;

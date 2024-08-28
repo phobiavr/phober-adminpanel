@@ -2,11 +2,11 @@
 
 namespace App\Models;
 
-use App\Traits\Authorable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use KirschbaumDevelopment\NovaComments\Models\Comment;
+use Shared\Traits\Authorable;
 
 /**
  * @property \DateTime $start
@@ -15,6 +15,7 @@ use KirschbaumDevelopment\NovaComments\Models\Comment;
 class DeviceInstanceSchedule extends Model {
     use Authorable;
 
+    protected static $authorableType = 'device-schedule';
     protected $connection = "db_device";
     protected $casts = [
         'start' => 'datetime',

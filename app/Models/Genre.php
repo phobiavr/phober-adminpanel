@@ -2,13 +2,13 @@
 
 namespace App\Models;
 
-use App\Traits\Authorable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Support\Str;
 use KirschbaumDevelopment\NovaComments\Models\Comment;
+use Shared\Traits\Authorable;
 
 class Genre extends Model {
     use HasFactory, Authorable;

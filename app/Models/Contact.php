@@ -2,13 +2,13 @@
 
 namespace App\Models;
 
-use App\Traits\Authorable;
 use App\Traits\Revisionable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use KirschbaumDevelopment\NovaComments\Models\Comment;
+use Shared\Traits\Authorable;
 
 class Contact extends Model {
     use HasFactory, Revisionable, Authorable;

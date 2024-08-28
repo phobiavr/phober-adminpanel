@@ -4,10 +4,9 @@ namespace App\Nova;
 
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
-use Laravel\Nova\Fields\DateTime;
 
 class Author extends Resource {
-    public static $model = \App\Models\Author::class;
+    public static $model = \Shared\Author::class;
     public static $title = 'id';
     public static $globallySearchable = false;
 

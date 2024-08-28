@@ -11,7 +11,7 @@ class CreateAuthorsTable extends Migration {
      * @return void
      */
     public function up() {
-        Schema::create('authors', function (Blueprint $table) {
+        Schema::connection('db_shared')->create('authors', function (Blueprint $table) {
             $table->id();
             $table->morphs('authorable');
 
@@ -28,6 +28,6 @@ class CreateAuthorsTable extends Migration {
      * @return void
      */
     public function down() {
-        Schema::dropIfExists('authors');
+        Schema::connection('db_shared')->dropIfExists('authors');
     }
 }

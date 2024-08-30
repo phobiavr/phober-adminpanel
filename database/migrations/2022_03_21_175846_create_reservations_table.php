@@ -14,18 +14,16 @@ class CreateReservationsTable extends Migration {
         Schema::connection('db_staff')->create('reservations', function (Blueprint $table) {
             $table->id();
 
-            $table->string('contacts')->nullable();
+            $table->string('contacts');
             $table->dateTime('date')->nullable();
             $table->integer('customers_qty')->nullable();
             $table->integer('customers_yo')->nullable();
 
-            //$table->string('wish')->default('not decided');
-
-            // 'QUEUE', 'CANCELED', 'APPROVED
+            /** @see \Shared\Enums\ReservationStatusEnum */
             $table->string('status')->default('QUEUE');
             $table->text('note')->nullable();
 
-            // 'WEBSITE', 'STAFF_APP'
+            /** @see \Shared\Enums\ReservationRequestEnum */
             $table->string('request_from')->nullable();
 
             $table->bigInteger('customer_id')->unsigned()->nullable();

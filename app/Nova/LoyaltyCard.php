@@ -2,13 +2,13 @@
 
 namespace App\Nova;
 
-use App\Enums\LoyaltyCardStatusEnum;
 use Datomatic\Nova\Fields\Enum\Enum;
 use Datomatic\Nova\Fields\Enum\EnumFilter;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Text;
+use Shared\Enums\LoyaltyCardStatusEnum;
 
 class LoyaltyCard extends Resource {
     public static $model = \App\Models\LoyaltyCard::class;

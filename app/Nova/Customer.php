@@ -2,10 +2,10 @@
 
 namespace App\Nova;
 
-use App\Enums\CustomerStatusEnum;
-use App\Enums\GenderEnum;
+use Shared\Enums\CustomerStatusEnum;
 use Datomatic\Nova\Fields\Enum\Enum;
 use Datomatic\Nova\Fields\Enum\EnumFilter;
+use Shared\Enums\GenderEnum;
 use Illuminate\Http\Request;
 use KirschbaumDevelopment\NovaComments\Commenter;
 use Laravel\Nova\Fields\Date;

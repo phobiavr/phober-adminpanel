@@ -19,24 +19,16 @@ class CreateSessionsTable extends Migration {
             $table->bigInteger('serviced_by')->unsigned()->nullable();
             $table->foreign('serviced_by')->on('employees')->references('id');
 
-            $table->integer('initial_time')->default(0);
-            $table->integer('updated_time')->default(0);
+            $table->integer('time')->nullable();
+            $table->double('price')->nullable();
 
-            $table->double('initial_price')->default(0);
-            $table->double('updated_price')->default(0);
-
-            /** @see \App\Enums\SessionTariffEnum */
+            /** @see \Shared\Enums\SessionTariffEnum */
             $table->string('tariff');
 
-            $table->boolean('tariff_changed')->default(0);
-
-            /** @see \App\Enums\SessionStatusEnum */
+            /** @see \Shared\Enums\SessionStatusEnum */
             $table->string('status')->default('QUEUE');
 
             $table->text('note')->nullable();
-
-            $table->dateTime('start_time')->default(null)->nullable();
-            $table->dateTime('end_time')->default(null)->nullable();
 
             $table->timestamps();
         });

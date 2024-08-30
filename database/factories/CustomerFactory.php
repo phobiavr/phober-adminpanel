@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Enums\CustomerStatusEnum;
+use Shared\Enums\CustomerStatusEnum;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class CustomerFactory extends Factory {

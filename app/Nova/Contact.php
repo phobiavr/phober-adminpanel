@@ -2,7 +2,7 @@
 
 namespace App\Nova;
 
-use App\Enums\ContactTypeEnum;
+use Shared\Enums\ContactTypeEnum;
 use Datomatic\Nova\Fields\Enum\Enum;
 use Datomatic\Nova\Fields\Enum\EnumFilter;
 use Illuminate\Http\Request;

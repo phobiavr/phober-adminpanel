@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Enums\ContactTypeEnum;
+use Shared\Enums\ContactTypeEnum;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class ContactFactory extends Factory {

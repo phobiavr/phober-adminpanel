@@ -28,7 +28,7 @@ class Revision extends Resource {
 
             Code::make('Value'),
 
-            DateTime::make('Created at')->format('YYYY-MM-DD HH:mm:ss'),
+            DateTime::make('Created at')->format('YYYY-MM-DD HH:mm:ss')->sortable()->exceptOnForms(),
         ];
     }
 

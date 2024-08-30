@@ -16,10 +16,10 @@ class CreateInvoicesTable extends Migration {
 
             $table->bigInteger('customer_id')->unsigned()->nullable();
 
-            // 'QUEUE', 'PAYED', 'CANCELED'
+            /** @see \Shared\Enums\InvoiceStatusEnum */
             $table->string('status')->default('QUEUE');
 
-            // 'CASH', 'CARD', 'BONUS'
+            /** @see \Shared\Enums\InvoicePaymentMethodEnum */
             $table->string('payment_method')->nullable();
 
             $table->double('discount')->default(0);

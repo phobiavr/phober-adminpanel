@@ -14,14 +14,6 @@ class Invoice extends Model {
 
     protected $connection = "db_staff";
 
-    public static function statusEnum(): Collection {
-        return collect(['QUEUE', 'PAYED', 'CANCELED']);
-    }
-
-    public static function paymentMethodEnum(): Collection {
-        return collect(['CASH', 'CARD', 'BONUS']);
-    }
-
     public function sessions(): BelongsToMany {
         return $this->belongsToMany(Session::class, 'invoice_session');
     }

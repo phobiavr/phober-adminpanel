@@ -7,6 +7,8 @@ use App\Models\Invoice;
 use App\Models\Session;
 use App\Models\SnackSale;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Shared\Enums\InvoicePaymentMethodEnum;
+use Shared\Enums\InvoiceStatusEnum;
 
 class InvoiceFactory extends Factory {
     /**
@@ -17,8 +19,8 @@ class InvoiceFactory extends Factory {
     public function definition(): array {
         return [
             'customer_id'    => (rand(1, 3) === 2) ? null : Customer::all()->pluck('id')->random(),
-            'status'         => Invoice::statusEnum()->random(),
-            'payment_method' => Invoice::paymentMethodEnum()->random(),
+            'status'         => $this->faker->randomElement(InvoiceStatusEnum::cases())->value,
+            'payment_method' => $this->faker->randomElement(InvoicePaymentMethodEnum::cases())->value,
             'discount'       => rand(0, 5) !== 3 ? 0 : rand(1, 7) * 10,
         ];
     }

@@ -29,25 +29,18 @@ class Device extends Model {
     }
 
     public function comments(): MorphMany {
-        return $this
-            ->setConnection(config('database.default'))
-            ->morphMany(Comment::class, 'commentable');
+        return $this->setConnection(config('database.default'))->morphMany(Comment::class, 'commentable');
     }
 
     public function games(): BelongsToMany {
-        return $this
-            ->belongsToMany(Game::class, "game_device");
+        return $this->belongsToMany(Game::class, 'game_device', 'device', 'game_id', 'type', 'id');
     }
 
     public function instances(): HasMany {
-        return $this
-            ->hasMany(DeviceInstance::class);
+        return $this->hasMany(DeviceInstance::class, 'device', 'type');
     }
 
-    // https://github.com/staudenmeir/eloquent-has-many-deep
     public function genres(): HasManyDeep {
-        return $this
-            ->hasManyDeep(Genre::class, ["game_device", Game::class, "game_genre"])
-            ->distinct();
+        return $this->hasManyDeepFromRelations($this->games(), (new Game())->genres())->distinct();
     }
 }

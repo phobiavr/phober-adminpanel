@@ -14,8 +14,10 @@ class CreateDeviceInstancesTable extends Migration {
         Schema::connection('db_device')->create('instances', function (Blueprint $table) {
             $table->id();
             $table->string('mac_address')->nullable();
-            $table->bigInteger("device_id")->unsigned()->nullable();
-            $table->foreign("device_id")->references("id")->on("devices")->onDelete("SET NULL");
+
+            /** @see \Shared\Enums\DeviceEnum */
+            $table->string('device');
+
             $table->boolean("active")->default(true);
             $table->timestamps();
         });

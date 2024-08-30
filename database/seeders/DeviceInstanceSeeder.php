@@ -12,10 +12,10 @@ class DeviceInstanceSeeder extends Seeder {
      * @return void
      */
     public function run() {
-        DeviceInstance::factory(4)->create(['device_id' => 1]);
-        DeviceInstance::factory(2)->create(['device_id' => 2]);
-        DeviceInstance::factory(2)->create(['device_id' => 3]);
-        DeviceInstance::factory(4)->create(['device_id' => 4]);
-        DeviceInstance::factory(4)->create(['device_id' => 5]);
+        DeviceInstance::factory(4)->create(['device' => 'HTC']);
+        DeviceInstance::factory(2)->create(['device' => 'OCULUS']);
+        DeviceInstance::factory(2)->create(['device' => 'PS_VR']);
+        DeviceInstance::factory(4)->create(['device' => 'OMNI']);
+        DeviceInstance::factory(4)->create(['device' => 'DOF_3']);
     }
 }

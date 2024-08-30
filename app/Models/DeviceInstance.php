@@ -12,7 +12,6 @@ use Shared\Traits\Authorable;
 
 /**
  * @property int $id
- * @property int $device_id
  * @property-read  bool $active
  * @property-read string $label
  * @property-read Device $device
@@ -30,7 +29,6 @@ class DeviceInstance extends Model {
         'deactivation_start' => 'datetime',
         'deactivation_end'   => 'datetime',
     ];
-    protected $fillable = ["device_id"];
 
     public function comments(): MorphMany {
         return $this
@@ -55,12 +53,10 @@ class DeviceInstance extends Model {
     }
 
     public function getLabelAttribute(): string {
-        $deviceName = $this->device->name;
-
-        $position = DeviceInstance::where('device_id', $this->device_id)
+        $position = DeviceInstance::where('device', $this->device)
             ->where('id', '<=', $this->id)
             ->count();
 
-        return "{$deviceName} - {$position}";
+        return "{$this->device} - {$position}";
     }
 }

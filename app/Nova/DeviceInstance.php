@@ -2,12 +2,14 @@
 
 namespace App\Nova;
 
+use Datomatic\Nova\Fields\Enum\Enum;
+use Datomatic\Nova\Fields\Enum\EnumFilter;
 use Illuminate\Http\Request;
 use KirschbaumDevelopment\NovaComments\Commenter;
-use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\Text;
+use Shared\Enums\DeviceEnum;
 
 class DeviceInstance extends Resource {
     public static $model = \App\Models\DeviceInstance::class;
@@ -25,7 +27,7 @@ class DeviceInstance extends Resource {
 
             Text::make('Mac Address', 'mac_address'),
 
-            BelongsTo::make("Device")->sortable(),
+            Enum::make('Device')->attach(DeviceEnum::class)->sortable(),
 
             Boolean::make("Active", 'active')->hideWhenUpdating()->hideWhenCreating(),
 
@@ -39,7 +41,7 @@ class DeviceInstance extends Resource {
 
     public function filters(Request $request): array {
         return [
-            self::filterByBelongsTo('Device', 'device_id', \App\Models\Device::class),
+            EnumFilter::make('Device', DeviceEnum::class),
         ];
     }
 }

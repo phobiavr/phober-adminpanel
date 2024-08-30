@@ -20,6 +20,7 @@ use Staudenmeir\EloquentHasManyDeep\HasRelationships;
 class Device extends Model {
     use HasFactory, HasRelationships, Authorable;
 
+    protected static $authorableType = "device";
     protected $connection = 'db_device';
 
     public function setNameAttribute($value): void {

@@ -13,6 +13,7 @@ class LoyaltyCard extends Model {
     //https://stackoverflow.com/a/32881563
     public $incrementing = false;
     protected $connection = "db_crm";
+    protected static $authorableType = "crm-loyalty-card";
 
     public function customer(): HasOne {
         return $this->hasOne(Customer::class, 'id', 'id');

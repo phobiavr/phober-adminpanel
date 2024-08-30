@@ -13,6 +13,7 @@ use Shared\Traits\Authorable;
 class Contact extends Model {
     use HasFactory, Revisionable, Authorable;
 
+    protected static $authorableType = "crm-contact";
     protected $connection = "db_crm";
     protected $fillable = ['value', 'type'];
 

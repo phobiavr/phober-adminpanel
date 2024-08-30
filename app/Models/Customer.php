@@ -14,6 +14,7 @@ use Shared\Traits\Authorable;
 class Customer extends Model {
     use HasFactory, Revisionable, Authorable;
 
+    protected static $authorableType = "crm-customer";
     protected $connection = "db_crm";
     protected $casts = [
         "birthday" => "date",

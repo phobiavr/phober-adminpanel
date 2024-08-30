@@ -15,6 +15,7 @@ use Staudenmeir\EloquentHasManyDeep\HasRelationships;
 class Game extends ModelInteractsWithMedia {
     use HasFactory, HasRelationships, Authorable, HasTranslations;
 
+    protected static $authorableType = "device-game";
     public array $translatable = ['description'];
     protected $connection = 'db_device';
     protected $casts = ["multiplayer" => "boolean"];

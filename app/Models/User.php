@@ -18,6 +18,7 @@ use Shared\Traits\Authorable;
 class User extends Authenticatable {
     use HasApiTokens, HasFactory, Notifiable, Commentable, Revisionable, Authorable, SyncRoles, SyncPermissions;
 
+    protected static $authorableType = "auth-user";
     protected $connection = "db_auth";
 
     /**

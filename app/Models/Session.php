@@ -5,11 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Support\Collection;
+use Shared\Traits\Authorable;
 
 class Session extends Model {
-    use HasFactory;
+    use HasFactory, Authorable;
 
+    protected static $authorableType = "staff-session";
     protected $connection = "db_staff";
 
     protected $casts = [
@@ -32,9 +33,5 @@ class Session extends Model {
 
     public function servicedBy(): BelongsTo {
         return $this->belongsTo(Employee::class, 'serviced_by');
-    }
-
-    public function writtenBy(): BelongsTo {
-        return $this->belongsTo(Employee::class, 'written_by');
     }
 }

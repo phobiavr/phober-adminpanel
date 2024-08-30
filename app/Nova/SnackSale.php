@@ -5,6 +5,7 @@ namespace App\Nova;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\ID;
+use Laravel\Nova\Fields\MorphOne;
 use Laravel\Nova\Fields\Number;
 
 class SnackSale extends Resource {
@@ -21,9 +22,9 @@ class SnackSale extends Resource {
 
             Number::make('Quantity'),
 
-            BelongsTo::make('Sold by', 'soldBy', Employee::class),
-
             BelongsTo::make('Invoice', 'invoice', Invoice::class),
+
+            MorphOne::make('Author'),
         ];
     }
 }

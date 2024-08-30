@@ -38,9 +38,6 @@ class CreateSessionsTable extends Migration {
             $table->dateTime('start_time')->default(null)->nullable();
             $table->dateTime('end_time')->default(null)->nullable();
 
-            $table->bigInteger('written_by')->unsigned()->nullable();
-            $table->foreign('written_by')->on('employees')->references('id');
-
             $table->timestamps();
         });
     }

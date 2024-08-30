@@ -13,6 +13,7 @@ use Shared\Traits\Authorable;
 class Genre extends Model {
     use HasFactory, Authorable;
 
+    protected static $authorableType = "device-genre";
     protected $connection = 'db_device';
 
     public function setNameAttribute($value): void {

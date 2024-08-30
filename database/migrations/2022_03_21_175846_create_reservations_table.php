@@ -28,9 +28,6 @@ class CreateReservationsTable extends Migration {
             // 'WEBSITE', 'STAFF_APP'
             $table->string('request_from')->nullable();
 
-            $table->bigInteger('written_by')->unsigned()->nullable();
-            $table->foreign('written_by')->on('employees')->references('id');
-
             $table->bigInteger('customer_id')->unsigned()->nullable();
 
             $table->timestamps();

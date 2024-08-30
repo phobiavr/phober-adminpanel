@@ -12,6 +12,7 @@ use Shared\Traits\Authorable;
 class Config extends Model {
     use HasFactory, Revisionable, Authorable;
 
+    protected static $authorableType = "config";
     protected $connection = 'db_config';
 
     protected $fillable = ['key', 'value'];

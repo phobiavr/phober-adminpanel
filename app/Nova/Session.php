@@ -10,8 +10,8 @@ use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\ID;
+use Laravel\Nova\Fields\MorphOne;
 use Laravel\Nova\Fields\Number;
-use Laravel\Nova\Fields\Select;
 
 class Session extends Resource {
     public static $model = \App\Models\Session::class;
@@ -39,7 +39,7 @@ class Session extends Resource {
             DateTime::make('Start time')->format('YYYY-MM-DD HH:mm:ss'),
             DateTime::make('End time')->format('YYYY-MM-DD HH:mm:ss'),
 
-            BelongsTo::make('Written by', 'writtenBy', Employee::class),
+            MorphOne::make('Author'),
         ];
     }
 

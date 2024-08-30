@@ -30,8 +30,7 @@ class SessionFactory extends Factory {
             "start_time" => $startTime,
             "end_time"   => $this->faker->dateTimeBetween($startTime, '+2 hours'),
 
-            "note"       => rand(1, 10) == 1 ? $this->faker->text() : '',
-            "written_by" => Employee::all()->pluck('id')->random(),
+            "note" => rand(1, 10) == 1 ? $this->faker->text() : '',
         ];
     }
 }

@@ -16,7 +16,6 @@ class SnackSaleFactory extends Factory {
         return [
             "snack_id" => Snack::all()->pluck('id')->random(),
             "quantity" => rand(1, 3),
-            "sold_by"  => Employee::all()->pluck('id')->random(),
         ];
     }
 }

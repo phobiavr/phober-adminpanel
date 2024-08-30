@@ -12,7 +12,7 @@ use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\MorphOne;
 use Laravel\Nova\Filters\Filter;
-use Shared\Device\ScheduleEnum;
+use Shared\Enums\ScheduleEnum;
 
 class DeviceInstanceSchedule extends Resource {
     public static $model = \App\Models\DeviceInstanceSchedule::class;

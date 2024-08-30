@@ -11,7 +11,7 @@ class CreateDeviceInstancesTable extends Migration {
      * @return void
      */
     public function up() {
-        Schema::connection('db_device')->create('device_instances', function (Blueprint $table) {
+        Schema::connection('db_device')->create('instances', function (Blueprint $table) {
             $table->id();
             $table->string('mac_address')->nullable();
             $table->bigInteger("device_id")->unsigned()->nullable();
@@ -27,6 +27,6 @@ class CreateDeviceInstancesTable extends Migration {
      * @return void
      */
     public function down() {
-        Schema::connection('db_device')->dropIfExists('device_instances');
+        Schema::connection('db_device')->dropIfExists('instances');
     }
 }

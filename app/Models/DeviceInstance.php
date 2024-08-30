@@ -23,6 +23,7 @@ class DeviceInstance extends Model {
     //TODO:: add serial number
 
     protected static $authorableType = "device-instance";
+    protected $table = 'instances';
     protected $connection = "db_device";
     protected $casts = [
         'active'             => 'boolean',

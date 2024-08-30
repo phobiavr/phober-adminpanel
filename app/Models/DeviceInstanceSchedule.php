@@ -16,6 +16,7 @@ class DeviceInstanceSchedule extends Model {
     use Authorable;
 
     protected static $authorableType = 'device-schedule';
+    protected $table = 'schedules';
     protected $connection = "db_device";
     protected $casts = [
         'start' => 'datetime',

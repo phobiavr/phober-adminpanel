@@ -11,11 +11,11 @@ class CreateDeviceInstanceScheduleTable extends Migration {
      * @return void
      */
     public function up(): void {
-        Schema::connection('db_device')->create('device_instance_schedules', function (Blueprint $table) {
+        Schema::connection('db_device')->create('schedules', function (Blueprint $table) {
             $table->id();
             $table->string('type');
             $table->bigInteger("instance_id")->unsigned();
-            $table->foreign("instance_id")->references("id")->on("device_instances")->onDelete("CASCADE");
+            $table->foreign("instance_id")->references("id")->on("instances")->onDelete("CASCADE");
             $table->dateTime("start")->nullable();
             $table->dateTime("end")->nullable();
             $table->timestamps();
@@ -28,6 +28,6 @@ class CreateDeviceInstanceScheduleTable extends Migration {
      * @return void
      */
     public function down(): void {
-        Schema::connection('db_device')->dropIfExists('device_instance_schedules');
+        Schema::connection('db_device')->dropIfExists('schedules');
     }
 }

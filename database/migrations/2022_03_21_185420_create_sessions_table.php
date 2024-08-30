@@ -22,9 +22,6 @@ class CreateSessionsTable extends Migration {
             $table->integer('time')->nullable();
             $table->double('price')->nullable();
 
-            /** @see \Shared\Enums\SessionTariffEnum */
-            $table->string('tariff');
-
             /** @see \Shared\Enums\SessionStatusEnum */
             $table->string('status')->default('QUEUE');
 

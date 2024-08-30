@@ -14,6 +14,7 @@ class CreateDevicesTable extends Migration {
         Schema::connection('db_device')->create('devices', function (Blueprint $table) {
             $table->id();
             $table->string("name");
+            $table->string("type")->unique();
             $table->string("slug");
             $table->json("description")->nullable();
             $table->timestamps();

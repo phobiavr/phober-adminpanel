@@ -6,7 +6,6 @@ use App\Models\DeviceInstance;
 use App\Models\Employee;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Shared\Enums\SessionStatusEnum;
-use Shared\Enums\SessionTariffEnum;
 
 class SessionFactory extends Factory {
     /**
@@ -17,7 +16,6 @@ class SessionFactory extends Factory {
     public function definition(): array {
         return [
             "instance_id" => DeviceInstance::all()->pluck('id')->random(),
-            "tariff"      => $this->faker->randomElement(SessionTariffEnum::cases())->value,
             "serviced_by" => Employee::all()->pluck('id')->random(),
             "status"      => $this->faker->randomElement(SessionStatusEnum::cases())->value,
 

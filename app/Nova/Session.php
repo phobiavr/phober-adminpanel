@@ -12,7 +12,6 @@ use Laravel\Nova\Fields\MorphOne;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Textarea;
 use Shared\Enums\SessionStatusEnum;
-use Shared\Enums\SessionTariffEnum;
 
 class Session extends Resource {
     public static $model = \App\Models\Session::class;
@@ -31,7 +30,6 @@ class Session extends Resource {
             Number::make('Time'),
             Number::make('Price'),
 
-            Enum::make('Tariff', 'tariff')->attach(SessionTariffEnum::class)->sortable(),
             Enum::make('Status', 'status')->attach(SessionStatusEnum::class)->sortable(),
 
             Textarea::make('Note')->hideFromIndex(),
@@ -45,7 +43,6 @@ class Session extends Resource {
 
     public function filters(Request $request): array {
         return [
-            EnumFilter::make('tariff', SessionTariffEnum::class),
             EnumFilter::make('status', SessionStatusEnum::class),
         ];
     }

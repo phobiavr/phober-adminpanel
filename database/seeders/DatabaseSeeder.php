@@ -30,7 +30,9 @@ class DatabaseSeeder extends Seeder {
 
             InvoiceSeeder::class,
 
-            ConfigSeeder::class
+            ConfigSeeder::class,
+
+            TariffPlanSeeder::class
         ]);
     }
 }

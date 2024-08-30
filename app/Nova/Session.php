@@ -37,7 +37,7 @@ class Session extends Resource {
             Textarea::make('Note')->hideFromIndex(),
 
             DateTime::make('Created at')->format('YYYY-MM-DD HH:mm:ss')->sortable()->exceptOnForms(),
-            DateTime::make('Updated at')->format('YYYY-MM-DD HH:mm:ss')->sortable()->exceptOnForms(),
+            DateTime::make('Updated at')->format('YYYY-MM-DD HH:mm:ss')->onlyOnDetail(),
 
             MorphOne::make('Author'),
         ];

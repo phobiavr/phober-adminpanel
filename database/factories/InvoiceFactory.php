@@ -16,7 +16,7 @@ class InvoiceFactory extends Factory {
      */
     public function definition(): array {
         return [
-            'customer_id'    => Customer::all()->pluck('id')->random(),
+            'customer_id'    => (rand(1, 3) === 2) ? null : Customer::all()->pluck('id')->random(),
             'status'         => Invoice::statusEnum()->random(),
             'payment_method' => Invoice::paymentMethodEnum()->random(),
             'discount'       => rand(0, 5) !== 3 ? 0 : rand(1, 7) * 10,

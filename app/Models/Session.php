@@ -13,10 +13,6 @@ class Session extends Model {
     protected static $authorableType = "staff-session";
     protected $connection = "db_staff";
 
-    protected $casts = [
-        "time" => "datetime",
-    ];
-
     public function instance(): BelongsTo {
         return $this->belongsTo(DeviceInstance::class, 'instance_id');
     }

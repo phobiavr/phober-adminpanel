@@ -22,8 +22,7 @@ class Hostname extends Resource {
             Text::make("Hostname")->sortable(),
 
             DateTime::make('Created at')->format('YYYY-MM-DD HH:mm:ss')->sortable()->exceptOnForms(),
-
-            DateTime::make('Updated at')->format('YYYY-MM-DD HH:mm:ss')->sortable()->exceptOnForms(),
+            DateTime::make('Updated at')->format('YYYY-MM-DD HH:mm:ss')->onlyOnDetail(),
         ];
     }
 }

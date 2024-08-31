@@ -10,4 +10,8 @@ class TariffPlan extends Model {
     protected $fillable = [
         'tariff', 'time', 'price', 'device'
     ];
+
+    public function getLabelAttribute(): string {
+        return "{$this->device} - {$this->tariff} - {$this->time}";
+    }
 }

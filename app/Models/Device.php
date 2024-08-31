@@ -40,6 +40,10 @@ class Device extends Model {
         return $this->hasMany(DeviceInstance::class, 'device', 'type');
     }
 
+    public function tariffPlans(): HasMany {
+        return $this->hasMany(TariffPlan::class, 'device', 'type');
+    }
+
     public function genres(): HasManyDeep {
         return $this->hasManyDeepFromRelations($this->games(), (new Game())->genres())->distinct();
     }

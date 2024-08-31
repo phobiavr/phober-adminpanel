@@ -34,7 +34,7 @@ class Game extends Resource {
 
             BelongsToMany::make("Genres"),
 
-            Boolean::make("Multiplayer"),
+            Boolean::make("Multiplayer")->sortable(),
 
             BelongsToMany::make("Devices"),
 

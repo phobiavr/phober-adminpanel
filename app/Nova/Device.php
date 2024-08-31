@@ -11,7 +11,7 @@ use Laravel\Nova\Fields\Text;
 class Device extends Resource {
     public static $model = \App\Models\Device::class;
     public static $title = 'name';
-    public static $search = ['slug', 'name'];
+    public static $search = ['slug', 'name', 'type'];
     public static $group = "Device";
 
     public function fields(Request $request): array {
@@ -20,7 +20,9 @@ class Device extends Resource {
 
             Text::make("Name")->sortable(),
 
-            Text::make("Slug")->sortable()->hideWhenCreating()->hideWhenUpdating(),
+            Text::make("Type")->sortable()->hideWhenCreating()->hideWhenUpdating(),
+
+            HasMany::make('Tariff Plans', 'tariffPlans'),
 
             HasMany::make('Device Instances', 'instances'),
 

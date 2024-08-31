@@ -2,12 +2,12 @@
 
 namespace App\Policies;
 
-use App\Models\Device;
+use App\Models\TariffPlan;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 use Illuminate\Auth\Access\Response;
 
-class DevicePolicy {
+class TariffPlanPolicy {
     use HandlesAuthorization;
 
     /**
@@ -24,11 +24,11 @@ class DevicePolicy {
      * Determine whether the user can view the model.
      *
      * @param User $user
-     * @param Device $device
+     * @param TariffPlan $tariffPlan
      * @return Response|bool
      */
-    public function view(User $user, Device $device) {
-        return true;
+    public function view(User $user, TariffPlan $tariffPlan) {
+        return false;
     }
 
     /**
@@ -45,10 +45,10 @@ class DevicePolicy {
      * Determine whether the user can update the model.
      *
      * @param User $user
-     * @param Device $device
+     * @param TariffPlan $tariffPlan
      * @return Response|bool
      */
-    public function update(User $user, Device $device) {
+    public function update(User $user, TariffPlan $tariffPlan) {
         return false;
     }
 
@@ -56,10 +56,10 @@ class DevicePolicy {
      * Determine whether the user can delete the model.
      *
      * @param User $user
-     * @param Device $device
+     * @param TariffPlan $tariffPlan
      * @return Response|bool
      */
-    public function delete(User $user, Device $device) {
+    public function delete(User $user, TariffPlan $tariffPlan) {
         return false;
     }
 
@@ -67,10 +67,10 @@ class DevicePolicy {
      * Determine whether the user can restore the model.
      *
      * @param User $user
-     * @param Device $device
+     * @param TariffPlan $tariffPlan
      * @return Response|bool
      */
-    public function restore(User $user, Device $device) {
+    public function restore(User $user, TariffPlan $tariffPlan) {
         return true;
     }
 
@@ -78,14 +78,14 @@ class DevicePolicy {
      * Determine whether the user can permanently delete the model.
      *
      * @param User $user
-     * @param Device $device
+     * @param TariffPlan $tariffPlan
      * @return Response|bool
      */
-    public function forceDelete(User $user, Device $device) {
+    public function forceDelete(User $user, TariffPlan $tariffPlan) {
         return false;
     }
 
-    public function addGenre(User $user, Device $device): bool {
+    public function addGenre(User $user, TariffPlan $tariffPlan): bool {
         return false;
     }
 }

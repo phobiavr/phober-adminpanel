@@ -21,7 +21,7 @@ class InvoiceFactory extends Factory {
             'customer_id'    => (rand(1, 3) === 2) ? null : Customer::all()->pluck('id')->random(),
             'status'         => $this->faker->randomElement(InvoiceStatusEnum::cases())->value,
             'payment_method' => $this->faker->randomElement(InvoicePaymentMethodEnum::cases())->value,
-            'discount'       => rand(0, 5) !== 3 ? 0 : rand(1, 7) * 10,
+            //'discount'       => rand(0, 5) !== 3 ? 0 : rand(1, 7) * 10,
         ];
     }
 

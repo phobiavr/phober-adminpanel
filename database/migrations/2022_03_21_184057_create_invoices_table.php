@@ -22,8 +22,6 @@ class CreateInvoicesTable extends Migration {
             /** @see \Shared\Enums\InvoicePaymentMethodEnum */
             $table->string('payment_method')->nullable();
 
-            $table->double('discount')->default(0);
-
             $table->timestamps();
         });
     }

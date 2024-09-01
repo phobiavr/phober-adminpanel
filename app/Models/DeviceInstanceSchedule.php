@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use KirschbaumDevelopment\NovaComments\Models\Comment;
+use Shared\Enums\ScheduleEnum;
 use Shared\Traits\Authorable;
 
 /**
@@ -30,7 +31,7 @@ class DeviceInstanceSchedule extends Model {
     public function scopeActive($query) {
         $now = now()->format('Y-m-d H:i:s');
 
-        return $query->where(function ($query) use ($now) {
+        return $query->where('type', '<>', ScheduleEnum::CANCELED->value)->where(function ($query) use ($now) {
             $query->where(function ($query) {
                 $query->whereNull('start')
                     ->whereNull('end');
@@ -50,12 +51,12 @@ class DeviceInstanceSchedule extends Model {
     public function getIsActiveAttribute(): bool {
         $now = now()->format('Y-m-d H:i:s');
 
-        return (
-            ($this->start === null && $this->end === null) ||
-            ($this->start === null && $this->end > $now) ||
-            ($this->start < $now && $this->end === null) ||
-            ($this->start < $now && $this->end > $now)
-        );
+        return ($this->type !== ScheduleEnum::CANCELED->value) && (
+                ($this->start === null && $this->end === null) ||
+                ($this->start === null && $this->end > $now) ||
+                ($this->start < $now && $this->end === null) ||
+                ($this->start < $now && $this->end > $now)
+            );
     }
 
     public function comments(): MorphMany {

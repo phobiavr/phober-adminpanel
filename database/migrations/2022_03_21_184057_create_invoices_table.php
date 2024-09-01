@@ -15,6 +15,7 @@ class CreateInvoicesTable extends Migration {
             $table->id();
 
             $table->bigInteger('customer_id')->unsigned()->nullable();
+            $table->string('customer')->nullable();
 
             /** @see \Shared\Enums\InvoiceStatusEnum */
             $table->string('status')->default('QUEUE');

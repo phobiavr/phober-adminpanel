@@ -28,7 +28,7 @@ class DatabaseSeeder extends Seeder {
             EmployeeSeeder::class,
             SnackSeeder::class,
 
-            InvoiceSeeder::class,
+            //InvoiceSeeder::class,
 
             ConfigSeeder::class,
 

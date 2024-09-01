@@ -14,8 +14,8 @@ class Invoice extends Model {
 
     protected $connection = "db_staff";
 
-    public function sessions(): BelongsToMany {
-        return $this->belongsToMany(Session::class, 'invoice_session');
+    public function sessions(): HasMany {
+        return $this->hasMany(Session::class);
     }
 
     public function snackSales(): HasMany {

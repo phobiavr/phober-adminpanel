@@ -26,6 +26,9 @@ class CreateSessionsTable extends Migration {
             /** @see \Shared\Enums\SessionStatusEnum */
             $table->string('status')->default('QUEUE');
 
+            $table->bigInteger('invoice_id')->unsigned()->nullable();
+            $table->foreign('invoice_id')->references('id')->on('invoices')->onDelete('SET NULL');
+
             $table->text('note')->nullable();
 
             $table->timestamps();

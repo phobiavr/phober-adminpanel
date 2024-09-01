@@ -17,6 +17,10 @@ class Session extends Model {
         return $this->belongsTo(DeviceInstance::class, 'instance_id');
     }
 
+    public function invoice(): BelongsTo {
+        return $this->belongsTo(Invoice::class, 'invoice_id');
+    }
+
     public function servicedBy(): BelongsTo {
         return $this->belongsTo(Employee::class, 'serviced_by');
     }

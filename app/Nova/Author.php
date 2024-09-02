@@ -12,6 +12,18 @@ class Author extends Resource {
 
     public static $displayInNavigation = false;
 
+    public function authorizedToUpdate($request) {
+        return false;
+    }
+
+    public function authorizedToDelete($request) {
+        return false;
+    }
+
+    public function authorizedToView($request) {
+        return false;
+    }
+
     public function fields(Request $request) {
         return [
             BelongsTo::make('Created by', 'createdBy', User::class),

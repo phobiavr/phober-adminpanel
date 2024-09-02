@@ -34,4 +34,8 @@ class Customer extends Model {
     public function contacts(): HasMany {
         return $this->hasMany(Contact::class, 'customer_id', 'id');
     }
+
+    public function invoices(): HasMany {
+        return $this->hasMany(Invoice::class);
+    }
 }

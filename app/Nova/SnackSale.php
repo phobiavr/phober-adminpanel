@@ -4,6 +4,7 @@ namespace App\Nova;
 
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\MorphOne;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Text;
@@ -23,6 +24,9 @@ class SnackSale extends Resource {
             Number::make('Total')->displayUsing(fn($value) => $value . ' AZN'),
 
             BelongsTo::make('Invoice', 'invoice', Invoice::class),
+
+            DateTime::make('Created at')->format('YYYY-MM-DD HH:mm:ss')->sortable(),
+            DateTime::make('Updated at')->format('YYYY-MM-DD HH:mm:ss'),
 
             MorphOne::make('Author'),
         ];

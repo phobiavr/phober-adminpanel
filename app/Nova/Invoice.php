@@ -30,7 +30,7 @@ class Invoice extends Resource {
             Number::make('Total')->displayUsing(fn($value) => $value . ' AZN'),
 
             HasMany::make('Sessions'),
-            HasMany::make('SnackSales'),
+            HasMany::make('Snack Sales', 'snackSales'),
         ];
     }
 

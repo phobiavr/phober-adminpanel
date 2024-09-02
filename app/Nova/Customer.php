@@ -60,6 +60,8 @@ class Customer extends Resource {
 
             MorphMany::make('Revisions'),
 
+            HasMany::make('Invoices'),
+
             new Commenter(),
         ];
     }

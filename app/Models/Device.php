@@ -9,7 +9,6 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Support\Str;
 use KirschbaumDevelopment\NovaComments\Models\Comment;
-use Shared\Traits\Authorable;
 use Staudenmeir\EloquentHasManyDeep\HasManyDeep;
 use Staudenmeir\EloquentHasManyDeep\HasRelationships;
 
@@ -18,9 +17,8 @@ use Staudenmeir\EloquentHasManyDeep\HasRelationships;
  * @property-read string $name
  */
 class Device extends Model {
-    use HasFactory, HasRelationships, Authorable;
+    use HasFactory, HasRelationships;
 
-    protected static $authorableType = "device";
     protected $connection = 'db_device';
 
     public function setNameAttribute($value): void {

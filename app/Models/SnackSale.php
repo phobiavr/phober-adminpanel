@@ -10,7 +10,6 @@ use Shared\Traits\Authorable;
 class SnackSale extends Model {
     use HasFactory, Authorable;
 
-    protected static $authorableType = "staff-snack-sale";
     protected $connection = "db_staff";
 
     public function invoice(): BelongsTo {

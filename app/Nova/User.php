@@ -49,8 +49,6 @@ class User extends Resource {
                 ->creationRules('required', 'string', 'min:8')
                 ->updateRules('nullable', 'string', 'min:8'),
 
-            MorphOne::make('Author'),
-
             MorphMany::make('Revisions'),
 
             new Commenter(),

@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Support\Str;
 use KirschbaumDevelopment\NovaComments\Models\Comment;
-use Shared\Traits\Authorable;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\Translatable\HasTranslations;
@@ -16,9 +15,8 @@ use Staudenmeir\EloquentHasManyDeep\HasManyDeep;
 use Staudenmeir\EloquentHasManyDeep\HasRelationships;
 
 class Game extends Model implements HasMedia {
-    use HasFactory, HasRelationships, Authorable, HasTranslations, InteractsWithMedia;
+    use HasFactory, HasRelationships, HasTranslations, InteractsWithMedia;
 
-    protected static $authorableType = "device-game";
     public array $translatable = ['description'];
     protected $connection = 'db_device';
     protected $casts = ["multiplayer" => "boolean"];

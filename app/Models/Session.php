@@ -10,7 +10,6 @@ use Shared\Traits\Authorable;
 class Session extends Model {
     use HasFactory, Authorable;
 
-    protected static $authorableType = "staff-session";
     protected $connection = "db_staff";
 
     public function instance(): BelongsTo {

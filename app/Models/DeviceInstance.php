@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use KirschbaumDevelopment\NovaComments\Models\Comment;
-use Shared\Traits\Authorable;
 
 /**
  * @property int $id
@@ -17,11 +16,10 @@ use Shared\Traits\Authorable;
  * @property-read Device $device
  */
 class DeviceInstance extends Model {
-    use Authorable, HasFactory;
+    use HasFactory;
 
     //TODO:: add serial number
 
-    protected static $authorableType = "device-instance";
     protected $table = 'instances';
     protected $connection = "db_device";
     protected $casts = [

@@ -27,8 +27,6 @@ class Config extends Resource {
 
             HasMany::make('Comments', 'comments')->hideFromDetail()->hideFromIndex(),
 
-            MorphOne::make('Author'),
-
             MorphMany::make('Revisions'),
 
             new Commenter(),

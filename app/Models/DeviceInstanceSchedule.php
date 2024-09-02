@@ -7,16 +7,12 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use KirschbaumDevelopment\NovaComments\Models\Comment;
 use Shared\Enums\ScheduleEnum;
-use Shared\Traits\Authorable;
 
 /**
  * @property \DateTime $start
  * @property \DateTime $end
  */
 class DeviceInstanceSchedule extends Model {
-    use Authorable;
-
-    protected static $authorableType = 'device-schedule';
     protected $table = 'schedules';
     protected $connection = "db_device";
     protected $casts = [

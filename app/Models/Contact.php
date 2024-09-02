@@ -8,12 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use KirschbaumDevelopment\NovaComments\Models\Comment;
-use Shared\Traits\Authorable;
 
 class Contact extends Model {
-    use HasFactory, Revisionable, Authorable;
+    use HasFactory, Revisionable;
 
-    protected static $authorableType = "crm-contact";
     protected $connection = "db_crm";
     protected $fillable = ['value', 'type'];
 

@@ -12,7 +12,7 @@ use Illuminate\Support\Collection;
 class Invoice extends Model {
     use HasFactory;
 
-    protected $with = ['sessions', 'snackSales.snack', 'customer'];
+    protected $with = ['sessions', 'snackSales', 'customer'];
     protected $connection = "db_staff";
 
     public function sessions(): HasMany {
@@ -28,6 +28,6 @@ class Invoice extends Model {
     }
 
     public function getTotalAttribute() {
-        return $this->snackSales->sum('price') + $this->sessions->sum('price');
+        return $this->snackSales->sum('price') + $this->sessions->sum('end_price');
     }
 }

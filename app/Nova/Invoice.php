@@ -27,9 +27,7 @@ class Invoice extends Resource {
             Enum::make('Status')->attach(InvoiceStatusEnum::class)->sortable(),
             Enum::make('Payment method')->attach(InvoicePaymentMethodEnum::class)->sortable(),
 
-            //Number::make('Discount'),
-
-            Number::make('Total')->exceptOnForms(),
+            Number::make('Total')->displayUsing(fn($value) => $value . ' AZN'),
 
             HasMany::make('Sessions'),
             HasMany::make('SnackSales'),

@@ -4,9 +4,9 @@ namespace App\Nova;
 
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
-use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\MorphOne;
 use Laravel\Nova\Fields\Number;
+use Laravel\Nova\Fields\Text;
 
 class SnackSale extends Resource {
     public static $model = \App\Models\SnackSale::class;
@@ -16,13 +16,11 @@ class SnackSale extends Resource {
 
     public function fields(Request $request) {
         return [
-            ID::make(__('ID'), 'id')->sortable(),
+            Text::make('Snack'),
 
-            BelongsTo::make('Snack'),
-
+            Number::make('Price')->displayUsing(fn($value) => $value . ' AZN'),
             Number::make('Quantity'),
-
-            Number::make('Price')->exceptOnForms(),
+            Number::make('Total')->displayUsing(fn($value) => $value . ' AZN'),
 
             BelongsTo::make('Invoice', 'invoice', Invoice::class),
 

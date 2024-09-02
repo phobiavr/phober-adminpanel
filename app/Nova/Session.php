@@ -21,20 +21,21 @@ class Session extends Resource {
 
     public function fields(Request $request) {
         return [
-            ID::make(__('ID'), 'id')->sortable(),
-
             BelongsTo::make('Device', 'instance', DeviceInstance::class),
 
             BelongsTo::make('Serviced by', 'servicedBy', Employee::class),
 
-            Number::make('Time'),
-            Number::make('Price'),
+            Number::make('Time')->displayUsing(fn($value) => $value . ' mins'),
 
             Enum::make('Status', 'status')->attach(SessionStatusEnum::class)->sortable(),
 
+            Number::make('Price')->displayUsing(fn($value) => $value . ' AZN'),
+            Number::make('Discount')->displayUsing(fn($value) => $value . ' %'),
+            Number::make('End Price')->displayUsing(fn($value) => $value . ' AZN'),
+
             Textarea::make('Note')->hideFromIndex(),
 
-            DateTime::make('Created at')->format('YYYY-MM-DD HH:mm:ss')->sortable()->exceptOnForms(),
+            DateTime::make('Created at')->format('YYYY-MM-DD HH:mm:ss')->sortable(),
             DateTime::make('Updated at')->format('YYYY-MM-DD HH:mm:ss')->onlyOnDetail(),
 
             MorphOne::make('Author'),

@@ -26,8 +26,10 @@ class CreateSessionsTable extends Migration {
             /** @see \Shared\Enums\SessionStatusEnum */
             $table->string('status')->default('QUEUE');
 
+            $table->double('discount')->default(0);
+
             $table->bigInteger('invoice_id')->unsigned()->nullable();
-            $table->foreign('invoice_id')->references('id')->on('invoices')->onDelete('SET NULL');
+            $table->foreign('invoice_id')->references('id')->on('invoices');
 
             $table->text('note')->nullable();
 

@@ -24,4 +24,8 @@ class Session extends Model {
     public function servicedBy(): BelongsTo {
         return $this->belongsTo(Employee::class, 'serviced_by');
     }
+
+    public function getEndPriceAttribute() {
+        return $this->price - ($this->discount * 0.1);
+    }
 }

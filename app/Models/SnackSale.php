@@ -13,15 +13,11 @@ class SnackSale extends Model {
     protected static $authorableType = "staff-snack-sale";
     protected $connection = "db_staff";
 
-    public function snack(): BelongsTo {
-        return $this->belongsTo(Snack::class);
-    }
-
     public function invoice(): BelongsTo {
         return $this->belongsTo(Invoice::class, 'invoice_id');
     }
 
-    public function getPriceAttribute() {
-        return $this->snack->price * $this->quantity;
+    public function getTotalAttribute() {
+        return $this->price * $this->quantity;
     }
 }

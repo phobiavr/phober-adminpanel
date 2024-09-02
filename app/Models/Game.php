@@ -3,23 +3,25 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Support\Str;
 use KirschbaumDevelopment\NovaComments\Models\Comment;
 use Shared\Traits\Authorable;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\Translatable\HasTranslations;
 use Staudenmeir\EloquentHasManyDeep\HasManyDeep;
 use Staudenmeir\EloquentHasManyDeep\HasRelationships;
 
-class Game extends ModelInteractsWithMedia {
-    use HasFactory, HasRelationships, Authorable, HasTranslations;
+class Game extends Model implements HasMedia {
+    use HasFactory, HasRelationships, Authorable, HasTranslations, InteractsWithMedia;
 
     protected static $authorableType = "device-game";
     public array $translatable = ['description'];
     protected $connection = 'db_device';
     protected $casts = ["multiplayer" => "boolean"];
-    protected string $app = "device-service";
 
     public function setNameAttribute($value): void {
         $this->attributes['name'] = $value;

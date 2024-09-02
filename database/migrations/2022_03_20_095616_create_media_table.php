@@ -9,7 +9,6 @@ class CreateMediaTable extends Migration {
     public function up(): void {
         Schema::connection('db_shared')->create('media', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('app');
             $table->morphs('model');
             $table->uuid()->nullable()->unique();
             $table->string('collection_name');
@@ -27,8 +26,6 @@ class CreateMediaTable extends Migration {
 
             $table->nullableTimestamps();
         });
-
-        DB::connection('db_shared')->statement("CREATE VIEW media_device_service_view AS SELECT * FROM media WHERE app = 'device-service'");
     }
 
     /**
@@ -37,8 +34,6 @@ class CreateMediaTable extends Migration {
      * @return void
      */
     public function down(): void {
-        DB::connection('db_shared')->statement("DROP VIEW media_device_service_view");
-
         Schema::connection('db_shared')->dropIfExists('media');
     }
 }

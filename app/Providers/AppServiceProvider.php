@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Models\Game;
+use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider {
@@ -20,6 +22,8 @@ class AppServiceProvider extends ServiceProvider {
      * @return void
      */
     public function boot() {
-        //
+        Relation::morphMap([
+            'device-game' => Game::class,
+        ]);
     }
 }

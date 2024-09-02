@@ -15,13 +15,11 @@ class Snack extends Resource {
 
     public function fields(Request $request) {
         return [
-            ID::make(__('ID'), 'id')->sortable(),
-
             Text::make('Name')->sortable()->rules('required', 'max:255'),
 
             Number::make('Stock'),
 
-            Number::make('Price')->step(0.01)
+            Number::make('Price')->displayUsing(fn($value) => $value . ' AZN')->step(0.01)
         ];
     }
 }

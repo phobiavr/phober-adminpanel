@@ -17,16 +17,15 @@ class SnackSale extends Resource {
 
     public function fields(Request $request) {
         return [
+            BelongsTo::make('Invoice', 'invoice', Invoice::class),
+
             Text::make('Snack'),
 
             Number::make('Price')->displayUsing(fn($value) => $value . ' AZN'),
             Number::make('Quantity'),
             Number::make('Total')->displayUsing(fn($value) => $value . ' AZN'),
 
-            BelongsTo::make('Invoice', 'invoice', Invoice::class),
-
             DateTime::make('Created at')->format('YYYY-MM-DD HH:mm:ss')->sortable(),
-            DateTime::make('Updated at')->format('YYYY-MM-DD HH:mm:ss'),
 
             MorphOne::make('Author'),
         ];

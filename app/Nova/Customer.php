@@ -32,7 +32,7 @@ class Customer extends Resource {
 
             Text::make('Full name', 'first_name')
                 ->displayUsing(fn($value) => $this->first_name . ' ' . $this->last_name)
-                ->onlyOnIndex()
+                ->exceptOnForms()
                 ->sortable(),
 
             Text::make('First name')

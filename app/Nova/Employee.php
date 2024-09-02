@@ -3,7 +3,9 @@
 namespace App\Nova;
 
 use Illuminate\Http\Request;
+use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
+use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Text;
 
 class Employee extends Resource {
@@ -19,13 +21,26 @@ class Employee extends Resource {
         return [
             ID::make(__('ID'), 'id')->sortable(),
 
+            Text::make('Full name', 'first_name')
+                ->displayUsing(fn($value) => $this->first_name . ' ' . $this->last_name)
+                ->exceptOnForms()
+                ->sortable(),
+
             Text::make('First name')
                 ->sortable()
+                ->onlyOnForms()
                 ->rules('required', 'max:255'),
 
             Text::make('Last name')
                 ->sortable()
+                ->onlyOnForms()
                 ->rules('required', 'max:255'),
+
+            Number::make('Serviced time')
+                ->exceptOnForms()
+                ->displayUsing(fn($value) => $value . ' mins'),
+
+            HasMany::make('Sessions')
         ];
     }
 }

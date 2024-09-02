@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ca2f756f98bf002fa0380a5b8c987d7a",
+    "content-hash": "1844de68ca4128d10c51508c0e4f6623",
     "packages": [
         {
             "name": "aws/aws-crt-php",
@@ -1348,6 +1348,51 @@
                 }
             ],
             "time": "2024-07-20T21:45:45+00:00"
+        },
+        {
+            "name": "guillaumeferron/post-content",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/GuillaumeFerron/post-content.git",
+                "reference": "ce5b2a36e679f5bbc5ac5531a842cfe124826cb9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/GuillaumeFerron/post-content/zipball/ce5b2a36e679f5bbc5ac5531a842cfe124826cb9",
+                "reference": "ce5b2a36e679f5bbc5ac5531a842cfe124826cb9",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Guillaumeferron\\PostContent\\FieldServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Guillaumeferron\\PostContent\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "A post content builder field for Laravel Nova.",
+            "keywords": [
+                "laravel",
+                "nova"
+            ],
+            "support": {
+                "issues": "https://github.com/GuillaumeFerron/post-content/issues",
+                "source": "https://github.com/GuillaumeFerron/post-content/tree/1.1.0"
+            },
+            "time": "2020-10-13T03:15:49+00:00"
         },
         {
             "name": "guzzlehttp/guzzle",

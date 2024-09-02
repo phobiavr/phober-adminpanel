@@ -12,6 +12,7 @@ use Illuminate\Support\Collection;
 class Invoice extends Model {
     use HasFactory;
 
+    protected $with = ['sessions', 'snackSales.snack', 'customer'];
     protected $connection = "db_staff";
 
     public function sessions(): HasMany {

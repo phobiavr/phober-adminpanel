@@ -22,6 +22,8 @@ class SnackSale extends Resource {
 
             Number::make('Quantity'),
 
+            Number::make('Price')->exceptOnForms(),
+
             BelongsTo::make('Invoice', 'invoice', Invoice::class),
 
             MorphOne::make('Author'),

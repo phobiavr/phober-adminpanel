@@ -25,4 +25,8 @@ class Invoice extends Model {
     public function customer(): BelongsTo {
         return $this->belongsTo(Customer::class);
     }
+
+    public function getTotalAttribute() {
+        return $this->snackSales->sum('price') + $this->sessions->sum('price');
+    }
 }

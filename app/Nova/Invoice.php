@@ -29,6 +29,8 @@ class Invoice extends Resource {
 
             //Number::make('Discount'),
 
+            Number::make('Total')->exceptOnForms(),
+
             HasMany::make('Sessions'),
             HasMany::make('SnackSales'),
         ];

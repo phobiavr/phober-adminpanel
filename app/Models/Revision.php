@@ -7,8 +7,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 class Revision extends Model {
-    protected $fillable = ["value", "author_id", "revised_by", "type"];
-    protected $casts = ["created_at" => "datetime"];
+    protected $fillable = ["value", "author_id", "revised_by", "type", 'difference'];
+    protected $casts = ["created_at" => "datetime", 'difference' => 'array'];
 
     public function revisionable(): MorphTo {
         return $this->morphTo();

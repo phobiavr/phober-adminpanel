@@ -21,6 +21,7 @@ class CreateRevisionsTable extends Migration {
             $table->string('type');
 
             $table->text('value')->nullable();
+            $table->text('difference')->nullable();
 
             $table->timestamp('created_at');
         });

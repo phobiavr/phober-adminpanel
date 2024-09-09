@@ -23,10 +23,7 @@ class RollBack extends Action {
     public function handle(ActionFields $fields, Collection $models): void {
         foreach ($models as $model) {
             if ($model->revisionable) {
-                $model->revisionable->update(json_decode($model->value, true));
-            } else {
-                $model_name = $model->revisionable_type;
-                $model_name::create(json_decode($model->value, true));
+                $model->revisionable->update(json_decode($model->difference, true));
             }
         }
     }

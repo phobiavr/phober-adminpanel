@@ -13,7 +13,8 @@ trait Revisionable {
 
             /** @var Revisionable $model */
             $model->revisions()->create([
-                "value"      => $model->makeHidden(['created_at', 'updated_at'])->withoutRelations()->toJson(),
+                "value"      => null,
+                'difference' => $model->makeHidden(['created_at', 'updated_at'])->withoutRelations()->toJson(),
                 "revised_by" => $revisedBy,
                 "type"       => "CREATE"
             ]);
@@ -22,9 +23,14 @@ trait Revisionable {
         static::updated(function ($model) {
             $revisedBy = Auth::check() ? Auth::id() : null;
 
+            $new = $model->makeHidden(['created_at', 'updated_at'])->withoutRelations()->toJson();
+            $old = collect($model->getOriginal())->except(['created_at', 'updated_at'])->toJson();
+            $diff = array_diff(json_decode($old, TRUE), json_decode($new, true));
+
             /** @var Revisionable $model */
             $model->revisions()->create([
-                "value"      => $model->makeHidden(['created_at', 'updated_at'])->withoutRelations()->toJson(),
+                "value"      => $old,
+                'difference' => json_encode($diff),
                 "revised_by" => $revisedBy,
                 "type"       => "UPDATE"
             ]);

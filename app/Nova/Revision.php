@@ -18,15 +18,18 @@ class Revision extends Resource {
 
     public function fields(Request $request) {
         return [
-            Text::make('Model', 'model')->exceptOnForms(),
-
             MorphTo::make('Revisionable')->exceptOnForms(),
 
             BelongsTo::make('Revised by', 'revisedBy', User::class),
 
             Text::make('Type')->exceptOnForms(),
 
-            Code::make('Value'),
+            Code::make('Old value', 'value'),
+            Code::make('Difference')->onlyOnIndex()->displayUsing(function ($value) {
+                return $this->type === 'UPDATE' ? $value : '';
+            } ),
+
+            Code::make('Difference')->showOnDetail(),
 
             DateTime::make('Created at')->format('YYYY-MM-DD HH:mm:ss')->sortable()->exceptOnForms(),
         ];

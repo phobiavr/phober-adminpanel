@@ -28,7 +28,7 @@ class ConfigPolicy {
      * @return Response|bool
      */
     public function view(User $user, Config $config) {
-        return false;
+        return true;
     }
 
     /**

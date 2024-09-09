@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Config;
 use App\Models\Customer;
 use App\Models\Game;
 use App\Models\Session;
@@ -24,12 +25,13 @@ class AppServiceProvider extends ServiceProvider {
      *
      * @return void
      */
-    public function boot() {
+    public function boot(): void {
         Relation::morphMap([
             'device-game'      => Game::class,
             'crm-customer'     => Customer::class,
             'staff-session'    => Session::class,
             'staff-snack-sale' => SnackSale::class,
+            'config'           => Config::class
         ]);
     }
 }

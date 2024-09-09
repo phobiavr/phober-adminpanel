@@ -9,6 +9,7 @@ use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Number;
+use Laravel\Nova\Fields\Text;
 use Shared\Enums\InvoicePaymentMethodEnum;
 use Shared\Enums\InvoiceStatusEnum;
 
@@ -25,7 +26,20 @@ class Invoice extends Resource {
             BelongsTo::make('Customer', 'customer', Customer::class),
 
             Enum::make('Status')->attach(InvoiceStatusEnum::class)->sortable(),
-            Enum::make('Payment method')->attach(InvoicePaymentMethodEnum::class)->sortable(),
+
+            Text::make('Payment method')
+                ->displayUsing(function ($value) {
+                    $decoded = json_decode($value, true);
+                    $paymentMethods = [];
+
+                    foreach (InvoicePaymentMethodEnum::cases() as $method) {
+                        if (isset($decoded[$method->value])) {
+                            $paymentMethods[] = "{$method->value}: {$decoded[$method->value]}";
+                        }
+                    }
+
+                    return implode(', ', $paymentMethods);
+                }),
 
             Number::make('Total')->displayUsing(fn($value) => $value . ' AZN'),
 
@@ -37,7 +51,6 @@ class Invoice extends Resource {
     public function filters(Request $request): array {
         return [
             EnumFilter::make('Status', InvoiceStatusEnum::class),
-            EnumFilter::make('Payment method', InvoicePaymentMethodEnum::class),
         ];
     }
 }

@@ -11,7 +11,7 @@ return new class extends Migration {
      * @return void
      */
     public function up() {
-        Schema::connection('db_config')->create('configs', function (Blueprint $table) {
+        Schema::create('configs', function (Blueprint $table) {
             $table->id();
             $table->string('key')->unique();
             $table->string('value')->nullable();
@@ -25,6 +25,6 @@ return new class extends Migration {
      * @return void
      */
     public function down() {
-        Schema::connection('db_config')->dropIfExists('configs');
+        Schema::dropIfExists('configs');
     }
 };

@@ -11,8 +11,6 @@ use KirschbaumDevelopment\NovaComments\Models\Comment;
 class Config extends Model {
     use HasFactory, Revisionable;
 
-    protected $connection = 'db_config';
-
     protected $fillable = ['key', 'value'];
 
     public function comments(): MorphMany {

@@ -26,7 +26,7 @@ class ConfigSeeder extends Seeder {
             'LOG_LEVEL'                => 'debug',
 
             'DB_SHARED_CONNECTION' => 'mysql',
-            'DB_SHARED_HOST'       => 'db',
+            'DB_SHARED_HOST'       => 'db_mysql',
             'DB_SHARED_PORT'       => '3306',
             'DB_SHARED_DATABASE'   => 'phober_shared',
             'DB_SHARED_USERNAME'   => 'root',

@@ -35,7 +35,8 @@
         "shared/package": "dev-main",
         "spatie/laravel-medialibrary": "^10.3",
         "staudenmeir/eloquent-has-many-deep": "^1.15",
-        "tanmuhittin/nova-collapsible-groups": "^0.3.0"
+        "tanmuhittin/nova-collapsible-groups": "^0.3.0",
+        "yajra/laravel-oci8": "^9.5"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",

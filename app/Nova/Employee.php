@@ -34,43 +34,43 @@ class Employee extends Resource {
                 ->onlyOnForms()
                 ->rules('required', 'max:255'),
 
-            Number::make('Serviced', 'serviced_total')
+            Number::make('Serviced TOTAL', 'serviced_total')
                 ->exceptOnForms()
                 ->displayUsing(fn($value) => $value . ' times'),
 
-            Number::make('Serviced time', 'serviced_minutes_total')
+            Number::make('Serviced time TOTAL', 'serviced_minutes_total')
                 ->exceptOnForms()
                 ->displayUsing(fn($value) => $value . ' mins'),
 
 
-            Number::make('Serviced in a day', 'serviced_in_a_day')
+            Number::make('Serviced in a DAY', 'serviced_in_a_day')
                 ->exceptOnForms()
                 ->displayUsing(fn($value) => $value . ' times')
                 ->onlyOnDetail(),
 
-            Number::make('Serviced time in a day', 'serviced_minutes_in_a_day')
+            Number::make('Serviced time in a DAY', 'serviced_minutes_in_a_day')
                 ->exceptOnForms()
                 ->displayUsing(fn($value) => $value . ' mins')
                 ->onlyOnDetail(),
 
 
-            Number::make('Serviced in a week', 'serviced_in_a_week')
+            Number::make('Serviced in a WEEK', 'serviced_in_a_week')
                 ->exceptOnForms()
                 ->displayUsing(fn($value) => $value . ' times')
                 ->onlyOnDetail(),
 
-            Number::make('Serviced time in a week', 'serviced_minutes_in_a_week')
+            Number::make('Serviced time in a WEEK', 'serviced_minutes_in_a_week')
                 ->exceptOnForms()
                 ->displayUsing(fn($value) => $value . ' mins')
                 ->onlyOnDetail(),
 
 
-            Number::make('Serviced in a month', 'serviced_in_a_month')
+            Number::make('Serviced in a MONTH', 'serviced_in_a_month')
                 ->exceptOnForms()
                 ->displayUsing(fn($value) => $value . ' times')
                 ->onlyOnDetail(),
 
-            Number::make('Serviced time in a month', 'serviced_minutes_in_a_month')
+            Number::make('Serviced time in a MONTH', 'serviced_minutes_in_a_month')
                 ->exceptOnForms()
                 ->displayUsing(fn($value) => $value . ' mins')
                 ->onlyOnDetail(),

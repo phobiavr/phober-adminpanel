@@ -16,3 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return true;
 });
+
+Route::get('/health', function () {
+    return response()->json(['status' => 'OK']);
+});

@@ -1016,5 +1016,7 @@ class GameSeeder extends Seeder {
         );
 
         DB::connection('db_device')->table("games")->insert($games);
+
+        DB::connection('db_device')->statement("SELECT setval('games_id_seq', (SELECT MAX(id) FROM games));");
     }
 }

@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use DateTime;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Shared\Enums\DeviceEnum;
+use Phobiavr\PhoberLaravelCommon\Enums\DeviceEnum;
 
 class DeviceSeeder extends Seeder {
     /**

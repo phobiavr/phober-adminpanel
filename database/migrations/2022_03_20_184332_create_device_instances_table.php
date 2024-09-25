@@ -15,7 +15,7 @@ class CreateDeviceInstancesTable extends Migration {
             $table->id();
             $table->string('mac_address')->nullable();
 
-            /** @see \Shared\Enums\DeviceEnum */
+            /** @see \Phobiavr\PhoberLaravelCommon\Enums\DeviceEnum */
             $table->string('device');
 
             $table->boolean("active")->default(true);

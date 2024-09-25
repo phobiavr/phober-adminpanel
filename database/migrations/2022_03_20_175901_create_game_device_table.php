@@ -15,7 +15,7 @@ class CreateGameDeviceTable extends Migration {
             $table->bigInteger("game_id")->unsigned();
             $table->foreign("game_id")->references("id")->on("games")->onDelete("CASCADE");
 
-            /** @see \Shared\Enums\DeviceEnum */
+            /** @see \Phobiavr\PhoberLaravelCommon\Enums\DeviceEnum */
             $table->string('device');
         });
     }

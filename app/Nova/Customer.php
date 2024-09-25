@@ -2,10 +2,8 @@
 
 namespace App\Nova;
 
-use Shared\Enums\CustomerStatusEnum;
 use Datomatic\Nova\Fields\Enum\Enum;
 use Datomatic\Nova\Fields\Enum\EnumFilter;
-use Shared\Enums\GenderEnum;
 use Illuminate\Http\Request;
 use KirschbaumDevelopment\NovaComments\Commenter;
 use Laravel\Nova\Fields\Date;
@@ -16,6 +14,8 @@ use Laravel\Nova\Fields\MorphMany;
 use Laravel\Nova\Fields\MorphOne;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Textarea;
+use Phobiavr\PhoberLaravelCommon\Enums\CustomerStatusEnum;
+use Phobiavr\PhoberLaravelCommon\Enums\GenderEnum;
 
 class Customer extends Resource {
     public static $model = \App\Models\Customer::class;

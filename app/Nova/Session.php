@@ -7,11 +7,10 @@ use Datomatic\Nova\Fields\Enum\EnumFilter;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\DateTime;
-use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\MorphOne;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Textarea;
-use Shared\Enums\SessionStatusEnum;
+use Phobiavr\PhoberLaravelCommon\Enums\SessionStatusEnum;
 
 class Session extends Resource {
     public static $model = \App\Models\Session::class;

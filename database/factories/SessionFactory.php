@@ -5,7 +5,7 @@ namespace Database\Factories;
 use App\Models\DeviceInstance;
 use App\Models\Employee;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Shared\Enums\SessionStatusEnum;
+use Phobiavr\PhoberLaravelCommon\Enums\SessionStatusEnum;
 
 class SessionFactory extends Factory {
     /**

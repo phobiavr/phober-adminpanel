@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Text;
-use Shared\Enums\LoyaltyCardStatusEnum;
+use Phobiavr\PhoberLaravelCommon\Enums\LoyaltyCardStatusEnum;
 
 class LoyaltyCard extends Resource {
     public static $model = \App\Models\LoyaltyCard::class;

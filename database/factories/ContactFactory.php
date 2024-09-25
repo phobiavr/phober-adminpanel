@@ -2,8 +2,8 @@
 
 namespace Database\Factories;
 
-use Shared\Enums\ContactTypeEnum;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Phobiavr\PhoberLaravelCommon\Enums\ContactTypeEnum;
 
 class ContactFactory extends Factory {
     /**

@@ -5,9 +5,8 @@ namespace Database\Seeders;
 use App\Models\TariffPlan;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Shared\Enums\DeviceEnum;
-use Shared\Enums\SessionTariffEnum;
-use Shared\Enums\SessionTimeEnum;
+use Phobiavr\PhoberLaravelCommon\Enums\SessionTariffEnum;
+use Phobiavr\PhoberLaravelCommon\Enums\SessionTimeEnum;
 
 class TariffPlanSeeder extends Seeder
 {

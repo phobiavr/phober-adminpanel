@@ -2,8 +2,8 @@
 
 namespace Database\Factories;
 
-use Shared\Enums\CustomerStatusEnum;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Phobiavr\PhoberLaravelCommon\Enums\CustomerStatusEnum;
 
 class CustomerFactory extends Factory {
     /**

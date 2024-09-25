@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
 
 class Author extends Resource {
-    public static $model = \Shared\Author::class;
+    public static $model = \Phobiavr\PhoberLaravelCommon\Author::class;
     public static $title = 'id';
     public static $globallySearchable = false;
 

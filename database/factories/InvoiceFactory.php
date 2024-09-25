@@ -7,8 +7,8 @@ use App\Models\Invoice;
 use App\Models\Session;
 use App\Models\SnackSale;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Shared\Enums\InvoicePaymentMethodEnum;
-use Shared\Enums\InvoiceStatusEnum;
+use Phobiavr\PhoberLaravelCommon\Enums\InvoicePaymentMethodEnum;
+use Phobiavr\PhoberLaravelCommon\Enums\InvoiceStatusEnum;
 
 class InvoiceFactory extends Factory {
     /**

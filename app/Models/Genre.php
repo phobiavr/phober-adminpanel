@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Support\Str;
 use KirschbaumDevelopment\NovaComments\Models\Comment;
-use Shared\Traits\Authorable;
+use Phobiavr\PhoberLaravelCommon\Traits\Authorable;
 
 class Genre extends Model {
     use HasFactory, Authorable;

@@ -19,11 +19,11 @@ class CreateReservationsTable extends Migration {
             $table->integer('customers_qty')->nullable();
             $table->integer('customers_yo')->nullable();
 
-            /** @see \Shared\Enums\ReservationStatusEnum */
+            /** @see \Phobiavr\PhoberLaravelCommon\Enums\ReservationStatusEnum */
             $table->string('status')->default('QUEUE');
             $table->text('note')->nullable();
 
-            /** @see \Shared\Enums\ReservationRequestEnum */
+            /** @see \Phobiavr\PhoberLaravelCommon\Enums\ReservationRequestEnum */
             $table->string('request_from')->nullable();
 
             $table->bigInteger('customer_id')->unsigned()->nullable();

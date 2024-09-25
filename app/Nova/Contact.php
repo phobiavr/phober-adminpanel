@@ -2,7 +2,6 @@
 
 namespace App\Nova;
 
-use Shared\Enums\ContactTypeEnum;
 use Datomatic\Nova\Fields\Enum\Enum;
 use Datomatic\Nova\Fields\Enum\EnumFilter;
 use Illuminate\Http\Request;
@@ -11,8 +10,8 @@ use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\HasOne;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\MorphMany;
-use Laravel\Nova\Fields\MorphOne;
 use Laravel\Nova\Fields\Text;
+use Phobiavr\PhoberLaravelCommon\Enums\ContactTypeEnum;
 
 class Contact extends Resource {
     public static $model = \App\Models\Contact::class;

@@ -14,14 +14,14 @@ return new class extends Migration {
         Schema::connection('db_device')->create('tariff_plans', function (Blueprint $table) {
             $table->id();
 
-            /** @see \Shared\Enums\SessionTariffEnum */
+            /** @see \Phobiavr\PhoberLaravelCommon\Enums\SessionTariffEnum*/
             $table->string('tariff');
 
-            /** @see \Shared\Enums\SessionTimeEnum */
+            /** @see \Phobiavr\PhoberLaravelCommon\Enums\SessionTimeEnum */
             $table->string('time');
             $table->double('price');
 
-            /** @see \Shared\Enums\DeviceEnum */
+            /** @see \Phobiavr\PhoberLaravelCommon\Enums\DeviceEnum */
             $table->string('device');
 
             $table->timestamps();

@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use KirschbaumDevelopment\NovaComments\Models\Comment;
-use Shared\Traits\Authorable;
+use Phobiavr\PhoberLaravelCommon\Traits\Authorable;
 
 class Customer extends Model {
     use HasFactory, Revisionable, Authorable;

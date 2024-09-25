@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use KirschbaumDevelopment\NovaComments\Models\Comment;
-use Shared\Enums\ScheduleEnum;
+use Phobiavr\PhoberLaravelCommon\Enums\ScheduleEnum;
 
 /**
  * @property \DateTime $start

@@ -9,7 +9,7 @@ use KirschbaumDevelopment\NovaComments\Commenter;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\Text;
-use Shared\Enums\DeviceEnum;
+use Phobiavr\PhoberLaravelCommon\Enums\DeviceEnum;
 
 class DeviceInstance extends Resource {
     public static $model = \App\Models\DeviceInstance::class;

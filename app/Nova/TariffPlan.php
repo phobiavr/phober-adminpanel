@@ -6,9 +6,8 @@ use Datomatic\Nova\Fields\Enum\Enum;
 use Datomatic\Nova\Fields\Enum\EnumFilter;
 use Illuminate\Http\Request;
 use Marshmallow\LiveUpdate\TextLiveUpdate;
-use Shared\Enums\DeviceEnum;
-use Shared\Enums\SessionTariffEnum;
-use Shared\Enums\SessionTimeEnum;
+use Phobiavr\PhoberLaravelCommon\Enums\SessionTariffEnum;
+use Phobiavr\PhoberLaravelCommon\Enums\SessionTimeEnum;
 
 class TariffPlan extends Resource {
     public static $model = \App\Models\TariffPlan::class;

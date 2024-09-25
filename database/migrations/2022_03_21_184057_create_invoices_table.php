@@ -17,10 +17,10 @@ class CreateInvoicesTable extends Migration {
             $table->bigInteger('customer_id')->unsigned()->nullable();
             $table->string('customer')->nullable();
 
-            /** @see \Shared\Enums\InvoiceStatusEnum */
+            /** @see \Phobiavr\PhoberLaravelCommon\Enums\InvoiceStatusEnum */
             $table->string('status')->default('QUEUE');
 
-            /** @see \Shared\Enums\InvoicePaymentMethodEnum */
+            /** @see \Phobiavr\PhoberLaravelCommon\Enums\InvoicePaymentMethodEnum */
             $table->string('payment_method')->nullable();
 
             $table->timestamps();

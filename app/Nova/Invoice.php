@@ -10,8 +10,8 @@ use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Text;
-use Shared\Enums\InvoicePaymentMethodEnum;
-use Shared\Enums\InvoiceStatusEnum;
+use Phobiavr\PhoberLaravelCommon\Enums\InvoicePaymentMethodEnum;
+use Phobiavr\PhoberLaravelCommon\Enums\InvoiceStatusEnum;
 
 class Invoice extends Resource {
     public static $model = \App\Models\Invoice::class;

@@ -23,7 +23,7 @@ class CreateSessionsTable extends Migration {
             $table->integer('time')->nullable();
             $table->double('price')->nullable();
 
-            /** @see \Shared\Enums\SessionStatusEnum */
+            /** @see \Phobiavr\PhoberLaravelCommon\Enums\SessionStatusEnum */
             $table->string('status')->default('QUEUE');
 
             $table->double('discount')->default(0);

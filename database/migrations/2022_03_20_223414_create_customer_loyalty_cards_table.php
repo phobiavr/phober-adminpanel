@@ -16,7 +16,7 @@ class CreateCustomerLoyaltyCardsTable extends Migration {
             $table->foreign('id')->on('customers')->references('id');
 
             $table->string('code')->nullable();
-            /** @see \Shared\Enums\LoyaltyCardStatusEnum */
+            /** @see \Phobiavr\PhoberLaravelCommon\Enums\LoyaltyCardStatusEnum */
             $table->string('status')->nullable()->default('BASIC');
 
             $table->timestamps();

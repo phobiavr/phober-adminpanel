@@ -10,9 +10,8 @@ use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\HasMany;
-use Laravel\Nova\Fields\MorphOne;
 use Laravel\Nova\Filters\Filter;
-use Shared\Enums\ScheduleEnum;
+use Phobiavr\PhoberLaravelCommon\Enums\ScheduleEnum;
 
 class DeviceInstanceSchedule extends Resource {
     public static $model = \App\Models\DeviceInstanceSchedule::class;

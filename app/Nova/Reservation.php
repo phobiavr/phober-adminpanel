@@ -8,12 +8,11 @@ use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\ID;
-use Laravel\Nova\Fields\MorphOne;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Textarea;
-use Shared\Enums\ReservationRequestEnum;
-use Shared\Enums\ReservationStatusEnum;
+use Phobiavr\PhoberLaravelCommon\Enums\ReservationRequestEnum;
+use Phobiavr\PhoberLaravelCommon\Enums\ReservationStatusEnum;
 
 class Reservation extends Resource {
     public static $model = \App\Models\Reservation::class;

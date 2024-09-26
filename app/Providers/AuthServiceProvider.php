@@ -2,9 +2,11 @@
 
 namespace App\Providers;
 
+use App\Policies\AuthorPolicy;
 use App\Policies\CommentPolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use KirschbaumDevelopment\NovaComments\Models\Comment;
+use Phobiavr\PhoberLaravelCommon\Author;
 
 class AuthServiceProvider extends ServiceProvider {
     /**
@@ -13,6 +15,7 @@ class AuthServiceProvider extends ServiceProvider {
      * @var array<class-string, class-string>
      */
     protected $policies = [
+        Author::class => AuthorPolicy::class,
         Comment::class => CommentPolicy::class
     ];
 

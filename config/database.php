@@ -112,6 +112,51 @@ return [
             // 'trust_server_certificate' => env('DB_TRUST_SERVER_CERTIFICATE', 'false'),
         ],
 
+        'db_auth' => [
+            'driver'   => env('DB_AUTH_CONNECTION', 'mysql'),
+            'host'     => env('DB_AUTH_HOST', '127.0.0.1'),
+            'port'     => env('DB_AUTH_PORT', '3306'),
+            'database' => env('DB_AUTH_DATABASE', 'phober_auth'),
+            'username' => env('DB_AUTH_USERNAME', 'forge'),
+            'password' => env('DB_AUTH_PASSWORD', ''),
+        ],
+
+        'db_device' => [
+            'driver'   => env('DB_DEVICE_CONNECTION', 'mysql'),
+            'host'     => env('DB_DEVICE_HOST', '127.0.0.1'),
+            'port'     => env('DB_DEVICE_PORT', '3306'),
+            'database' => env('DB_DEVICE_DATABASE', 'phober_device'),
+            'username' => env('DB_DEVICE_USERNAME', 'forge'),
+            'password' => env('DB_DEVICE_PASSWORD', ''),
+        ],
+
+        'db_crm' => [
+            'driver'   => env('DB_CRM_CONNECTION', 'mysql'),
+            'host'     => env('DB_CRM_HOST', '127.0.0.1'),
+            'port'     => env('DB_CRM_PORT', '3306'),
+            'database' => env('DB_CRM_DATABASE', 'phober_crm'),
+            'username' => env('DB_CRM_USERNAME', 'forge'),
+            'password' => env('DB_CRM_PASSWORD', ''),
+        ],
+
+        'db_staff' => [
+            'driver'   => env('DB_STAFF_CONNECTION', 'mysql'),
+            'host'     => env('DB_STAFF_HOST', '127.0.0.1'),
+            'port'     => env('DB_STAFF_PORT', '3306'),
+            'database' => env('DB_STAFF_DATABASE', 'phober_staff'),
+            'username' => env('DB_STAFF_USERNAME', 'forge'),
+            'password' => env('DB_STAFF_PASSWORD', ''),
+        ],
+
+        'db_shared' => [
+            'driver'   => env('DB_SHARED_CONNECTION', 'mysql'),
+            'host'     => env('DB_SHARED_HOST', '127.0.0.1'),
+            'port'     => env('DB_SHARED_PORT', '3306'),
+            'database' => env('DB_SHARED_DATABASE', 'phober_shared'),
+            'username' => env('DB_SHARED_USERNAME', 'forge'),
+            'password' => env('DB_SHARED_PASSWORD', ''),
+        ],
+
     ],
 
     /*

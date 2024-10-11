@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5202affe8816d3c0d7dad9d49663eeef",
+    "content-hash": "29b6bd90fe70ee7350279cb46c71b8ff",
     "packages": [
         {
             "name": "brick/math",
@@ -192,6 +192,53 @@
                 }
             ],
             "time": "2024-02-09T16:56:22+00:00"
+        },
+        {
+            "name": "datomatic/nova-enum-field",
+            "version": "v1.9.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/datomatic/nova-enum-field.git",
+                "reference": "f78e309b9ed2228c9f28cc8417c4538c8e06b2ca"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/datomatic/nova-enum-field/zipball/f78e309b9ed2228c9f28cc8417c4538c8e06b2ca",
+                "reference": "f78e309b9ed2228c9f28cc8417c4538c8e06b2ca",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/database": "^9.0|^10.0|^11.0",
+                "illuminate/http": "^9.0|^10.0|^11.0",
+                "illuminate/support": "^9.0|^10.0|^11.0",
+                "laravel/nova": "^3.0|^4.0",
+                "php": ">=8.1"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": []
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Datomatic\\Nova\\Fields\\Enum\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "A Laravel Nova PHP 8.1 enum field with filters",
+            "keywords": [
+                "enum",
+                "laravel",
+                "nova"
+            ],
+            "support": {
+                "source": "https://github.com/datomatic/nova-enum-field/tree/v1.9.0"
+            },
+            "time": "2024-04-03T12:59:34+00:00"
         },
         {
             "name": "dflydev/dot-access-data",
@@ -2894,6 +2941,45 @@
                 }
             ],
             "time": "2024-09-24T14:04:43+00:00"
+        },
+        {
+            "name": "phobiavr/phober-laravel-common",
+            "version": "0.1.0",
+            "dist": {
+                "type": "path",
+                "url": "./shared",
+                "reference": "bf6fe32bf8403b72517b6b0a4e3656f7dbbbf552"
+            },
+            "require": {
+                "laravel/framework": "^9.0|^11.0",
+                "php": "^8.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Phobiavr\\PhoberLaravelCommon\\": "src/"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Phobiavr\\PhoberLaravelCommon\\Tests\\": "tests/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Abdukhaligov Hikmat",
+                    "email": "hikmat.pou@gmail.com",
+                    "homepage": "https://github.com/Abdukhaligov",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Shared package for Phober microservices",
+            "transport-options": {
+                "relative": true
+            }
         },
         {
             "name": "phpoption/phpoption",
@@ -6383,6 +6469,157 @@
                 "source": "https://github.com/webmozarts/assert/tree/1.11.0"
             },
             "time": "2022-06-03T18:03:27+00:00"
+        },
+        {
+            "name": "yajra/laravel-oci8",
+            "version": "v11.6.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/yajra/laravel-oci8.git",
+                "reference": "4d7f4e87a0cf7aab06dadce86110fb9f260fc03d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/yajra/laravel-oci8/zipball/4d7f4e87a0cf7aab06dadce86110fb9f260fc03d",
+                "reference": "4d7f4e87a0cf7aab06dadce86110fb9f260fc03d",
+                "shasum": ""
+            },
+            "require": {
+                "ext-oci8": ">=3.0.1",
+                "ext-pdo": "*",
+                "illuminate/database": "^11.15.0",
+                "illuminate/pagination": "^11.15.0",
+                "illuminate/support": "^11.15.0",
+                "illuminate/validation": "^11.15.0",
+                "php": "^8.2",
+                "yajra/laravel-pdo-via-oci8": "^3.4.4"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.6.12",
+                "orchestra/testbench": "^9.1.2",
+                "phpunit/phpunit": "^10.5|^11.2.7"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "11.x-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "Yajra\\Oci8\\Oci8ServiceProvider",
+                        "Yajra\\Oci8\\Oci8ValidationServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/helper.php"
+                ],
+                "psr-4": {
+                    "Yajra\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Arjay Angeles",
+                    "email": "aqangeles@gmail.com"
+                }
+            ],
+            "description": "Oracle DB driver for Laravel via OCI8",
+            "keywords": [
+                "laravel",
+                "oci8",
+                "oracle",
+                "pdo_oci",
+                "yajra"
+            ],
+            "support": {
+                "issues": "https://github.com/yajra/laravel-oci8/issues",
+                "source": "https://github.com/yajra/laravel-oci8/tree/v11.6.2"
+            },
+            "funding": [
+                {
+                    "url": "https://www.paypal.me/yajra",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/yajra",
+                    "type": "github"
+                },
+                {
+                    "url": "https://www.patreon.com/yajra",
+                    "type": "patreon"
+                }
+            ],
+            "time": "2024-09-09T14:01:58+00:00"
+        },
+        {
+            "name": "yajra/laravel-pdo-via-oci8",
+            "version": "v3.4.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/yajra/pdo-via-oci8.git",
+                "reference": "65c72f8098fb236e84c636a8f1c295e643484b49"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/yajra/pdo-via-oci8/zipball/65c72f8098fb236e84c636a8f1c295e643484b49",
+                "reference": "65c72f8098fb236e84c636a8f1c295e643484b49",
+                "shasum": ""
+            },
+            "require": {
+                "ext-oci8": "*",
+                "ext-pdo": "*",
+                "php": "^8.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^8.4|^9.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Yajra\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Arjay Angeles",
+                    "email": "aqangeles@gmail.com"
+                }
+            ],
+            "description": "PDO userspace driver proxying calls to PHP OCI8 driver",
+            "support": {
+                "issues": "https://github.com/yajra/pdo-via-oci8/issues",
+                "source": "https://github.com/yajra/pdo-via-oci8/tree/v3.4.4"
+            },
+            "funding": [
+                {
+                    "url": "https://www.paypal.me/yajra",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/yajra",
+                    "type": "github"
+                },
+                {
+                    "url": "https://www.patreon.com/yajra",
+                    "type": "patreon"
+                }
+            ],
+            "time": "2024-05-25T07:38:54+00:00"
         }
     ],
     "packages-dev": [

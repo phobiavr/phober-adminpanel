@@ -7,14 +7,25 @@
     "repositories": [
         {
             "type": "vcs",
+            "url": "git@github.com:Abdukhaligov/nova.git"
+        },
+        {
+            "type": "path",
+            "url": "./shared"
+        },
+        {
+            "type": "vcs",
             "url": "git@github.com:Abdukhaligov/nova-4.git"
         }
     ],
     "require": {
         "php": "^8.2",
+        "datomatic/nova-enum-field": "^1.9",
         "laravel/framework": "^11.9",
         "laravel/nova": "*",
-        "laravel/tinker": "^2.9"
+        "laravel/tinker": "^2.9",
+        "phobiavr/phober-laravel-common": "^0.1.0",
+        "yajra/laravel-oci8": "^11.6"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",

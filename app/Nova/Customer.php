@@ -5,6 +5,7 @@ namespace App\Nova;
 use Datomatic\Nova\Fields\Enum\Enum;
 use Datomatic\Nova\Fields\Enum\EnumFilter;
 use Illuminate\Http\Request;
+use Laravel\Nova\Fields\Badge;
 use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\HasOne;
@@ -42,7 +43,14 @@ class Customer extends Resource {
                 ->rules('max:255'),
 
             Enum::make('Gender', 'gender')->attach(GenderEnum::class)->sortable(),
-            Enum::make('Status', 'status')->attach(CustomerStatusEnum::class)->sortable(),
+            Enum::make('Status', 'status')->attach(CustomerStatusEnum::class)->onlyOnForms(),
+
+            Badge::make('Status')->map([
+                'PENDING' => 'info',
+                'APPROVED' => 'success',
+                'VIP' => 'warning',
+                'BLACKLIST' => 'danger',
+            ])->sortable(),
 
             Date::make("Birthday")->sortable(),
 

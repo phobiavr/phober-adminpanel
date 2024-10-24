@@ -2,14 +2,15 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Traits\SyncPermissions;
+use App\Models\Traits\SyncRoles;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable;
+    use Notifiable, SyncRoles, SyncPermissions;
 
     protected $connection = 'db_auth';
 
@@ -47,5 +48,12 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function permissions(): BelongsToMany {
+        return $this->belongsToMany(Permission::class, 'user_permissions');
+    }
+    public function roles(): BelongsToMany {
+        return $this->belongsToMany(Role::class, 'user_roles');
     }
 }

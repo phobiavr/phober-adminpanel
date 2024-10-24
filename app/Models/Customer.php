@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
@@ -11,7 +10,7 @@ use KirschbaumDevelopment\NovaComments\Models\Comment;
 use Phobiavr\PhoberLaravelCommon\Traits\Authorable;
 
 class Customer extends Model {
-    use HasFactory, Authorable;
+    use Authorable;
 
     protected $connection = "db_crm";
     protected $casts = [
@@ -31,5 +30,9 @@ class Customer extends Model {
 
     public function contacts(): HasMany {
         return $this->hasMany(Contact::class, 'customer_id', 'id');
+    }
+
+    public function invoices(): HasMany {
+        return $this->hasMany(Invoice::class);
     }
 }

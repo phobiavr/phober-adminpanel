@@ -2,15 +2,9 @@
 
 namespace App\Nova;
 
-use App\Nova\Actions\SyncConfigsButtonAction;
-use Guillaumeferron\PostContent\PostContent;
 use Illuminate\Http\Request;
-use KirschbaumDevelopment\NovaComments\Commenter;
-use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
-use Laravel\Nova\Fields\MorphMany;
 use Laravel\Nova\Fields\Text;
-use Marshmallow\LiveUpdate\TextLiveUpdate;
 
 class Post extends Resource {
     public static $model = \App\Models\Post::class;

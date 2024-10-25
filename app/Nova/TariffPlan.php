@@ -5,7 +5,7 @@ namespace App\Nova;
 use Datomatic\Nova\Fields\Enum\Enum;
 use Datomatic\Nova\Fields\Enum\EnumFilter;
 use Illuminate\Http\Request;
-use Marshmallow\LiveUpdate\TextLiveUpdate;
+use Pdmfc\NovaFields\InlineText;
 use Phobiavr\PhoberLaravelCommon\Enums\SessionTariffEnum;
 use Phobiavr\PhoberLaravelCommon\Enums\SessionTimeEnum;
 
@@ -25,7 +25,7 @@ class TariffPlan extends Resource {
             Enum::make('Tariff')->attach(SessionTariffEnum::class)->sortable()->exceptOnForms(),
             Enum::make('Time')->attach(SessionTimeEnum::class)->sortable()->exceptOnForms(),
 
-//            TextLiveUpdate::make('Price'),
+            InlineText::make('Price')->inlineOnIndex(),
         ];
     }
 

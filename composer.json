@@ -6,16 +6,16 @@
     "license": "MIT",
     "repositories": [
         {
-            "type": "vcs",
-            "url": "git@github.com:Abdukhaligov/nova.git"
-        },
-        {
             "type": "path",
             "url": "./shared"
         },
         {
             "type": "vcs",
             "url": "git@github.com:Abdukhaligov/nova-4.git"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/Abdukhaligov/nova-inline-text.git"
         }
     ],
     "require": {
@@ -24,6 +24,7 @@
         "laravel/framework": "^11.9",
         "laravel/nova": "*",
         "laravel/tinker": "^2.9",
+        "pdmfc/nova-inline-text": "dev-master",
         "phobiavr/phober-laravel-common": "^0.1.0",
         "spatie/laravel-medialibrary": "^11.9",
         "spatie/laravel-translatable": "^6.8",

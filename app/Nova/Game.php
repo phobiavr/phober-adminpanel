@@ -2,6 +2,7 @@
 
 namespace App\Nova;
 
+use Ebess\AdvancedNovaMediaLibrary\Fields\Media;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\Boolean;
@@ -21,7 +22,7 @@ class Game extends Resource {
         return [
             ID::make()->sortable(),
 
-//            Media::make('Preview', 'preview'),
+            Media::make('Preview', 'preview'),
 
             Text::make("Name")->sortable(),
 

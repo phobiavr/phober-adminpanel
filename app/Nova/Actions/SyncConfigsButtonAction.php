@@ -8,6 +8,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Support\Collection;
 use Laravel\Nova\Actions\Action;
+use Laravel\Nova\Actions\ActionResponse;
 use Laravel\Nova\Fields\ActionFields;
 
 class SyncConfigsButtonAction extends Action {
@@ -36,15 +37,15 @@ class SyncConfigsButtonAction extends Action {
         return $this->parseResult($result);
     }
 
-    private function parseResult($result): array {
+    private function parseResult($result): ActionResponse {
         $message = '';
         $error = false;
 
         foreach ($result as $service => $json) {
             $message .= $service . ' - ';
             try {
-                $message .= 'Created: ' . $json['results']['new_configurations_added'] . ' - ';
-                $message .= 'Updated: ' . $json['results']['configurations_updated'];
+                $message .= 'Created: ' . $json['result']['new_configurations_added'] . ' - ';
+                $message .= 'Updated: ' . $json['result']['configurations_updated'];
 
             } catch (\Throwable $ignored) {
                 $message .= $ignored->getMessage();

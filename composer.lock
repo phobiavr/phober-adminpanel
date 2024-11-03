@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "46f761eaf97e9228506d6e7f46771dab",
+    "content-hash": "721c020e2f3972da02d6dc9e3b4b873e",
     "packages": [
         {
             "name": "abdukhaligov/advanced-nova-media-library",
@@ -52,6 +52,55 @@
                 "source": "https://github.com/Abdukhaligov/advanced-nova-media-library/tree/v4.5.3"
             },
             "time": "2024-10-26T00:34:52+00:00"
+        },
+        {
+            "name": "abdukhaligov/nova-action-button-selectors",
+            "version": "0.1.0",
+            "dist": {
+                "type": "path",
+                "url": "./shared-2",
+                "reference": "9709e4af8fe083b46ebd8064ccc20e31444d84d0"
+            },
+            "require": {
+                "laravel/framework": "^9.0|^11.0",
+                "php": "^8.2"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Lednerb\\ActionButtonSelector\\AssetServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Lednerb\\ActionButtonSelector\\": "src/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Sascha Brendel",
+                    "email": "mail@lednerb.de"
+                },
+                {
+                    "name": "Pitchayakit Pahamak",
+                    "email": "pitchayakit.p@gmail.com",
+                    "role": "Software Engineer"
+                }
+            ],
+            "description": "A Laravel Nova asset.",
+            "homepage": "https://lednerb.de",
+            "keywords": [
+                "laravel",
+                "nova"
+            ],
+            "transport-options": {
+                "relative": true
+            }
         },
         {
             "name": "aws/aws-crt-php",

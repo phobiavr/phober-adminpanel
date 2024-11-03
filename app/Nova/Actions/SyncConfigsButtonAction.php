@@ -10,11 +10,15 @@ use Illuminate\Support\Collection;
 use Laravel\Nova\Actions\Action;
 use Laravel\Nova\Actions\ActionResponse;
 use Laravel\Nova\Fields\ActionFields;
+use Lednerb\ActionButtonSelector\ShowAsButton;
 
 class SyncConfigsButtonAction extends Action {
-    use InteractsWithQueue, Queueable;
+    use InteractsWithQueue, Queueable, ShowAsButton;
 
     use Queueable;
+
+    public $standalone = true;
+
 
     public $name = 'Sync Configs';
 
@@ -27,10 +31,10 @@ class SyncConfigsButtonAction extends Action {
      */
     public function handle(ActionFields $fields, Collection $models) {
         $result = [
-            ServiceEnum::CRM->name          => (new ServiceClient(ServiceEnum::CRM))->synConfigs()->json(),
-            ServiceEnum::AUTH->name         => (new ServiceClient(ServiceEnum::AUTH))->synConfigs()->json(),
-            ServiceEnum::STAFF->name        => (new ServiceClient(ServiceEnum::STAFF))->synConfigs()->json(),
-            ServiceEnum::HARDWARE->name     => (new ServiceClient(ServiceEnum::HARDWARE))->synConfigs()->json(),
+            ServiceEnum::CRM->name => (new ServiceClient(ServiceEnum::CRM))->synConfigs()->json(),
+            ServiceEnum::AUTH->name => (new ServiceClient(ServiceEnum::AUTH))->synConfigs()->json(),
+            ServiceEnum::STAFF->name => (new ServiceClient(ServiceEnum::STAFF))->synConfigs()->json(),
+            ServiceEnum::HARDWARE->name => (new ServiceClient(ServiceEnum::HARDWARE))->synConfigs()->json(),
             ServiceEnum::NOTIFICATION->name => (new ServiceClient(ServiceEnum::NOTIFICATION))->synConfigs()->json(),
         ];
 

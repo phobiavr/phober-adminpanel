@@ -10,6 +10,10 @@
             "url": "./shared"
         },
         {
+            "type": "path",
+            "url": "./shared-2"
+        },
+        {
             "type": "vcs",
             "url": "git@github.com:Abdukhaligov/nova-4.git"
         },
@@ -21,6 +25,7 @@
     "require": {
         "php": "^8.2",
         "abdukhaligov/advanced-nova-media-library": "^4.5",
+        "abdukhaligov/nova-action-button-selectors": "^0.1.0",
         "datomatic/nova-enum-field": "^1.9",
         "laravel/framework": "^11.9",
         "laravel/nova": "*",

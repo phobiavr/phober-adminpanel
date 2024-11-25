@@ -37,7 +37,7 @@ class Session extends Resource {
             DateTime::make('Created at')->sortable(),
             DateTime::make('Updated at')->onlyOnDetail(),
 
-            MorphOne::make('Author'),
+            MorphOne::make('Author')->onlyOnDetail(),
         ];
     }
 

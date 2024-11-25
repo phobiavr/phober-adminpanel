@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Revisionable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
@@ -10,7 +11,7 @@ use KirschbaumDevelopment\NovaComments\Models\Comment;
 use Phobiavr\PhoberLaravelCommon\Traits\Authorable;
 
 class Customer extends Model {
-    use Authorable;
+    use Authorable, Revisionable;
 
     protected $connection = "db_crm";
     protected $casts = [

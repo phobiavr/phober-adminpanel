@@ -28,7 +28,7 @@ class Contact extends Resource {
             Text::make('Value')
                 ->sortable(),
 
-            HasOne::make('Customer', 'customer'),
+            HasOne::make('Customer', 'customer')->onlyOnDetail(),
         ];
     }
 

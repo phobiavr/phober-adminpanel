@@ -27,7 +27,7 @@ class SnackSale extends Resource {
 
             DateTime::make('Created at')->sortable(),
 
-            MorphOne::make('Author'),
+            MorphOne::make('Author')->onlyOnDetail(),
         ];
     }
 }

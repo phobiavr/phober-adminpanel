@@ -9,6 +9,7 @@ use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\HasOne;
 use Laravel\Nova\Fields\ID;
+use Laravel\Nova\Fields\MorphMany;
 use Laravel\Nova\Fields\MorphOne;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Textarea;
@@ -50,9 +51,11 @@ class Customer extends Resource {
 
             HasMany::make('Contacts', 'contacts'),
 
-            HasOne::make('Loyalty Card', 'loyaltyCard'),
+            HasOne::make('Loyalty Card', 'loyaltyCard')->onlyOnDetail(),
 
-            MorphOne::make('Author'),
+            MorphMany::make('Revisions'),
+
+            MorphOne::make('Author')->onlyOnDetail(),
 
             HasMany::make('Invoices'),
         ];

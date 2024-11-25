@@ -4,13 +4,14 @@ namespace App\Models;
 
 use App\Models\Traits\SyncPermissions;
 use App\Models\Traits\SyncRoles;
+use App\Revisionable;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
-    use Notifiable, SyncRoles, SyncPermissions;
+    use Notifiable, SyncRoles, SyncPermissions, Revisionable;
 
     protected $connection = 'db_auth';
 
@@ -35,6 +36,8 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
+        'email_verified_at',
+        'api_token',
     ];
 
     /**

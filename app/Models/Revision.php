@@ -2,23 +2,20 @@
 
 namespace App\Models;
 
+use App\RevisionActionEnum;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 class Revision extends Model {
-    protected $fillable = ["value", "author_id", "revised_by", "type", 'difference'];
-    protected $casts = ["created_at" => "datetime", 'difference' => 'array'];
+    protected $fillable = ['original_data', 'modified_data', 'revised_by', 'action'];
+    protected $casts = [
+        'created_at' => 'datetime',
+        'original_data' => 'array',
+        'modified_data' => 'array'];
 
     public function revisionable(): MorphTo {
         return $this->morphTo();
-    }
-
-    public function getModelAttribute() {
-        //https://stackoverflow.com/a/1361752
-        $model = $this->revisionable_type;
-
-        return substr($model, strrpos($model, '\\') + 1);
     }
 
     public function revisedBy(): BelongsTo {
@@ -28,5 +25,35 @@ class Revision extends Model {
     // https://stackoverflow.com/a/25784734
     public function setUpdatedAtAttribute($value) {
         //
+    }
+
+    public function getChangesAttribute() {
+        $changes = [];
+
+        if ($this->action === RevisionActionEnum::DELETE->value) {
+            return $changes;
+        }
+
+        $currentData = $this->revisionable->toArray() ?? [];
+        $originalData = $this->original_data ?? [];
+        $modifiedData = $this->modified_data ?? [];
+
+        $allKeys = array_unique(array_merge(array_keys($originalData), array_keys($modifiedData)));
+
+        foreach ($allKeys as $key) {
+            $oldValue = $originalData[$key] ?? null;
+            $newValue = $modifiedData[$key] ?? null;
+            $currentValue = $currentData[$key] ?? null;
+
+            if ($newValue !== $oldValue) {
+                $changes[$key] = [
+                    'old' => $oldValue,
+                    'new' => $newValue,
+                    'current' => $currentValue
+                ];
+            }
+        }
+
+        return $changes;
     }
 }

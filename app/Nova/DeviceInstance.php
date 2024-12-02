@@ -5,6 +5,7 @@ namespace App\Nova;
 use Datomatic\Nova\Fields\Enum\Enum;
 use Datomatic\Nova\Fields\Enum\EnumFilter;
 use Illuminate\Http\Request;
+use KirschbaumDevelopment\NovaComments\Commenter;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\Text;
@@ -31,6 +32,9 @@ class DeviceInstance extends Resource {
             Boolean::make("Active", 'active')->hideWhenUpdating()->hideWhenCreating(),
 
             HasMany::make('Schedules', 'schedules', DeviceInstanceSchedule::class),
+
+            new Commenter(),
+            HasMany::make('Comments', 'comments')->hideFromDetail()->hideFromIndex(),
         ];
     }
 

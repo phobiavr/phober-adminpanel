@@ -4,6 +4,7 @@ namespace App\Nova;
 
 use Ebess\AdvancedNovaMediaLibrary\Fields\Media;
 use Illuminate\Http\Request;
+use KirschbaumDevelopment\NovaComments\Commenter;
 use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\HasMany;
@@ -39,6 +40,9 @@ class Game extends Resource {
             BelongsToMany::make("Devices"),
 
             HasMany::make('Device Instances', 'deviceInstances'),
+
+            new Commenter(),
+            HasMany::make('Comments', 'comments')->hideFromDetail()->hideFromIndex(),
         ];
     }
 }

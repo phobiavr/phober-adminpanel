@@ -2,11 +2,10 @@
 
 namespace App\Models;
 
+use App\Commentable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\MorphMany;
-use KirschbaumDevelopment\NovaComments\Models\Comment;
 
 /**
  * @property int $id
@@ -15,6 +14,8 @@ use KirschbaumDevelopment\NovaComments\Models\Comment;
  * @property-read Device $device
  */
 class DeviceInstance extends Model {
+    use Commentable;
+
     protected $table = 'instances';
     protected $connection = "db_device";
     protected $casts = [
@@ -22,12 +23,6 @@ class DeviceInstance extends Model {
         'deactivation_start' => 'datetime',
         'deactivation_end' => 'datetime',
     ];
-
-    public function comments(): MorphMany {
-        return $this
-            ->setConnection(config('database.default'))
-            ->morphMany(Comment::class, 'commentable');
-    }
 
     public function schedules(): HasMany {
         return $this->hasMany(DeviceInstanceSchedule::class, 'instance_id');

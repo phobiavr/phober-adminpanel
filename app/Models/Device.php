@@ -2,12 +2,11 @@
 
 namespace App\Models;
 
+use App\Commentable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Support\Str;
-use KirschbaumDevelopment\NovaComments\Models\Comment;
 use Staudenmeir\EloquentHasManyDeep\HasManyDeep;
 use Staudenmeir\EloquentHasManyDeep\HasRelationships;
 
@@ -16,17 +15,13 @@ use Staudenmeir\EloquentHasManyDeep\HasRelationships;
  * @property-read string $name
  */
 class Device extends Model {
-    use HasRelationships;
+    use HasRelationships, Commentable;
 
     protected $connection = 'db_device';
 
     public function setNameAttribute($value): void {
         $this->attributes['name'] = $value;
         $this->attributes['slug'] = Str::slug($value);
-    }
-
-    public function comments(): MorphMany {
-        return $this->setConnection(config('database.default'))->morphMany(Comment::class, 'commentable');
     }
 
     public function games(): BelongsToMany {

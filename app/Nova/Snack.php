@@ -3,7 +3,8 @@
 namespace App\Nova;
 
 use Illuminate\Http\Request;
-use Laravel\Nova\Fields\ID;
+use KirschbaumDevelopment\NovaComments\Commenter;
+use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Text;
 
@@ -19,7 +20,10 @@ class Snack extends Resource {
 
             Number::make('Stock'),
 
-            Number::make('Price')->displayUsing(fn($value) => $value . ' AZN')->step(0.01)
+            Number::make('Price')->displayUsing(fn($value) => $value . ' AZN')->step(0.01),
+
+            new Commenter(),
+            HasMany::make('Comments', 'comments')->hideFromDetail()->hideFromIndex(),
         ];
     }
 }

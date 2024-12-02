@@ -5,6 +5,8 @@ namespace App\Nova;
 use Datomatic\Nova\Fields\Enum\Enum;
 use Datomatic\Nova\Fields\Enum\EnumFilter;
 use Illuminate\Http\Request;
+use KirschbaumDevelopment\NovaComments\Commenter;
+use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\HasOne;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
@@ -29,6 +31,9 @@ class Contact extends Resource {
                 ->sortable(),
 
             HasOne::make('Customer', 'customer')->onlyOnDetail(),
+
+            new Commenter(),
+            HasMany::make('Comments', 'comments')->hideFromDetail()->hideFromIndex(),
         ];
     }
 

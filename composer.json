@@ -20,6 +20,10 @@
         {
             "type": "vcs",
             "url": "https://github.com/Abdukhaligov/nova-inline-text.git"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/Abdukhaligov/nova-comments"
         }
     ],
     "require": {
@@ -27,6 +31,7 @@
         "abdukhaligov/advanced-nova-media-library": "^4.5",
         "abdukhaligov/nova-action-button-selectors": "^0.1.0",
         "datomatic/nova-enum-field": "^1.9",
+        "kirschbaum-development/nova-comments": "dev-master",
         "laravel/framework": "^11.9",
         "laravel/nova": "*",
         "laravel/tinker": "^2.9",

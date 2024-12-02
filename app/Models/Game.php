@@ -2,12 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Commentable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Support\Str;
-use KirschbaumDevelopment\NovaComments\Models\Comment;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\Translatable\HasTranslations;
@@ -15,7 +13,7 @@ use Staudenmeir\EloquentHasManyDeep\HasManyDeep;
 use Staudenmeir\EloquentHasManyDeep\HasRelationships;
 
 class Game extends Model implements HasMedia {
-    use HasRelationships, HasTranslations, InteractsWithMedia;
+    use HasRelationships, HasTranslations, InteractsWithMedia, Commentable;
 
     public array $translatable = ['description'];
     protected $connection = 'db_device';
@@ -24,10 +22,6 @@ class Game extends Model implements HasMedia {
     public function setNameAttribute($value): void {
         $this->attributes['name'] = $value;
         $this->attributes['slug'] = Str::slug($value);
-    }
-
-    public function comments(): MorphMany {
-        return $this->setConnection(config('database.default'))->morphMany(Comment::class, 'commentable');
     }
 
     public function registerMediaCollections(): void {

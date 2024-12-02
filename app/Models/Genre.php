@@ -2,16 +2,14 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Commentable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Support\Str;
-use KirschbaumDevelopment\NovaComments\Models\Comment;
 use Phobiavr\PhoberLaravelCommon\Traits\Authorable;
 
 class Genre extends Model {
-    use Authorable;
+    use Authorable, Commentable;
 
     protected $connection = 'db_device';
 

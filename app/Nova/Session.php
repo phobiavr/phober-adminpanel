@@ -5,8 +5,10 @@ namespace App\Nova;
 use Datomatic\Nova\Fields\Enum\Enum;
 use Datomatic\Nova\Fields\Enum\EnumFilter;
 use Illuminate\Http\Request;
+use KirschbaumDevelopment\NovaComments\Commenter;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\DateTime;
+use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\MorphOne;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Textarea;
@@ -38,6 +40,9 @@ class Session extends Resource {
             DateTime::make('Updated at')->onlyOnDetail(),
 
             MorphOne::make('Author')->onlyOnDetail(),
+
+            new Commenter(),
+            HasMany::make('Comments', 'comments')->hideFromDetail()->hideFromIndex(),
         ];
     }
 

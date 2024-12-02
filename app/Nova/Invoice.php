@@ -5,6 +5,7 @@ namespace App\Nova;
 use Datomatic\Nova\Fields\Enum\Enum;
 use Datomatic\Nova\Fields\Enum\EnumFilter;
 use Illuminate\Http\Request;
+use KirschbaumDevelopment\NovaComments\Commenter;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
@@ -45,6 +46,9 @@ class Invoice extends Resource {
 
             HasMany::make('Sessions'),
             HasMany::make('Snack Sales', 'snackSales'),
+
+            new Commenter(),
+            HasMany::make('Comments', 'comments')->hideFromDetail()->hideFromIndex(),
         ];
     }
 

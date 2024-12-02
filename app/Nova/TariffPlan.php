@@ -5,6 +5,8 @@ namespace App\Nova;
 use Datomatic\Nova\Fields\Enum\Enum;
 use Datomatic\Nova\Fields\Enum\EnumFilter;
 use Illuminate\Http\Request;
+use KirschbaumDevelopment\NovaComments\Commenter;
+use Laravel\Nova\Fields\HasMany;
 use Pdmfc\NovaFields\InlineText;
 use Phobiavr\PhoberLaravelCommon\Enums\SessionTariffEnum;
 use Phobiavr\PhoberLaravelCommon\Enums\SessionTimeEnum;
@@ -26,6 +28,9 @@ class TariffPlan extends Resource {
             Enum::make('Time')->attach(SessionTimeEnum::class)->sortable()->exceptOnForms(),
 
             InlineText::make('Price')->inlineOnIndex(),
+
+            new Commenter(),
+            HasMany::make('Comments', 'comments')->hideFromDetail()->hideFromIndex(),
         ];
     }
 

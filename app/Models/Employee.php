@@ -2,10 +2,13 @@
 
 namespace App\Models;
 
+use App\Commentable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Employee extends Model {
+    use Commentable;
+
     protected $connection = 'db_staff';
 
     protected $with = ['sessions'];

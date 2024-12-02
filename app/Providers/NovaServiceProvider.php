@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\Facades\Gate;
+use KirschbaumDevelopment\NovaComments\Nova\Comment;
 use Laravel\Nova\Nova;
 use Laravel\Nova\NovaApplicationServiceProvider;
 
@@ -16,6 +17,13 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     public function boot()
     {
         parent::boot();
+
+        Nova::serving(
+            function (): void {
+                Nova::script('commentable', base_path() .'/vendor/kirschbaum-development/nova-comments/dist/js/tool.js');
+                Nova::style('commentable', base_path() .'/vendor/kirschbaum-development/nova-comments/dist/css/tool.css');
+            }
+        );
     }
 
     /**

@@ -5,7 +5,9 @@ namespace App\Nova;
 use Datomatic\Nova\Fields\Enum\Enum;
 use Datomatic\Nova\Fields\Enum\EnumFilter;
 use Illuminate\Http\Request;
+use KirschbaumDevelopment\NovaComments\Commenter;
 use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Text;
 use Phobiavr\PhoberLaravelCommon\Enums\LoyaltyCardStatusEnum;
@@ -38,6 +40,9 @@ class LoyaltyCard extends Resource {
             Enum::make('Status', 'status')->attach(LoyaltyCardStatusEnum::class)->sortable(),
 
             BelongsTo::make('Customer')->hideWhenUpdating()->hideWhenCreating(),
+
+            new Commenter(),
+            HasMany::make('Comments', 'comments')->hideFromDetail()->hideFromIndex(),
         ];
     }
 

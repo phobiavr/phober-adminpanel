@@ -2,9 +2,12 @@
 
 namespace App\Models;
 
+use App\Commentable;
 use Illuminate\Database\Eloquent\Model;
 
 class TariffPlan extends Model {
+    use Commentable;
+
     protected $connection = 'db_device';
 
     protected $fillable = [

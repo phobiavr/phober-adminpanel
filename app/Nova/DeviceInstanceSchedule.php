@@ -5,9 +5,11 @@ namespace App\Nova;
 use Datomatic\Nova\Fields\Enum\Enum;
 use Datomatic\Nova\Fields\Enum\EnumFilter;
 use Illuminate\Http\Request;
+use KirschbaumDevelopment\NovaComments\Commenter;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\DateTime;
+use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Filters\Filter;
 use Phobiavr\PhoberLaravelCommon\Enums\ScheduleEnum;
 
@@ -35,6 +37,9 @@ class DeviceInstanceSchedule extends Resource {
 
             DateTime::make('Created at')->sortable()->exceptOnForms(),
             DateTime::make('Updated at')->onlyOnDetail(),
+
+            new Commenter(),
+            HasMany::make('Comments', 'comments')->hideFromDetail()->hideFromIndex(),
         ];
     }
 

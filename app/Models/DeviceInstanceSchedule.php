@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Commentable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Phobiavr\PhoberLaravelCommon\Enums\ScheduleEnum;
@@ -11,6 +12,8 @@ use Phobiavr\PhoberLaravelCommon\Enums\ScheduleEnum;
  * @property \DateTime $end
  */
 class DeviceInstanceSchedule extends Model {
+    use Commentable;
+
     protected $table = 'schedules';
     protected $connection = "db_device";
     protected $casts = [

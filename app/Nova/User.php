@@ -4,7 +4,9 @@ namespace App\Nova;
 
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rules;
+use KirschbaumDevelopment\NovaComments\Commenter;
 use Laravel\Nova\Fields\Gravatar;
+use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\MorphMany;
 use Laravel\Nova\Fields\Password;
@@ -55,6 +57,9 @@ class User extends Resource {
                 ->updateRules('nullable', Rules\Password::defaults()),
 
             MorphMany::make('Revisions')->onlyOnDetail(),
+
+            new Commenter(),
+            HasMany::make('Comments', 'comments')->hideFromDetail()->hideFromIndex(),
         ];
     }
 }

@@ -54,7 +54,6 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
                 MenuSection::make('Admin', [
                     MenuItem::resource(Comment::class),
                     MenuItem::resource(Config::class),
-                    MenuItem::resource(Hostname::class),
                     MenuItem::resource(Revision::class),
                 ])->icon('star')->collapsable(),
                 MenuSection::make('Auth', [

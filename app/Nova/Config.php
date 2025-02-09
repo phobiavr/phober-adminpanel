@@ -14,6 +14,11 @@ class Config extends Resource {
     public static $title = 'key';
 
     public static $perPageOptions = [100, 150, 250];
+    
+    public function authorizedToUpdate(Request $request)
+    {
+        return false;
+    }
 
     public function fields(Request $request): array {
         return [

@@ -10,37 +10,25 @@
             "url": "./shared"
         },
         {
-            "type": "path",
-            "url": "./shared-2"
-        },
-        {
             "type": "vcs",
-            "url": "git@github.com:Abdukhaligov/nova-4.git"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/Abdukhaligov/nova-inline-text.git"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/Abdukhaligov/nova-comments"
+            "url": "https://github.com/Abdukhaligov/nova.git"
         }
     ],
     "require": {
         "php": "^8.2",
-        "abdukhaligov/advanced-nova-media-library": "^4.5",
-        "abdukhaligov/nova-action-button-selectors": "^0.1.0",
         "datomatic/nova-enum-field": "^1.9",
-        "kirschbaum-development/nova-comments": "dev-master",
+        "ebess/advanced-nova-media-library": "^4.4",
+        "kirschbaum-development/nova-comments": "^4.0",
         "laravel/framework": "^11.9",
-        "laravel/nova": "*",
+        "laravel/nova": "^4.35",
         "laravel/tinker": "^2.9",
         "league/flysystem-aws-s3-v3": "^3.29",
-        "pdmfc/nova-inline-text": "dev-master",
+        "lednerb/nova-action-button-selectors": "^2.0",
+        "pdmfc/nova-inline-text": "^1.2",
         "phobiavr/phober-laravel-common": "^0.1.0",
-        "spatie/laravel-medialibrary": "^11.9",
-        "spatie/laravel-translatable": "^6.8",
-        "spatie/nova-translatable": "^3.3",
+        "spatie/laravel-medialibrary": "^11.12",
+        "spatie/laravel-translatable": "^6.10",
+        "spatie/nova-translatable": "^4.1",
         "staudenmeir/eloquent-has-many-deep": "^1.20",
         "yajra/laravel-oci8": "^11.6"
     },

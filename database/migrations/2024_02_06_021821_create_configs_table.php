@@ -12,6 +12,7 @@ return new class extends Migration {
      * @return void
      */
     public function up() {
+        return true;
         Schema::connection('db_shared')->create('configs', function (Blueprint $table) {
             $table->id();
             $table->string('key')->unique();

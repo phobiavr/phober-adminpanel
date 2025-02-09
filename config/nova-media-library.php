@@ -1,6 +1,7 @@
 <?php
 
 return [
-    'enable-existing-media' => false,
+    'enable-existing-media' => true,
+    'default-croppable' => true,
     'hide-media-collections' => [],
 ];

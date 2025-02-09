@@ -5,7 +5,7 @@ namespace App\Nova;
 use App\Nova\Actions\SyncConfigsButtonAction;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
-use Pdmfc\NovaFields\InlineText;
+use Outl1ne\NovaInlineTextField\InlineText;
 
 class Config extends Resource {
     public static $model = \App\Models\Config::class;
@@ -19,7 +19,7 @@ class Config extends Resource {
         return [
             Text::make('Key')->sortable(),
 
-            InlineText::make('Value')->inlineOnIndex(),
+            InlineText::make('Value','value'),
         ];
     }
 

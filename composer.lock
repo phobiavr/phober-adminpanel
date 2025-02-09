@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2f90129948ed1bbcf714a3d2a9d6a86f",
+    "content-hash": "da850dea4bc374d36e5085428bdc2c0c",
     "packages": [
         {
             "name": "aws/aws-crt-php",
@@ -3709,57 +3709,53 @@
             "time": "2025-01-30T13:51:11+00:00"
         },
         {
-            "name": "pdmfc/nova-inline-text",
-            "version": "v1.2.1",
+            "name": "outl1ne/nova-inline-text-field",
+            "version": "2.0.5",
             "source": {
                 "type": "git",
-                "url": "https://github.com/pdmfc/nova-inline-text.git",
-                "reference": "bc490db467d425c9694e70ad650bec09fa0f5ecf"
+                "url": "https://github.com/outl1ne/nova-inline-text-field.git",
+                "reference": "afaeac41ab748f92ad88ba239abcf7a5d6b71f36"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pdmfc/nova-inline-text/zipball/bc490db467d425c9694e70ad650bec09fa0f5ecf",
-                "reference": "bc490db467d425c9694e70ad650bec09fa0f5ecf",
+                "url": "https://api.github.com/repos/outl1ne/nova-inline-text-field/zipball/afaeac41ab748f92ad88ba239abcf7a5d6b71f36",
+                "reference": "afaeac41ab748f92ad88ba239abcf7a5d6b71f36",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1.0"
+                "laravel/nova": "^4.12.4",
+                "php": ">=8.0"
             },
             "type": "library",
             "extra": {
                 "laravel": {
                     "providers": [
-                        "Pdmfc\\NovaFields\\InlineTextFieldServiceProvider"
+                        "Outl1ne\\NovaInlineTextField\\FieldServiceProvider"
                     ]
                 }
             },
             "autoload": {
                 "psr-4": {
-                    "Pdmfc\\NovaFields\\": "src/"
+                    "Outl1ne\\NovaInlineTextField\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
-            "authors": [
-                {
-                    "name": "João Santos",
-                    "email": "joao.santos@pdmfc.com",
-                    "role": "Developer"
-                }
-            ],
             "description": "A Laravel Nova inline text field.",
             "keywords": [
+                "field",
+                "inline",
                 "laravel",
                 "nova",
-                "package"
+                "text"
             ],
             "support": {
-                "issues": "https://github.com/pdmfc/nova-inline-text/issues",
-                "source": "https://github.com/pdmfc/nova-inline-text/tree/v1.2.1"
+                "issues": "https://github.com/outl1ne/nova-inline-text-field/issues",
+                "source": "https://github.com/outl1ne/nova-inline-text-field/tree/2.0.5"
             },
-            "time": "2020-12-28T19:11:17+00:00"
+            "time": "2024-09-09T07:24:35+00:00"
         },
         {
             "name": "phobiavr/phober-laravel-common",

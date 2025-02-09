@@ -7,8 +7,7 @@ use Datomatic\Nova\Fields\Enum\EnumFilter;
 use Illuminate\Http\Request;
 use KirschbaumDevelopment\NovaComments\Commenter;
 use Laravel\Nova\Fields\HasMany;
-use Laravel\Nova\Fields\Text;
-use Pdmfc\NovaFields\InlineText;
+use Outl1ne\NovaInlineTextField\InlineText;
 use Phobiavr\PhoberLaravelCommon\Enums\SessionTariffEnum;
 use Phobiavr\PhoberLaravelCommon\Enums\SessionTimeEnum;
 
@@ -20,13 +19,18 @@ class TariffPlan extends Resource {
     public static $perPageOptions = [100, 150, 250];
     public static $perPageViaRelationship = 10;
     public static $globallySearchable = false;
+    
+    public function authorizedToUpdate(Request $request)
+    {
+        return false;
+    }
 
     public function fields(Request $request) {
         return [
             Enum::make('Tariff')->attach(SessionTariffEnum::class)->sortable()->exceptOnForms(),
             Enum::make('Time')->attach(SessionTimeEnum::class)->sortable()->exceptOnForms(),
 
-            Text::make('Price'),
+            InlineText::make('Price'),
 
             new Commenter(),
             HasMany::make('Comments', 'comments')->hideFromDetail()->hideFromIndex(),

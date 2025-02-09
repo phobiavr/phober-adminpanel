@@ -24,7 +24,7 @@
         "laravel/tinker": "^2.9",
         "league/flysystem-aws-s3-v3": "^3.29",
         "lednerb/nova-action-button-selectors": "^2.0",
-        "pdmfc/nova-inline-text": "^1.2",
+        "outl1ne/nova-inline-text-field": "^2.0",
         "phobiavr/phober-laravel-common": "^0.1.0",
         "spatie/laravel-medialibrary": "^11.12",
         "spatie/laravel-translatable": "^6.10",

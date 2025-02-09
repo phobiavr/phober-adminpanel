@@ -71,7 +71,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
                     MenuItem::resource(Genre::class),
                     MenuItem::resource(DeviceInstance::class),
                     MenuItem::resource(DeviceInstanceSchedule::class),
-                    MenuItem::resource(TariffPlan::class),
+                    //MenuItem::resource(TariffPlan::class),
                     MenuItem::resource(Post::class),
                 ])->icon('chip')->collapsable(),
                 MenuSection::make('Staff', [

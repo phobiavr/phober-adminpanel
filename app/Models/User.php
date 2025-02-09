@@ -14,6 +14,8 @@ class User extends Authenticatable {
     use Notifiable, SyncRoles, SyncPermissions, Commentable, Revisionable;
 
     protected $connection = 'db_auth';
+    
+    protected $appends = ['name'];
 
     /**
      * The attributes that are mass assignable.
@@ -58,5 +60,10 @@ class User extends Authenticatable {
 
     public function roles(): BelongsToMany {
         return $this->belongsToMany(Role::class, 'user_roles');
+    }
+    
+    public function getNameAttribute(): string
+    {
+        return $this->first_name . ' ' . $this->last_name;
     }
 }

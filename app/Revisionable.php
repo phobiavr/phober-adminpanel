@@ -12,7 +12,7 @@ trait Revisionable {
     protected static function bootRevisionable(): void {
         $revisedBy = Auth::check() ? Auth::id() : null;
 
-        static::creating(function ($model) use ($revisedBy) {
+        static::created(function ($model) use ($revisedBy) {
             /** @var Revisionable $model */
             $model->revisions()->create([
                 'modified_data' => $model->makeHidden(self::HIDDEN_FIELDS)->withoutRelations()->toArray(),

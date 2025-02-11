@@ -7,7 +7,7 @@ use Datomatic\Nova\Fields\Enum\EnumFilter;
 use Illuminate\Http\Request;
 use KirschbaumDevelopment\NovaComments\Commenter;
 use Laravel\Nova\Fields\HasMany;
-use Outl1ne\NovaInlineTextField\InlineText;
+use Nova\Custom\InlineText;
 use Phobiavr\PhoberLaravelCommon\Enums\SessionTariffEnum;
 use Phobiavr\PhoberLaravelCommon\Enums\SessionTimeEnum;
 
@@ -19,7 +19,7 @@ class TariffPlan extends Resource {
     public static $perPageOptions = [100, 150, 250];
     public static $perPageViaRelationship = 10;
     public static $globallySearchable = false;
-    
+
     public function authorizedToUpdate(Request $request)
     {
         return false;

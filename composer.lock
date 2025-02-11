@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "80a10efe4ded77e300dc14cd743e409e",
+    "content-hash": "23a7d93ac812202dfcca420523305b5d",
     "packages": [
         {
             "name": "aws/aws-crt-php",
@@ -3743,55 +3743,6 @@
                 }
             ],
             "time": "2025-01-30T13:51:11+00:00"
-        },
-        {
-            "name": "outl1ne/nova-inline-text-field",
-            "version": "2.0.5",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/outl1ne/nova-inline-text-field.git",
-                "reference": "afaeac41ab748f92ad88ba239abcf7a5d6b71f36"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/outl1ne/nova-inline-text-field/zipball/afaeac41ab748f92ad88ba239abcf7a5d6b71f36",
-                "reference": "afaeac41ab748f92ad88ba239abcf7a5d6b71f36",
-                "shasum": ""
-            },
-            "require": {
-                "laravel/nova": "^4.12.4",
-                "php": ">=8.0"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Outl1ne\\NovaInlineTextField\\FieldServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Outl1ne\\NovaInlineTextField\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "A Laravel Nova inline text field.",
-            "keywords": [
-                "field",
-                "inline",
-                "laravel",
-                "nova",
-                "text"
-            ],
-            "support": {
-                "issues": "https://github.com/outl1ne/nova-inline-text-field/issues",
-                "source": "https://github.com/outl1ne/nova-inline-text-field/tree/2.0.5"
-            },
-            "time": "2024-09-09T07:24:35+00:00"
         },
         {
             "name": "phobiavr/phober-laravel-common",

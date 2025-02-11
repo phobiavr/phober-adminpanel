@@ -5,7 +5,7 @@ namespace App\Nova;
 use App\Nova\Actions\SyncConfigsButtonAction;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
-use Outl1ne\NovaInlineTextField\InlineText;
+use Nova\Custom\InlineText;
 
 class Config extends Resource {
     public static $model = \App\Models\Config::class;
@@ -14,7 +14,7 @@ class Config extends Resource {
     public static $title = 'key';
 
     public static $perPageOptions = [100, 150, 250];
-    
+
     public function authorizedToUpdate(Request $request)
     {
         return false;

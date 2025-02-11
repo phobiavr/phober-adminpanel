@@ -14,6 +14,5 @@ use Nova\Custom\Http\Controllers\NovaInlineTextFieldController;
 |
 */
 
-Route::middleware(['nova'])->prefix('nova-vendor/nova-inline-text-field')->group(function () {
-    Route::post('/update/{resource}', [NovaInlineTextFieldController::class, 'update']);
-});
+Route::middleware(['nova'])
+    ->post('/inline-text-update/{resource}', [NovaInlineTextFieldController::class, 'update']);

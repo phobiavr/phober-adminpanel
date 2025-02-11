@@ -77,7 +77,7 @@ export default {
       this.loading = true;
       try {
         const matchedLensPath = window.location.pathname.match(`/resources/${this.resourceName}/lens/([^/]+)`);
-        await Nova.request().post(`/nova-vendor/nova-inline-text-field/update/${this.resourceName}`, {
+        await Nova.request().post(`/nova-vendor/custom/inline-text-update/${this.resourceName}`, {
           _lensUri: matchedLensPath ? matchedLensPath[1] : null,
           _inlineResourceId: this.field.resourceId,
           _inlineAttribute: this.field.attribute,

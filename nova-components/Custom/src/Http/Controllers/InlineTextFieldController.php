@@ -6,13 +6,13 @@ namespace Nova\Custom\Http\Controllers;
 use Exception;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Collection;
-use Outl1ne\NovaInlineTextField\InlineText;
 use Laravel\Nova\Http\Requests\NovaRequest;
 use Laravel\Nova\Lenses\Lens;
 use Laravel\Nova\Fields\Stack;
 use Laravel\Nova\Panel;
+use Nova\Custom\InlineText;
 
-class NovaInlineTextFieldController extends Controller
+class InlineTextFieldController extends Controller
 {
     public function update(NovaRequest $request)
     {

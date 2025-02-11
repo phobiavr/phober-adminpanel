@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Nova\Custom\Http\Controllers\NovaInlineTextFieldController;
+use Nova\Custom\Http\Controllers\InlineTextFieldController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,5 +14,4 @@ use Nova\Custom\Http\Controllers\NovaInlineTextFieldController;
 |
 */
 
-Route::middleware(['nova'])
-    ->post('/inline-text-update/{resource}', [NovaInlineTextFieldController::class, 'update']);
+Route::post('/inline-text-update/{resource}', [InlineTextFieldController::class, 'update']);

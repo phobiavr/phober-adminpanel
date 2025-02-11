@@ -10,11 +10,13 @@ use Illuminate\Support\Collection;
 use Laravel\Nova\Actions\Action;
 use Laravel\Nova\Actions\ActionResponse;
 use Laravel\Nova\Fields\ActionFields;
+use Lednerb\ActionButtonSelector\ShowAsButton;
 
 class SyncConfigsButtonAction extends Action {
     use InteractsWithQueue, Queueable;
 
     use Queueable;
+    use ShowAsButton;
 
     public $standalone = true;
 

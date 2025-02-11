@@ -12,6 +12,10 @@
         {
             "type": "vcs",
             "url": "https://github.com/Abdukhaligov/nova.git"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/Custom"
         }
     ],
     "require": {
@@ -30,7 +34,8 @@
         "spatie/laravel-translatable": "^6.10",
         "spatie/nova-translatable": "^4.1",
         "staudenmeir/eloquent-has-many-deep": "^1.20",
-        "yajra/laravel-oci8": "^11.6"
+        "yajra/laravel-oci8": "^11.6",
+        "nova/custom": "@dev"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",

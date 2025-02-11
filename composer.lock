@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "da850dea4bc374d36e5085428bdc2c0c",
+    "content-hash": "80a10efe4ded77e300dc14cd743e409e",
     "packages": [
         {
             "name": "aws/aws-crt-php",
@@ -62,16 +62,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.339.9",
+            "version": "3.339.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "e443779facb8cd0bba30383753a7a451db83acd6"
+                "reference": "85b90f70f88739f4f363c1af7c230e294af3dbd0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/e443779facb8cd0bba30383753a7a451db83acd6",
-                "reference": "e443779facb8cd0bba30383753a7a451db83acd6",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/85b90f70f88739f4f363c1af7c230e294af3dbd0",
+                "reference": "85b90f70f88739f4f363c1af7c230e294af3dbd0",
                 "shasum": ""
             },
             "require": {
@@ -153,9 +153,9 @@
             "support": {
                 "forum": "https://github.com/aws/aws-sdk-php/discussions",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.339.9"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.339.10"
             },
-            "time": "2025-02-07T19:14:31+00:00"
+            "time": "2025-02-10T19:24:07+00:00"
         },
         {
             "name": "brick/math",
@@ -3529,6 +3529,42 @@
             "time": "2024-12-30T11:07:19+00:00"
         },
         {
+            "name": "nova/custom",
+            "version": "dev-main",
+            "dist": {
+                "type": "path",
+                "url": "./nova-components/Custom",
+                "reference": "1cfed5267925f5a2bb52630110c8252e44a80a6a"
+            },
+            "require": {
+                "php": "^7.3|^8.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Nova\\Custom\\ToolServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Nova\\Custom\\": "src/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "description": "A Laravel Nova tool.",
+            "keywords": [
+                "laravel",
+                "nova"
+            ],
+            "transport-options": {
+                "relative": true
+            }
+        },
+        {
             "name": "nunomaduro/termwind",
             "version": "v2.3.0",
             "source": {
@@ -4836,16 +4872,16 @@
         },
         {
             "name": "spatie/laravel-medialibrary",
-            "version": "11.12.3",
+            "version": "11.12.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-medialibrary.git",
-                "reference": "f7ff95dcee59f18bd29187193b02bdb3d746f975"
+                "reference": "b80816212113f58cdf5a0bdc469b125d844e4e79"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-medialibrary/zipball/f7ff95dcee59f18bd29187193b02bdb3d746f975",
-                "reference": "f7ff95dcee59f18bd29187193b02bdb3d746f975",
+                "url": "https://api.github.com/repos/spatie/laravel-medialibrary/zipball/b80816212113f58cdf5a0bdc469b125d844e4e79",
+                "reference": "b80816212113f58cdf5a0bdc469b125d844e4e79",
                 "shasum": ""
             },
             "require": {
@@ -4929,7 +4965,7 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/laravel-medialibrary/issues",
-                "source": "https://github.com/spatie/laravel-medialibrary/tree/11.12.3"
+                "source": "https://github.com/spatie/laravel-medialibrary/tree/11.12.4"
             },
             "funding": [
                 {
@@ -4941,7 +4977,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-02-06T11:56:04+00:00"
+            "time": "2025-02-10T09:14:17+00:00"
         },
         {
             "name": "spatie/laravel-package-tools",
@@ -10250,7 +10286,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": {},
+    "stability-flags": {
+        "nova/custom": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

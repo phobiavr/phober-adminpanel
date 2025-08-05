@@ -1,0 +1,94 @@
+name: Playwright Tests
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  playwright-test:
+    timeout-minutes: 60
+    runs-on: ubuntu-latest
+
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: testing
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="mysqladmin ping --silent"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=5
+
+    steps:
+      - uses: actions/checkout@v4
+
+      # PHP & Laravel setup
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 8.2
+          extensions: mbstring, bcmath, pdo, pdo_mysql
+          tools: composer:v2
+          
+      - name: Cache Composer
+        uses: actions/cache@v4
+        with:
+          path: vendor
+          key: ${{ runner.os }}-composer-root-${{ hashFiles('composer.lock') }}
+          restore-keys: ${{ runner.os }}-composer-root-
+      - name: Cache NPM
+        uses: actions/cache@v4
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-nova-${{ hashFiles('package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-nova-
+
+      - name: Setup SSH Key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          ssh-keyscan github.com >> ~/.ssh/known_hosts
+
+      - name: Install PHP Dependencies
+        run: composer install --prefer-dist --no-interaction --no-progress --ignore-platform-reqs --no-dev
+
+      - name: Create .env
+        run: |
+          cp .env.testing .env
+
+      - name: Run schema.sql
+        run: |
+          mysql -h 127.0.0.1 -P 3306 -u root -proot testing < ./tests/schema.sql
+
+      - name: Start Laravel Server in Background
+        run: php artisan serve --host=127.0.0.1 --port=8000 > /dev/null 2>&1 &
+      
+      # Playwright setup
+      - uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+
+      - name: Install Node.js Dependencies
+        run: npm ci
+
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+
+      - name: Run Playwright Tests
+        run: npx playwright test
+
+      # Save test report
+      - uses: actions/upload-artifact@v4
+        if: ${{ !cancelled() }}
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 30

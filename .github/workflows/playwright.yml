@@ -5,6 +5,7 @@ on:
     branches: [ main, master ]
   pull_request:
     branches: [ main, master ]
+  workflow_dispatch:
 
 jobs:
   playwright-test:
@@ -46,9 +47,9 @@ jobs:
         uses: actions/cache@v4
         with:
           path: node_modules
-          key: ${{ runner.os }}-nova-${{ hashFiles('package-lock.json') }}
+          key: ${{ runner.os }}-npm-${{ hashFiles('package-lock.json') }}
           restore-keys: |
-            ${{ runner.os }}-nova-
+            ${{ runner.os }}-npm-
 
       - name: Setup SSH Key
         run: |
@@ -69,7 +70,7 @@ jobs:
           mysql -h 127.0.0.1 -P 3306 -u root -proot testing < ./tests/schema.sql
 
       - name: Start Laravel Server in Background
-        run: php artisan serve --host=127.0.0.1 --port=8000 > /dev/null 2>&1 &
+        run: php artisan serve --host=127.0.0.1 --port=8100 > /dev/null 2>&1 &
       
       # Playwright setup
       - uses: actions/setup-node@v4

@@ -11,6 +11,7 @@ class Session extends Model {
     use Authorable, Commentable;
 
     protected $connection = "db_staff";
+    protected $table = 'game_sessions';
 
     public function instance(): BelongsTo {
         return $this->belongsTo(DeviceInstance::class, 'instance_id');

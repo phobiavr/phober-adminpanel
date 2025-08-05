@@ -29,9 +29,9 @@ class DBReset extends Command
      */
     public function handle()
     {
-        $sessions = DB::table('sessions')->get()->map(function ($row) {
-            return (array) $row;
-        })->toArray();
+        //$sessions = DB::table('sessions')->get()->map(function ($row) {
+        //    return (array) $row;
+        //})->toArray();
         
         $this->info('Wiping database...');
         Artisan::call('db:wipe', ['--force' => true]);
@@ -50,8 +50,8 @@ class DBReset extends Command
 
         $this->info('✅ schema.sql executed successfully.');
         
-        DB::table('sessions')->insert($sessions);
-        $this->info('✅ sessions restored successfully.');
+        //DB::table('sessions')->insert($sessions);
+        //$this->info('✅ sessions restored successfully.');
         
         return CommandAlias::SUCCESS;
     }

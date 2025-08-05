@@ -6,8 +6,8 @@
     "license": "MIT",
     "repositories": [
         {
-            "type": "path",
-            "url": "./shared"
+            "type": "vcs",
+            "url": "https://github.com/phobiavr/phober-laravel-common"
         },
         {
             "type": "vcs",

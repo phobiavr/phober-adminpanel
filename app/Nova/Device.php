@@ -2,6 +2,7 @@
 
 namespace App\Nova;
 
+use Ebess\AdvancedNovaMediaLibrary\Fields\Media;
 use Illuminate\Http\Request;
 use KirschbaumDevelopment\NovaComments\Commenter;
 use Laravel\Nova\Fields\HasMany;
@@ -17,6 +18,8 @@ class Device extends Resource {
     public function fields(Request $request): array {
         return [
             ID::make()->sortable(),
+
+            Media::make('Logo', 'logo'),
 
             Text::make("Name")->sortable(),
 

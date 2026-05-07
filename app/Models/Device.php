@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Str;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
 use Staudenmeir\EloquentHasManyDeep\HasManyDeep;
 use Staudenmeir\EloquentHasManyDeep\HasRelationships;
 
@@ -14,10 +16,14 @@ use Staudenmeir\EloquentHasManyDeep\HasRelationships;
  * @property int $id
  * @property-read string $name
  */
-class Device extends Model {
-    use HasRelationships, Commentable;
+class Device extends Model implements HasMedia {
+    use HasRelationships, Commentable, InteractsWithMedia;
 
     protected $connection = 'db_device';
+
+    public function registerMediaCollections(): void {
+        $this->addMediaCollection('logo')->useDisk('media');
+    }
 
     public function setNameAttribute($value): void {
         $this->attributes['name'] = $value;

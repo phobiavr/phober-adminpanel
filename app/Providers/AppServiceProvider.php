@@ -17,8 +17,11 @@ use App\Models\Reservation;
 use App\Models\Session;
 use App\Models\Snack;
 use App\Models\SnackSale;
+use App\Events\ScheduleUpdated;
+use App\Listeners\BroadcastScheduleChanged;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Relations\Relation;
+use Illuminate\Support\Facades\Event;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Nova\Nova;
 
@@ -54,5 +57,7 @@ class AppServiceProvider extends ServiceProvider {
             'staff-reservation' => Reservation::class,
             'config' => Config::class
         ]);
+
+        Event::listen(ScheduleUpdated::class, BroadcastScheduleChanged::class);
     }
 }

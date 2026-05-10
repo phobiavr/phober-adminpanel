@@ -25,6 +25,7 @@
         "kirschbaum-development/nova-comments": "^4.0",
         "laravel/framework": "^11.9",
         "laravel/nova": "^4.35",
+        "laravel/reverb": "^1.10",
         "laravel/tinker": "^2.9",
         "league/flysystem-aws-s3-v3": "^3.29",
         "lednerb/nova-action-button-selectors": "^2.0",

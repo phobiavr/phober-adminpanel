@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use App\Commentable;
+use App\Observers\DeviceInstanceScheduleObserver;
+use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Phobiavr\PhoberLaravelCommon\Enums\ScheduleEnum;
@@ -11,6 +13,7 @@ use Phobiavr\PhoberLaravelCommon\Enums\ScheduleEnum;
  * @property \DateTime $start
  * @property \DateTime $end
  */
+#[ObservedBy([DeviceInstanceScheduleObserver::class])]
 class DeviceInstanceSchedule extends Model {
     use Commentable;
 

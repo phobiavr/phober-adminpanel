@@ -36,6 +36,12 @@ class DeviceInstance extends Model {
         return !$this->activeSchedules()->exists();
     }
 
+    public function getActiveSchedule() {
+        return $this->schedules->filter(function ($schedule) {
+            return $schedule->isActive();
+        })->sortBy('end')->first();
+    }
+
     public function device(): BelongsTo {
         return $this->belongsTo(Device::class);
     }

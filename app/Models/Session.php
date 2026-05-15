@@ -12,6 +12,9 @@ class Session extends Model {
 
     protected $connection = "db_staff";
     protected $table = 'game_sessions';
+    protected $casts = [
+        'started_at' => 'datetime',
+    ];
 
     public function instance(): BelongsTo {
         return $this->belongsTo(DeviceInstance::class, 'instance_id');

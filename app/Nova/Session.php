@@ -36,6 +36,7 @@ class Session extends Resource {
 
             Textarea::make('Note')->hideFromIndex(),
 
+            DateTime::make('Started at')->sortable(),
             DateTime::make('Created at')->sortable(),
             DateTime::make('Updated at')->onlyOnDetail(),
 

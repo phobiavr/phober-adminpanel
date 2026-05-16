@@ -42,6 +42,8 @@ class ScheduleUpdated implements ShouldBroadcastNow
             $channels[] = new Channel('schedule.' . $slug);
         }
 
+        $channels[] = new Channel('instances');
+
         return $channels;
     }
 

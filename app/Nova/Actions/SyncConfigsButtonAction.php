@@ -50,7 +50,8 @@ class SyncConfigsButtonAction extends Action {
             $message .= $service . ' - ';
             try {
                 $message .= 'Created: ' . $json['result']['new_configurations_added'] . ' - ';
-                $message .= 'Updated: ' . $json['result']['configurations_updated'];
+                $message .= 'Updated: ' . $json['result']['configurations_updated'] . ' - ';
+                $message .= 'Deleted: ' . $json['result']['configurations_deleted'];
 
             } catch (\Throwable $ignored) {
                 $message .= $ignored->getMessage();

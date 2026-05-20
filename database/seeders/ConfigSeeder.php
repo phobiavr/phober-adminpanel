@@ -14,6 +14,7 @@ class ConfigSeeder extends Seeder {
      */
     public function run() {
         $configs = [
+            ['id' => '1', 'key' => 'FEATURE_RUDE_MODE', 'value' => 'false', 'created_at' => null, 'updated_at' => null],
         ];
 
         DB::connection('db_configs')->table('configs')->insert($configs);

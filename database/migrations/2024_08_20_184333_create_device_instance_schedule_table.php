@@ -15,6 +15,7 @@ class CreateDeviceInstanceScheduleTable extends Migration {
             $table->id();
             $table->string('type');
             $table->bigInteger("instance_id")->unsigned();
+            $table->bigInteger("session_id")->unsigned();
             $table->foreign("instance_id")->references("id")->on("instances")->onDelete("CASCADE");
             $table->dateTime("start")->nullable();
             $table->dateTime("end")->nullable();

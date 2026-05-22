@@ -1073,7 +1073,6 @@ INSERT INTO `game_genre` (`game_id`, `genre_id`) VALUES
 CREATE TABLE `game_sessions` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `instance_id` bigint(20) UNSIGNED DEFAULT NULL,
-  `schedule_id` bigint(20) UNSIGNED DEFAULT NULL,
   `serviced_by` bigint(20) UNSIGNED DEFAULT NULL,
   `time` int(11) DEFAULT NULL,
   `price` double DEFAULT NULL,
@@ -1708,6 +1707,7 @@ CREATE TABLE `schedules` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `type` varchar(255) NOT NULL,
   `instance_id` bigint(20) UNSIGNED NOT NULL,
+  `session_id` bigint(20) UNSIGNED NOT NULL,
   `start` datetime DEFAULT NULL,
   `end` datetime DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,

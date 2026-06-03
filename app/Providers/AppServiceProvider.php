@@ -9,6 +9,7 @@ use App\Models\Device;
 use App\Models\DeviceInstance;
 use App\Models\DeviceInstanceSchedule;
 use App\Models\Employee;
+use App\Policies\DeviceInstanceSchedulePolicy;
 use App\Models\Game;
 use App\Models\Genre;
 use App\Models\Invoice;
@@ -19,6 +20,7 @@ use App\Models\Snack;
 use App\Models\SnackSale;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Relations\Relation;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Nova\Nova;
 
@@ -36,6 +38,8 @@ class AppServiceProvider extends ServiceProvider {
      * Bootstrap any application services.
      */
     public function boot(): void {
+        Gate::policy(DeviceInstanceSchedule::class, DeviceInstanceSchedulePolicy::class);
+
         Relation::morphMap([
             'auth-user' => User::class,
             'device-game' => Game::class,

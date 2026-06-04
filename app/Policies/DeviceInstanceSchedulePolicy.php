@@ -34,7 +34,7 @@ class DeviceInstanceSchedulePolicy {
     }
 
     public function delete(User $user, DeviceInstanceSchedule $schedule): bool {
-        return !in_array($schedule->type, self::READONLY_TYPES);
+        return !in_array($schedule->type, self::READONLY_TYPES) || $schedule->type == ScheduleEnum::QUEUE->value;
     }
 
     public function restore(User $user, DeviceInstanceSchedule $schedule): bool {

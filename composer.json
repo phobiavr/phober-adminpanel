@@ -32,6 +32,7 @@
         "nova/custom": "@dev",
         "phobiavr/phober-laravel-common": "^0.1.0",
         "predis/predis": "^3.4",
+        "sentry/sentry-laravel": "^4.25",
         "spatie/laravel-medialibrary": "^11.12",
         "spatie/laravel-translatable": "^6.10",
         "spatie/nova-translatable": "^4.1",

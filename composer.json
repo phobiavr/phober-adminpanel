@@ -7,10 +7,6 @@
     "repositories": [
         {
             "type": "vcs",
-            "url": "https://github.com/phobiavr/phober-laravel-common"
-        },
-        {
-            "type": "vcs",
             "url": "https://github.com/Abdukhaligov/nova.git"
         },
         {
@@ -30,7 +26,6 @@
         "league/flysystem-aws-s3-v3": "^3.29",
         "lednerb/nova-action-button-selectors": "^2.0",
         "nova/custom": "@dev",
-        "phobiavr/phober-laravel-common": "^0.1.0",
         "predis/predis": "^3.4",
         "sentry/sentry-laravel": "^4.25",
         "spatie/laravel-medialibrary": "^11.12",
@@ -51,7 +46,8 @@
         "psr-4": {
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
-            "Database\\Seeders\\": "database/seeders/"
+            "Database\\Seeders\\": "database/seeders/",
+            "Phobiavr\\PhoberLaravelCommon\\": "vendor/phobiavr/phober-laravel-common/src/"
         }
     },
     "autoload-dev": {

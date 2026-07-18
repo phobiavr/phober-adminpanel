@@ -47,7 +47,7 @@
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/",
-            "Phobiavr\\PhoberLaravelCommon\\": "vendor/phobiavr/phober-laravel-common/src/"
+            "Phobiavr\\PhoberLaravelCommon\\": "shared/laravel-common/src/"
         }
     },
     "autoload-dev": {

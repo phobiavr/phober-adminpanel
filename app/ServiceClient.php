@@ -15,7 +15,7 @@ class ServiceClient {
 
     public function synConfigs(): PromiseInterface|Response {
         return Http::accept('application/json')->withHeaders([
-            'X-APP-KEY' => env('APP_KEY'),
+            'X-Service-Secret' => env('SERVICE_SECRET'),
         ])
             ->get($this->url . '/config-client/update', [
                 'overwrite' => 'true',

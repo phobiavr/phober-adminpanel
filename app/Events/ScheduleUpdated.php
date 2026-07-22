@@ -36,10 +36,11 @@ class ScheduleUpdated implements ShouldBroadcastNow
         $channels = [new PrivateChannel('instances')];
 
         $mac = DeviceInstance::query()->whereKey($this->instanceId)->value('mac_address');
+        $secret = (string) config('service.overlay_secret');
 
-        if ($mac) {
+        if ($mac && $secret !== '') {
             $slug = strtoupper(preg_replace('/[^a-zA-Z0-9]/', '', $mac));
-            $channels[] = new Channel('schedule.' . $slug);
+            $channels[] = new Channel('schedule.' . $slug . '.' . $secret);
         }
 
         $channels[] = new Channel('instances');
@@ -57,6 +58,8 @@ class ScheduleUpdated implements ShouldBroadcastNow
     {
         $type      = 'N/A';
         $countdown = 0;
+        $upcomingType = null;
+        $startsIn     = null;
 
         $instance = DeviceInstance::find($this->instanceId);
         $schedule = $instance?->getActiveSchedule();
@@ -66,12 +69,20 @@ class ScheduleUpdated implements ShouldBroadcastNow
             $countdown = $schedule->end ? now()->diffInSeconds($schedule->end) : -1;
         }
 
+        if ($upcoming = $instance?->getUpcomingSchedule()) {
+            $upcomingType = $upcoming->type;
+            $startsIn     = (int) now()->diffInSeconds($upcoming->start);
+        }
+
         return [
-            'schedule_id' => $this->scheduleId,
-            'instance_id' => $this->instanceId,
-            'action'      => $this->action,
-            'type'        => $type,
-            'countdown'   => (int) $countdown,
+            'schedule_id'   => $this->scheduleId,
+            'instance_id'   => $this->instanceId,
+            'action'        => $this->action,
+            'type'          => $type,
+            'countdown'     => (int) $countdown,
+            'upcoming_type' => $upcomingType,
+            'starts_in'     => $startsIn,
+            'sent_by'       => 'adminpanel',
         ];
     }
 }

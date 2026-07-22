@@ -22,4 +22,18 @@ class ServiceClient {
                 'dry-run' => 'false',
             ]);
     }
+
+    /**
+     * @param ServiceEnum[] $services
+     * @return array
+     */
+    public static function syncAll(array $services): array {
+        $results = [];
+
+        for ($i = 0; $i <= count($services); $i++) {
+            $results[$services[$i]->name] = (new self($services[$i]))->synConfigs()->json();
+        }
+
+        return $results;
+    }
 }

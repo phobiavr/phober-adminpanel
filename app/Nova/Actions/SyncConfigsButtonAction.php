@@ -31,13 +31,7 @@ class SyncConfigsButtonAction extends Action {
      * @return mixed
      */
     public function handle(ActionFields $fields, Collection $models) {
-        $result = [
-            ServiceEnum::CRM->name => (new ServiceClient(ServiceEnum::CRM))->synConfigs()->json(),
-            ServiceEnum::AUTH->name => (new ServiceClient(ServiceEnum::AUTH))->synConfigs()->json(),
-            ServiceEnum::STAFF->name => (new ServiceClient(ServiceEnum::STAFF))->synConfigs()->json(),
-            ServiceEnum::HARDWARE->name => (new ServiceClient(ServiceEnum::HARDWARE))->synConfigs()->json(),
-            ServiceEnum::NOTIFICATION->name => (new ServiceClient(ServiceEnum::NOTIFICATION))->synConfigs()->json(),
-        ];
+        $result = ServiceClient::syncAll(ServiceEnum::cases());
 
         return $this->parseResult($result);
     }

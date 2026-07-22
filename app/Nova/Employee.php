@@ -43,6 +43,12 @@ class Employee extends Resource {
                 ->exceptOnForms()
                 ->displayUsing(fn($value) => $value . ' mins'),
 
+            Number::make('Serviced AVG time', 'serviced_avg_minutes')
+                ->exceptOnForms()
+                ->resolveUsing(fn() => $this->serviced_minutes_total / $this->serviced_total)
+                ->displayUsing(fn($value) => round($value, 1) . ' mins')
+                ->onlyOnDetail(),
+
 
             Number::make('Serviced in a DAY', 'serviced_in_a_day')
                 ->exceptOnForms()

@@ -5,6 +5,7 @@ namespace App\Policies;
 use App\Models\Invoice;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
+use Phobiavr\PhoberLaravelCommon\Enums\InvoiceStatusEnum;
 
 class InvoicePolicy {
     use HandlesAuthorization;
@@ -59,7 +60,10 @@ class InvoicePolicy {
      * @return \Illuminate\Auth\Access\Response|bool
      */
     public function delete(User $user, Invoice $invoice) {
-        return false;
+        return in_array($invoice->status, [
+            InvoiceStatusEnum::CANCELED->value,
+            InvoiceStatusEnum::QUEUE->value,
+        ]);
     }
 
     /**

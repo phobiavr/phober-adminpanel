@@ -2,8 +2,9 @@
 
 namespace Database\Seeders;
 
+use App\Models\Contact;
+use App\Models\Customer;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 
 class CustomerSeeder extends Seeder
 {
@@ -82,7 +83,7 @@ class CustomerSeeder extends Seeder
             ['id' => '40', 'customer_id' => '20', 'value' => 'kaitlin.franecki@bartoletti.com', 'type' => 'EMAIL', 'created_at' => '2024-10-12 06:19:58.0', 'updated_at' => '2024-10-12 06:19:58.0'],
         ];
 
-        DB::connection('db_crm')->table('customers')->insert($customers);
-        DB::connection('db_crm')->table('contacts')->insert($contacts);
+        Customer::insert($customers);
+        Contact::insert($contacts);
     }
 }

@@ -2,9 +2,9 @@
 
 namespace Database\Seeders;
 
+use App\Models\Game;
 use DateTime;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 
 class GameSeeder extends Seeder {
     /**
@@ -1015,6 +1015,6 @@ class GameSeeder extends Seeder {
             )
         );
 
-        DB::connection('db_device')->table("games")->insert($games);
+        Game::insert($games);
     }
 }

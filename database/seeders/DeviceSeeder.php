@@ -2,9 +2,10 @@
 
 namespace Database\Seeders;
 
+use App\Models\Device;
+use App\Models\DeviceInstance;
 use DateTime;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 use App\Enums\DeviceEnum;
 
 class DeviceSeeder extends Seeder
@@ -43,7 +44,7 @@ class DeviceSeeder extends Seeder
             ['id' => '16', 'mac_address' => 'EA:ED:AF:19:F7:37', 'device' => 'DOF_3', 'active' => '1', 'created_at' => '2025-07-14 00:00:48.0', 'updated_at' => '2025-07-14 00:00:48.0'],
         ];
 
-        DB::connection('db_device')->table("devices")->insert($devices);
-        DB::connection('db_device')->table("instances")->insert($instances);
+        Device::insert($devices);
+        DeviceInstance::insert($instances);
     }
 }

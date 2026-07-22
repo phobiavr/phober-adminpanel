@@ -4,9 +4,11 @@ namespace Database\Seeders;
 
 use App\Models\Permission;
 use App\Models\Role;
+use App\Models\RolePermission;
 use App\Models\User;
+use App\Models\UserPermission;
+use App\Models\UserRole;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 
 class UserSeeder extends Seeder
 {
@@ -58,11 +60,11 @@ class UserSeeder extends Seeder
             ['role_id' => '3', 'permission_id' => '2'],
         ];
 
-        DB::connection('db_auth')->table("users")->insert($users);
-        DB::connection('db_auth')->table("roles")->insert($roles);
-        DB::connection('db_auth')->table("permissions")->insert($permissions);
-        DB::connection('db_auth')->table("user_roles")->insert($user_roles);
-        DB::connection('db_auth')->table("user_permissions")->insert($user_permissions);
-        DB::connection('db_auth')->table("role_permissions")->insert($role_permissions);
+        User::insert($users);
+        Role::insert($roles);
+        Permission::insert($permissions);
+        UserRole::insert($user_roles);
+        UserPermission::insert($user_permissions);
+        RolePermission::insert($role_permissions);
     }
 }

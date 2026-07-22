@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\GameGenre;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 
 class GameGenreSeeder extends Seeder {
     /**
@@ -316,6 +316,6 @@ class GameGenreSeeder extends Seeder {
             array('game_id' => '142', 'genre_id' => '18')
         );
 
-        DB::connection('db_device')->table("game_genre")->insert($game_genre);
+        GameGenre::insert($game_genre);
     }
 }

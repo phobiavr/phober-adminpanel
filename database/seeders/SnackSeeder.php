@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 use App\Models\Snack;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 
 class SnackSeeder extends Seeder {
     /**
@@ -20,6 +19,6 @@ class SnackSeeder extends Seeder {
             ['id' => '4', 'name' => 'Snickers', 'stock' => '9', 'price' => '1.5', 'created_at' => '2025-07-16 23:50:00.0', 'updated_at' => '2025-07-16 23:50:00.0'],
         ];
 
-        DB::connection('db_staff')->table("snacks")->insert($snacks);
+        Snack::insert($snacks);
     }
 }

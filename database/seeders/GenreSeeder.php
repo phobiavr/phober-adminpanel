@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 use App\Models\Genre;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 
 class GenreSeeder extends Seeder
 {
@@ -40,6 +39,6 @@ class GenreSeeder extends Seeder
             ['id' => '22', 'name' => 'Racing', 'slug' => 'racing', 'created_at' => '2025-07-13 23:58:13.0', 'updated_at' => '2025-07-13 23:58:13.0'],
         ];
 
-        DB::connection('db_device')->table("genres")->insert($genres);
+        Genre::insert($genres);
     }
 }

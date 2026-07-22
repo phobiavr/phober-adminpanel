@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 use App\Models\Employee;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 
 class EmployeeSeeder extends Seeder
 {
@@ -23,6 +22,6 @@ class EmployeeSeeder extends Seeder
             ['id' => '5', 'first_name' => 'Cathy', 'last_name' => 'Yost', 'created_at' => '2025-07-16 23:49:59.0', 'updated_at' => '2025-07-16 23:49:59.0'],
         ];
 
-        DB::connection('db_staff')->table("employees")->insert($employees);
+        Employee::insert($employees);
     }
 }

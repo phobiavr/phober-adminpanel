@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\GameDevice;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 
 class GameDeviceSeeder extends Seeder {
     /**
@@ -264,6 +264,6 @@ class GameDeviceSeeder extends Seeder {
             array('game_id' => '142', 'device' => 'DOF_3')
         );
 
-        DB::connection('db_device')->table("game_device")->insert($game_device);
+        GameDevice::insert($game_device);
     }
 }

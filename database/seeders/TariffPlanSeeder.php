@@ -7,7 +7,6 @@ use Illuminate\Database\Seeder;
 use App\Enums\DeviceEnum;
 use App\Enums\SessionTariffEnum;
 use App\Enums\SessionTimeEnum;
-use Illuminate\Support\Facades\DB;
 
 class TariffPlanSeeder extends Seeder
 {
@@ -51,6 +50,6 @@ class TariffPlanSeeder extends Seeder
             ['id' => '30', 'tariff' => 'EVENING', 'time' => 'MIN_60', 'price' => '45.0', 'device' => 'DOF_3', 'created_at' => '2025-07-16 23:50:55.0', 'updated_at' => '2025-07-16 23:50:55.0'],
         ];
 
-        DB::connection('db_device')->table("tariff_plans")->insert($tariffPlans);
+        TariffPlan::insert($tariffPlans);
     }
 }

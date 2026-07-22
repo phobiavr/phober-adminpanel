@@ -4,8 +4,8 @@ namespace Database\Seeders;
 
 use DateTime;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
+use Phobiavr\PhoberLaravelCommon\Media;
 
 class MediaSeeder extends Seeder {
     /**
@@ -1481,6 +1481,6 @@ class MediaSeeder extends Seeder {
             )
         );
 
-        DB::connection('db_shared')->table("media")->insert($media);
+        Media::insert($media);
     }
 }

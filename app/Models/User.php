@@ -14,8 +14,10 @@ class User extends Authenticatable {
     use Notifiable, SyncRoles, SyncPermissions, Commentable, Revisionable;
 
     protected $connection = 'db_auth';
-    
+
     protected $appends = ['name'];
+
+    private ?array $permissionNames = null;
 
     /**
      * The attributes that are mass assignable.
@@ -65,5 +67,17 @@ class User extends Authenticatable {
     public function getNameAttribute(): string
     {
         return $this->first_name . ' ' . $this->last_name;
+    }
+
+    public function hasPermission(string $permission): bool {
+        return in_array($permission, $this->permissionNames(), true);
+    }
+
+    private function permissionNames(): array {
+        return $this->permissionNames ??= $this->permissions()->pluck('name')
+            ->merge(Permission::query()->whereHas('roles.users', fn ($query) => $query->whereKey($this->id))->pluck('name'))
+            ->unique()
+            ->values()
+            ->all();
     }
 }

@@ -11,7 +11,6 @@ use App\Nova\DeviceInstanceSchedule;
 use App\Nova\Employee;
 use App\Nova\Game;
 use App\Nova\Genre;
-use App\Nova\Hostname;
 use App\Nova\Invoice;
 use App\Nova\LoyaltyCard;
 use App\Nova\Post;
@@ -108,9 +107,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     protected function gate()
     {
         Gate::define('viewNova', function ($user) {
-            return in_array($user->email, [
-                //
-            ]);
+            return $user->hasPermission('access_to_adminpanel');
         });
     }
 

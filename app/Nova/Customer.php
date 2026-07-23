@@ -37,16 +37,18 @@ class Customer extends Resource {
 
             Text::make('First name')
                 ->hideFromIndex()
+                ->required()
                 ->rules('required', 'max:255'),
 
             Text::make('Last name')
                 ->hideFromIndex()
-                ->rules('max:255'),
+                ->required()
+                ->rules('required', 'max:255'),
 
-            Enum::make('Gender', 'gender')->attach(GenderEnum::class)->sortable(),
-            Enum::make('Status', 'status')->attach(CustomerStatusEnum::class)->sortable(),
+            Enum::make('Gender', 'gender')->required()->rules(['required'])->attach(GenderEnum::class)->sortable(),
+            Enum::make('Status', 'status')->required()->rules(['required'])->attach(CustomerStatusEnum::class)->sortable(),
 
-            Date::make("Birthday")->sortable(),
+            Date::make("Birthday")->required()->rules(['required'])->sortable(),
 
             Textarea::make('Note')->hideFromIndex(),
 

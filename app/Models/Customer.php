@@ -3,12 +3,15 @@
 namespace App\Models;
 
 use App\Commentable;
+use App\Observers\CustomerObserver;
 use App\Revisionable;
+use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Phobiavr\PhoberLaravelCommon\Traits\Authorable;
 
+#[ObservedBy([CustomerObserver::class])]
 class Customer extends Model {
     use Authorable, Revisionable, Commentable;
 

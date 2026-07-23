@@ -3,8 +3,9 @@
 namespace App\Nova;
 
 use Illuminate\Http\Request;
-use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\DateTime;
+use Laravel\Nova\Fields\Text;
+use Phobiavr\PhoberLaravelCommon\Data\AuthUser;
 
 class Author extends Resource {
     public static $model = \Phobiavr\PhoberLaravelCommon\Author::class;
@@ -28,11 +29,15 @@ class Author extends Resource {
 
     public function fields(Request $request) {
         return [
-            BelongsTo::make('Created by', 'createdBy', User::class),
+            Text::make('Created by', 'created_by')
+                ->resolveUsing(fn(?AuthUser $user) => $user?->username)
+                ->exceptOnForms(),
 
             DateTime::make('Created At', 'authorable_created_at'),
 
-            BelongsTo::make('Updated by', 'updatedBy', User::class),
+            Text::make('Updated by', 'updated_by')
+                ->resolveUsing(fn(?AuthUser $user) => $user?->username)
+                ->exceptOnForms(),
 
             DateTime::make('Updated At', 'authorable_updated_at'),
         ];

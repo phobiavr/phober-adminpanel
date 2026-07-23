@@ -31,6 +31,7 @@ class UserSeeder extends Seeder
         $permissions = [
             ['id' => '1', 'name' => 'access_to_adminpanel', 'created_at' => '2024-12-14 21:23:55.413', 'updated_at' => '2024-12-14 21:23:55.413'],
             ['id' => '2', 'name' => 'manage_sessions', 'created_at' => '2024-12-14 21:23:55.46', 'updated_at' => '2024-12-14 21:23:55.46'],
+            ['id' => '3', 'name' => 'manage_discount', 'created_at' => '2026-07-23 00:00:00', 'updated_at' => '2026-07-23 00:00:00'],
         ];
 
         $roles = [
@@ -55,8 +56,10 @@ class UserSeeder extends Seeder
         $role_permissions = [
             ['role_id' => '1', 'permission_id' => '1'],
             ['role_id' => '1', 'permission_id' => '2'],
+            ['role_id' => '1', 'permission_id' => '3'],
             ['role_id' => '2', 'permission_id' => '1'],
             ['role_id' => '2', 'permission_id' => '2'],
+            ['role_id' => '2', 'permission_id' => '3'],
             ['role_id' => '3', 'permission_id' => '2'],
         ];
 
